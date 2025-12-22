@@ -1,0 +1,145 @@
+# BIOE 591: Genomics for Ecology and Conservation
+
+**Course:** BIOE 591 (3 Credits)  
+**Prerequisite:** BIOB480/BIOE548 or consent of instructor  
+**Meeting Time:** T/TR 10:50 AM – 12:05 PM  
+**Place:** TBD   
+**Instructor:** Dr. Ethan Linck (ethan.linck@montana.edu; 406-994-2024)   
+**Office Hours:** 1:00 PM – 2:30 T/TR  
+**Materials:** A laptop (tablets will not suffice)  
+
+## Catalog Description
+
+Application of genomics methods to conservation, ecology, and evolution. Students gain familiarity with the basic tools and techniques of computational biology and genomics through case studies from the primary literature and analysis of empirical datasets. Examples and questions relevant to conservation biology and fish and wildlife management are emphasized. 
+
+## Overview  
+
+The development of affordable high-throughput sequencing technology in the 2000s and 2010s revolutionized the ability of molecular ecologists, wildlife and conservation biologists, and other environmental scientists to assay genome-wide DNA sequence variation from nonmodel organisms. Genomics methods are now commonly used to study everything from the dietary preferences of sturgeon to genes underpinning local adaptation in wolves, but can be difficult to apply or interpret without specialist training. This course provides a hands-on introduction to the use of genomics in ecology, conservation, and related fields. Students will gain hands-on experience with computational biology, analyzing empirical genomic datasets with commonly applied software on a high-performance computing cluster. Reading assignments from the primary literature will demonstrate the use of focal software packages while emphasizing case studies relevant to conservation biology and fish and wildlife management. 
+
+
+## Course Organization and Format 
+
+The course will be offered as a mix of short lectures or demonstrations and discussions on reading assignments (typically Tuesdays) and supervised computer lab activities (typically Thursdays). 
+
+
+## Learning Outcomes
+
+- Compare high-throughput sequencing approaches; 
+- Evaluate genomics methods sections in the primary literature; 
+- Apply basic tools and techniques from computational biology; 
+- Analyze empirical datasets with genomics softwate; 
+- Create scripts for custom data analysis tasks. 
+
+## Grading 
+
+Your grade will be calculated as the fraction of points earned out of a total of 200. 120 points will come from completing lab assignments (10 points each; turned in the following class period as homework), 60 will come from posting comments or questions in Canvas discussion threads on assigned reading (5 points each; engagement with 12/14 papers needed), and 20 points will come from participation (based on attendance, clasroom participation, and assessment completion).  
+ 
+## Schedule  
+
++---------------------+-----------------------------------------+-------------------------------------------------------------------+ 
+| Week                | Topic                                   | Assignments 												        |                    
++=====================+=========================================+===================================================================+
+| 1/12 - 1/16         | Introduction and Review                 | - Preliminary Assessment                                          |                    
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 1/19 - 1/23         | What is Genomics?		                | - [Hohenlohe et al. 2020](https://doi.org/10.1111/mec.15720)      |
+|					  |										    | - [Hudson 2008*](https://doi.org/10.1111/j.1471-8286.2007.02019.x)|                           
+|                     |                                         | - [Felsenstein rant #1](https://felsenst.github.io/rants.html)    |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+  
+| 1/26 - 1/30         | Computational Biology Basics            | - [Braga et al. 2023](https://doi.org/10.1111/2041-210X.14108)    |
+| 					  |											| - Set up GitHub profiles with `markdown` READMEs (HW1)   		    |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 2/2 - 2/6           | Computing Clusters and the Command Line | - Install sofware with `mamba` environment manager                |
+|                     |                                         | - `bash` shell scripting activity (HW2)                           |   				       
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 2/9 - 2/13          |	Sequencing strategies and               | - Watch Illumina video                                            |
+|                     |                                         | - [Fuentes-Pardo et al. 2017](https://doi.org/10.1111/mec.14264)  |
+|                     | Short Read Quality Control			    | - `FastQC` Read filtering activity (HW3)          			    |   
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 2/16 - 2/20         | eDNA and Metabarcoding                  | - [Leempole et al. 2020](https://doi.org/10.1098/rspb.2019.2353)  |
+|                     |                                         | - `BLAST` activity (HW4)                                          |											
++---------------------+-----------------------------------------+-------------------------------------------------------------------+											
+| 3/2 - 3/6           | Pipelines and Genome Assembly           | - [Ekblom & Wolf 2014](https://doi.org/10.1111/eva.12178)         |
+|                     |                                         | - `Snakemake` activity (HW5)                                      |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+       									
+| 3/9 - 3/13          | Variant Calling and Filtering           | - [Shafer et al. 2017](https://doi.org/10.1111/2041-210X.12700)   |
+|                     |                                         | - `vcftools` filtering activity (HW6)      					    |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+		        
+| 3/16 - 3/20         | Spring Break                            |                                                                   |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 3/23 - 3/27         | Kinship and Inbreeding                 	| - [Hauser et al. 2022](https://doi.org/10.1111/1755-0998.13630)   |		
+|                     |                                         | - `NgsRelate` activity (HW7)  					                |  
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 3/30 - 4/3          | Genetic Diversity and                   | - [Linck & Battey 2019](https://doi.org/10.1111/1755-0998.12995)  |
+|				      |	Population Structure					| - `adegenet` activity (HW8)         	                            |  
++---------------------+-----------------------------------------+-------------------------------------------------------------------+
+| 4/6 - 4/10          | Introgression and Hybridization         | - [Mandeville et al. 2019](https://doi.org/10.1111/mec.15175)     |
+|					  |											| - `entropy` admixture activity (HW9)                              |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+  
+| 4/13 - 4/17         | Phylogenetics and Conservation Units    | - [Linck et al. 2019](https://doi.org/10.1093/sysbio/syz027)      |
+|                     |                                         | - `SVDquartets` activity (HW10)                                   |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+  
+| 4/20 - 4/24         | Simulations and Demographic History     | - [Hoey et al. 2022](https://doi.org/10.1111/mec.16697)           |
+|                     |                                         | - [Capblancq et al. 2020*](https://doi.org/10.1111/eva.12985)     |
+|                     |                                         | - `fastsimcoal2` activity (HW11)                                  |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+   
+| 4/27 - 5/1          | Detecting Natural Selection             | - [Schweizer et al. 2016](https://doi.org/10.1111/mec.13364)      |
+|                     |                                         | - `bayenv` activity (HW12)                                        |
++---------------------+-----------------------------------------+-------------------------------------------------------------------+  
+| 5/4 - 5/8           | Finals Week                             |         												            |   
++---------------------+-----------------------------------------+-------------------------------------------------------------------+  
+\* *denotes an optional reading assignment* 
+
+## Reading List
+
+1) Hohenlohe, P. A., Funk, W. C., & Rajora, O. P. (2021). Population genomics for wildlife conservation and management. Molecular Ecology, 30(1), 62-82.
+
+2) Hudson, M. E. (2008). Sequencing breakthroughs for genomic ecology and evolutionary biology. Molecular Ecology Resources, 8(1), 3-17.
+
+3) https://felsenst.github.io/rants.html
+
+4) Braga, P. H. P., Hébert, K., Hudgins, E. J., Scott, E. R., Edwards, B. P., Sanchez Reyes, L. L., ... & Crystal‐Ornelas, R. (2023). Not just for programmers: How GitHub can accelerate collaborative and reproducible research in ecology and evolution. Methods in Ecology and Evolution, 14(6), 1364-1380.
+
+5) Fuentes‐Pardo, A. P., & Ruzzante, D. E. (2017). Whole‐genome sequencing approaches for conservation biology: Advantages, limitations and practical recommendations. Molecular Ecology, 26(20), 5369-5406. 
+
+6) Leempoel, K., Hebert, T., & Hadly, E. A. (2020). A comparison of eDNA to camera trapping for assessment of terrestrial mammal diversity. Proceedings of the Royal Society B, 287(1918), 20192353.
+
+7) Ekblom, R., & Wolf, J. B. (2014). A field guide to whole‐genome sequencing, assembly and annotation. Evolutionary Applications, 7(9), 1026-1042.
+
+8) Shafer, A. B., Peart, C. R., Tusso, S., Maayan, I., Brelsford, A., Wheat, C. W., & Wolf, J. B. (2017). Bioinformatic processing of RAD‐seq data dramatically impacts downstream population genetic inference. Methods in Ecology and Evolution, 8(8), 907-917.
+
+9) Hauser, S. S., Galla, S. J., Putnam, A. S., Steeves, T. E., & Latch, E. K. (2022). Comparing genome‐based estimates of relatedness for use in pedigree‐based conservation management. Molecular Ecology Resources, 22(7), 2546-2558.
+
+10) Linck, E., & Battey, C. J. (2019). Minor allele frequency thresholds strongly affect population structure inference with genomic data sets. Molecular Ecology Resources, 19(3), 639-647.
+
+11) Linck, E., Epperly, K., Van Els, P., Spellman, G. M., Bryson Jr, R. W., McCormack, J. E., ... & Klicka, J. (2019). Dense geographic and genomic sampling reveals paraphyly and a cryptic lineage in a classic sibling species complex. Systematic Biology, 68(6), 956-966.
+
+12) Hoey, J. A., Able, K. W., & Pinsky, M. L. (2022). Genetic decline and recovery of a demographically rebuilt fishery species. Molecular Ecology, 31(22), 5684-5698.
+
+13) Capblancq, T., Butnor, J. R., Deyoung, S., Thibault, E., Munson, H., Nelson, D. M., ... & Keller, S. R. (2020). Whole‐exome sequencing reveals a long‐term decline in effective population size of red spruce (Picea rubens). Evolutionary Applications, 13(9), 2190-2205.
+
+14) Schweizer, R. M., Vonholdt, B. M., Harrigan, R., Knowles, J. C., Musiani, M., Coltman, D., ... & Wayne, R. K. (2016). Genetic subdivision and candidate genes under selection in North American grey wolves. Molecular Ecology, 25(1), 380-402.
+
+## Drop / Add Policy
+
+MSU’s registration processes can be found on the Registrar’s website. January 27th is the last day to drop online; February 3rd is the last day to drop without a ‘W’ on your transcript; April 15th is the last day to drop with a ‘W’ on your transcript.
+
+## Generative AI
+
+Generative AI tools are permitted to help debug code; they are *not* permitted as a shortcut to learning functions or commands from software documentation, and *especially not* permitted for summarizing reading assignments, where the point of the exercise is to become comfortable interpreting the technical genomics literature. I will not spend my time actively policing their use, but if detected, I will consider it academic misconduct. 
+
+## Attendance Policy
+
+Please do not come to campus if you are sick! I trust you will only miss class when absolutely necessary, and do not need extensive explanations for absences. However, please notify me as soon as practical, so that we can figure appropriate accommodations. 
+
+
+## Inclusivity Statement
+
+I support an inclusive learning environment where diversity and individual differences are understood, respected, appreciated, and recognized as a source of strength. We expect that students, faculty, administrators and staff at MSU will respect differences and demonstrate diligence in understanding how other peoples' perspectives, behaviors, and worldviews may be different from their own. 
+
+## Syllabus Language for Students with Disabilities
+
+If you are a student with a disability and wish to use your approved accommodations for this course, please contact me during my office hours to discuss. Please have your Accommodation Notification or Blue Card available for verification of accommodations. Accommodations are approved through the Office of Disability Services located in SUB 174. Please see Disability Services for more information.
+
+
+
+  
