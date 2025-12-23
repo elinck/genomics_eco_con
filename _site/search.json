@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "genomics.html",
+    "href": "genomics.html",
+    "title": "genomics",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "genomics.html#quarto",
+    "href": "genomics.html#quarto",
+    "title": "genomics",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "",
+    "text": "Course: BIOE 591 (3 Credits)\nPrerequisite: BIOB480/BIOE548 or consent of instructor\nMeeting Time: T/TR 1:40 PM – 2:50 PM\nPlace: TBD\nInstructor: Dr. Ethan Linck (ethan.linck@montana.edu; 406-994-2024)\nOffice Hours: 1:00 PM – 2:30 T/TR\nMaterials: A laptop (tablets will not suffice)"
+  },
+  {
+    "objectID": "index.html#catalog-description",
+    "href": "index.html#catalog-description",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Catalog Description",
+    "text": "Catalog Description\nApplication of genomics methods to conservation, ecology, and evolution. Students gain familiarity with the basic tools and techniques of computational biology and genomics through case studies from the primary literature and analysis of empirical datasets. Examples and questions relevant to conservation biology and fish and wildlife management are emphasized."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Overview",
+    "text": "Overview\nThe development of affordable high-throughput sequencing technology in the 2000s and 2010s revolutionized the ability of molecular ecologists, wildlife and conservation biologists, and other environmental scientists to assay genome-wide DNA sequence variation from nonmodel organisms. Genomics methods are now commonly used to study everything from the dietary preferences of sturgeon to genes underpinning local adaptation in wolves, but can be difficult to apply or interpret without specialist training. This course provides a hands-on introduction to the use of genomics in ecology, conservation, and related fields. Students will gain hands-on experience with computational biology, analyzing empirical genomic datasets with commonly applied software on a high-performance computing cluster. Reading assignments from the primary literature will demonstrate the use of focal software packages while emphasizing case studies relevant to conservation biology and fish and wildlife management."
+  },
+  {
+    "objectID": "index.html#course-organization-and-format",
+    "href": "index.html#course-organization-and-format",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Course Organization and Format",
+    "text": "Course Organization and Format\nThe course will be offered as a mix of short lectures or demonstrations and discussions on reading assignments (typically Tuesdays) and supervised computer lab activities (typically Thursdays)."
+  },
+  {
+    "objectID": "index.html#learning-outcomes",
+    "href": "index.html#learning-outcomes",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\n\nCompare high-throughput sequencing approaches;\nEvaluate genomics methods sections in the primary literature;\nApply basic tools and techniques from computational biology;\nAnalyze empirical datasets with genomics softwate;\nCreate scripts for custom data analysis tasks."
+  },
+  {
+    "objectID": "index.html#grading",
+    "href": "index.html#grading",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Grading",
+    "text": "Grading\nYour grade will be calculated as the fraction of points earned out of a total of 200. 120 points will come from completing lab assignments (10 points each; turned in the following class period as homework), 60 will come from posting comments or questions in Canvas discussion threads on assigned reading (5 points each; engagement with 12/14 papers needed), and 20 points will come from participation (based on attendance, clasroom participation, and assessment completion)."
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\nWeek\nTopic\nAssignments\n\n\n\n\n1/12 - 1/16\nIntroduction and Review\n\nPreliminary Assessment\n\n\n\n1/19 - 1/23\nWhat is Genomics?\n\nHohenlohe et al. 2020\nHudson 2008*\nFelsenstein rant #1\n\n\n\n1/26 - 1/30\nComputational Biology Basics\n\nBraga et al. 2023\nSet up GitHub profiles with markdown READMEs (HW1)\n\n\n\n2/2 - 2/6\nComputing Clusters and the Command Line\n\nInstall sofware with mamba environment manager\nbash shell scripting activity (HW2)\n\n\n\n2/9 - 2/13\nSequencing strategies and\nShort Read Quality Control\n\nWatch Illumina video\nFuentes-Pardo et al. 2017\nFastQC Read filtering activity (HW3)\n\n\n\n2/16 - 2/20\neDNA and Metabarcoding\n\nLeempole et al. 2020\nBLAST activity (HW4)\n\n\n\n3/2 - 3/6\nPipelines and Genome Assembly\n\nEkblom & Wolf 2014\nSnakemake activity (HW5)\n\n\n\n3/9 - 3/13\nVariant Calling and Filtering\n\nShafer et al. 2017\nvcftools filtering activity (HW6)\n\n\n\n3/16 - 3/20\nSpring Break\n\n\n\n3/23 - 3/27\nKinship and Inbreeding\n\nHauser et al. 2022\nNgsRelate activity (HW7)\n\n\n\n3/30 - 4/3\nGenetic Diversity and Population Structure\n\nLinck & Battey 2019\nadegenet activity (HW8)\n\n\n\n4/6 - 4/10\nIntrogression and Hybridization\n\nMandeville et al. 2019\nentropy admixture activity (HW9)\n\n\n\n4/13 - 4/17\nPhylogenetics and Conservation Units\n\nLinck et al. 2019\nSVDquartets activity (HW10)\n\n\n\n4/20 - 4/24\nSimulations and Demographic History\n\nHoey et al. 2022\nCapblancq et al. 2020*\nfastsimcoal2 activity (HW11)\n\n\n\n4/27 - 5/1\nDetecting Natural Selection\n\nSchweizer et al. 2016\nbayenv activity (HW12)\n\n\n\n5/4 - 5/8\nFinals Week\n\n\n\n\n* denotes an optional reading assignment"
+  },
+  {
+    "objectID": "index.html#reading-list",
+    "href": "index.html#reading-list",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Reading List",
+    "text": "Reading List\n\nHohenlohe, P. A., Funk, W. C., & Rajora, O. P. (2021). Population genomics for wildlife conservation and management. Molecular Ecology, 30(1), 62-82.\nHudson, M. E. (2008). Sequencing breakthroughs for genomic ecology and evolutionary biology. Molecular Ecology Resources, 8(1), 3-17.\nhttps://felsenst.github.io/rants.html\nBraga, P. H. P., Hébert, K., Hudgins, E. J., Scott, E. R., Edwards, B. P., Sanchez Reyes, L. L., … & Crystal‐Ornelas, R. (2023). Not just for programmers: How GitHub can accelerate collaborative and reproducible research in ecology and evolution. Methods in Ecology and Evolution, 14(6), 1364-1380.\nFuentes‐Pardo, A. P., & Ruzzante, D. E. (2017). Whole‐genome sequencing approaches for conservation biology: Advantages, limitations and practical recommendations. Molecular Ecology, 26(20), 5369-5406.\nLeempoel, K., Hebert, T., & Hadly, E. A. (2020). A comparison of eDNA to camera trapping for assessment of terrestrial mammal diversity. Proceedings of the Royal Society B, 287(1918), 20192353.\nEkblom, R., & Wolf, J. B. (2014). A field guide to whole‐genome sequencing, assembly and annotation. Evolutionary Applications, 7(9), 1026-1042.\nShafer, A. B., Peart, C. R., Tusso, S., Maayan, I., Brelsford, A., Wheat, C. W., & Wolf, J. B. (2017). Bioinformatic processing of RAD‐seq data dramatically impacts downstream population genetic inference. Methods in Ecology and Evolution, 8(8), 907-917.\nHauser, S. S., Galla, S. J., Putnam, A. S., Steeves, T. E., & Latch, E. K. (2022). Comparing genome‐based estimates of relatedness for use in pedigree‐based conservation management. Molecular Ecology Resources, 22(7), 2546-2558.\nLinck, E., & Battey, C. J. (2019). Minor allele frequency thresholds strongly affect population structure inference with genomic data sets. Molecular Ecology Resources, 19(3), 639-647.\nLinck, E., Epperly, K., Van Els, P., Spellman, G. M., Bryson Jr, R. W., McCormack, J. E., … & Klicka, J. (2019). Dense geographic and genomic sampling reveals paraphyly and a cryptic lineage in a classic sibling species complex. Systematic Biology, 68(6), 956-966.\nHoey, J. A., Able, K. W., & Pinsky, M. L. (2022). Genetic decline and recovery of a demographically rebuilt fishery species. Molecular Ecology, 31(22), 5684-5698.\nCapblancq, T., Butnor, J. R., Deyoung, S., Thibault, E., Munson, H., Nelson, D. M., … & Keller, S. R. (2020). Whole‐exome sequencing reveals a long‐term decline in effective population size of red spruce (Picea rubens). Evolutionary Applications, 13(9), 2190-2205.\nSchweizer, R. M., Vonholdt, B. M., Harrigan, R., Knowles, J. C., Musiani, M., Coltman, D., … & Wayne, R. K. (2016). Genetic subdivision and candidate genes under selection in North American grey wolves. Molecular Ecology, 25(1), 380-402."
+  },
+  {
+    "objectID": "index.html#drop-add-policy",
+    "href": "index.html#drop-add-policy",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Drop / Add Policy",
+    "text": "Drop / Add Policy\nMSU’s registration processes can be found on the Registrar’s website. January 27th is the last day to drop online; February 3rd is the last day to drop without a ‘W’ on your transcript; April 15th is the last day to drop with a ‘W’ on your transcript."
+  },
+  {
+    "objectID": "index.html#generative-ai",
+    "href": "index.html#generative-ai",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Generative AI",
+    "text": "Generative AI\nGenerative AI tools are permitted to help debug code; they are not permitted as a shortcut to learning functions or commands from software documentation, and especially not permitted for summarizing reading assignments, where the point of the exercise is to become comfortable interpreting the technical genomics literature. I will not spend my time actively policing their use, but if detected, I will consider it academic misconduct."
+  },
+  {
+    "objectID": "index.html#attendance-policy",
+    "href": "index.html#attendance-policy",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Attendance Policy",
+    "text": "Attendance Policy\nPlease do not come to campus if you are sick! I trust you will only miss class when absolutely necessary, and do not need extensive explanations for absences. However, please notify me as soon as practical, so that we can figure appropriate accommodations."
+  },
+  {
+    "objectID": "index.html#inclusivity-statement",
+    "href": "index.html#inclusivity-statement",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Inclusivity Statement",
+    "text": "Inclusivity Statement\nI support an inclusive learning environment where diversity and individual differences are understood, respected, appreciated, and recognized as a source of strength. We expect that students, faculty, administrators and staff at MSU will respect differences and demonstrate diligence in understanding how other peoples’ perspectives, behaviors, and worldviews may be different from their own."
+  },
+  {
+    "objectID": "index.html#syllabus-language-for-students-with-disabilities",
+    "href": "index.html#syllabus-language-for-students-with-disabilities",
+    "title": "BIOE591: Genomics for Ecology & Conservation",
+    "section": "Syllabus Language for Students with Disabilities",
+    "text": "Syllabus Language for Students with Disabilities\nIf you are a student with a disability and wish to use your approved accommodations for this course, please contact me during my office hours to discuss. Please have your Accommodation Notification or Blue Card available for verification of accommodations. Accommodations are approved through the Office of Disability Services located in SUB 174. Please see Disability Services for more information."
+  },
+  {
+    "objectID": "01_syllabus.html",
+    "href": "01_syllabus.html",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Course: BIOE 591 (3 Credits)\nPrerequisite: BIOB480/BIOE548 or consent of instructor\nMeeting Time: T/TR 10:50 AM – 12:05 PM\nPlace: TBD\nInstructor: Dr. Ethan Linck (ethan.linck@montana.edu; 406-994-2024)\nOffice Hours: 1:00 PM – 2:30 T/TR\nMaterials: A laptop (tablets will not suffice)\n\n\nApplication of genomics methods to conservation, ecology, and evolution. Students gain familiarity with the basic tools and techniques of computational biology and genomics through case studies from the primary literature and analysis of empirical datasets. Examples and questions relevant to conservation biology and fish and wildlife management are emphasized.\n\n\n\nThe development of affordable high-throughput sequencing technology in the 2000s and 2010s revolutionized the ability of molecular ecologists, wildlife and conservation biologists, and other environmental scientists to assay genome-wide DNA sequence variation from nonmodel organisms. Genomics methods are now commonly used to study everything from the dietary preferences of sturgeon to genes underpinning local adaptation in wolves, but can be difficult to apply or interpret without specialist training. This course provides a hands-on introduction to the use of genomics in ecology, conservation, and related fields. Students will gain hands-on experience with computational biology, analyzing empirical genomic datasets with commonly applied software on a high-performance computing cluster. Reading assignments from the primary literature will demonstrate the use of focal software packages while emphasizing case studies relevant to conservation biology and fish and wildlife management.\n\n\n\nThe course will be offered as a mix of short lectures or demonstrations and discussions on reading assignments (typically Tuesdays) and supervised computer lab activities (typically Thursdays).\n\n\n\n\nCompare high-throughput sequencing approaches;\nEvaluate genomics methods sections in the primary literature;\nApply basic tools and techniques from computational biology;\nAnalyze empirical datasets with genomics softwate;\nCreate scripts for custom data analysis tasks.\n\n\n\n\nYour grade will be calculated as the fraction of points earned out of a total of 200. 120 points will come from completing lab assignments (10 points each; turned in the following class period as homework), 60 will come from posting comments or questions in Canvas discussion threads on assigned reading (5 points each; engagement with 12/14 papers needed), and 20 points will come from participation (based on attendance, clasroom participation, and assessment completion).\n\n\n\n\n\n\nWeek\nTopic\nAssignments\n\n\n\n\n1/12 - 1/16\nIntroduction and Review\n\nPreliminary Assessment\n\n\n\n1/19 - 1/23\nWhat is Genomics?\n\nHohenlohe et al. 2020\nHudson 2008*\nFelsenstein rant #1\n\n\n\n1/26 - 1/30\nComputational Biology Basics\n\nBraga et al. 2023\nSet up GitHub profiles with markdown READMEs (HW1)\n\n\n\n2/2 - 2/6\nComputing Clusters and the Command Line\n\nInstall sofware with mamba environment manager\nbash shell scripting activity (HW2)\n\n\n\n2/9 - 2/13\nSequencing strategies and\nShort Read Quality Control\n\nWatch Illumina video\nFuentes-Pardo et al. 2017\nFastQC Read filtering activity (HW3)\n\n\n\n2/16 - 2/20\neDNA and Metabarcoding\n\nLeempole et al. 2020\nBLAST activity (HW4)\n\n\n\n3/2 - 3/6\nPipelines and Genome Assembly\n\nEkblom & Wolf 2014\nSnakemake activity (HW5)\n\n\n\n3/9 - 3/13\nVariant Calling and Filtering\n\nShafer et al. 2017\nvcftools filtering activity (HW6)\n\n\n\n3/16 - 3/20\nSpring Break\n\n\n\n3/23 - 3/27\nKinship and Inbreeding\n\nHauser et al. 2022\nNgsRelate activity (HW7)\n\n\n\n3/30 - 4/3\nGenetic Diversity and Population Structure\n\nLinck & Battey 2019\nadegenet activity (HW8)\n\n\n\n4/6 - 4/10\nIntrogression and Hybridization\n\nMandeville et al. 2019\nentropy admixture activity (HW9)\n\n\n\n4/13 - 4/17\nPhylogenetics and Conservation Units\n\nLinck et al. 2019\nSVDquartets activity (HW10)\n\n\n\n4/20 - 4/24\nSimulations and Demographic History\n\nHoey et al. 2022\nCapblancq et al. 2020*\nfastsimcoal2 activity (HW11)\n\n\n\n4/27 - 5/1\nDetecting Natural Selection\n\nSchweizer et al. 2016\nbayenv activity (HW12)\n\n\n\n5/4 - 5/8\nFinals Week\n\n\n\n\n* denotes an optional reading assignment\n\n\n\n\nHohenlohe, P. A., Funk, W. C., & Rajora, O. P. (2021). Population genomics for wildlife conservation and management. Molecular Ecology, 30(1), 62-82.\nHudson, M. E. (2008). Sequencing breakthroughs for genomic ecology and evolutionary biology. Molecular Ecology Resources, 8(1), 3-17.\nhttps://felsenst.github.io/rants.html\nBraga, P. H. P., Hébert, K., Hudgins, E. J., Scott, E. R., Edwards, B. P., Sanchez Reyes, L. L., … & Crystal‐Ornelas, R. (2023). Not just for programmers: How GitHub can accelerate collaborative and reproducible research in ecology and evolution. Methods in Ecology and Evolution, 14(6), 1364-1380.\nFuentes‐Pardo, A. P., & Ruzzante, D. E. (2017). Whole‐genome sequencing approaches for conservation biology: Advantages, limitations and practical recommendations. Molecular Ecology, 26(20), 5369-5406.\nLeempoel, K., Hebert, T., & Hadly, E. A. (2020). A comparison of eDNA to camera trapping for assessment of terrestrial mammal diversity. Proceedings of the Royal Society B, 287(1918), 20192353.\nEkblom, R., & Wolf, J. B. (2014). A field guide to whole‐genome sequencing, assembly and annotation. Evolutionary Applications, 7(9), 1026-1042.\nShafer, A. B., Peart, C. R., Tusso, S., Maayan, I., Brelsford, A., Wheat, C. W., & Wolf, J. B. (2017). Bioinformatic processing of RAD‐seq data dramatically impacts downstream population genetic inference. Methods in Ecology and Evolution, 8(8), 907-917.\nHauser, S. S., Galla, S. J., Putnam, A. S., Steeves, T. E., & Latch, E. K. (2022). Comparing genome‐based estimates of relatedness for use in pedigree‐based conservation management. Molecular Ecology Resources, 22(7), 2546-2558.\nLinck, E., & Battey, C. J. (2019). Minor allele frequency thresholds strongly affect population structure inference with genomic data sets. Molecular Ecology Resources, 19(3), 639-647.\nLinck, E., Epperly, K., Van Els, P., Spellman, G. M., Bryson Jr, R. W., McCormack, J. E., … & Klicka, J. (2019). Dense geographic and genomic sampling reveals paraphyly and a cryptic lineage in a classic sibling species complex. Systematic Biology, 68(6), 956-966.\nHoey, J. A., Able, K. W., & Pinsky, M. L. (2022). Genetic decline and recovery of a demographically rebuilt fishery species. Molecular Ecology, 31(22), 5684-5698.\nCapblancq, T., Butnor, J. R., Deyoung, S., Thibault, E., Munson, H., Nelson, D. M., … & Keller, S. R. (2020). Whole‐exome sequencing reveals a long‐term decline in effective population size of red spruce (Picea rubens). Evolutionary Applications, 13(9), 2190-2205.\nSchweizer, R. M., Vonholdt, B. M., Harrigan, R., Knowles, J. C., Musiani, M., Coltman, D., … & Wayne, R. K. (2016). Genetic subdivision and candidate genes under selection in North American grey wolves. Molecular Ecology, 25(1), 380-402.\n\n\n\n\nMSU’s registration processes can be found on the Registrar’s website. January 27th is the last day to drop online; February 3rd is the last day to drop without a ‘W’ on your transcript; April 15th is the last day to drop with a ‘W’ on your transcript.\n\n\n\nGenerative AI tools are permitted to help debug code; they are not permitted as a shortcut to learning functions or commands from software documentation, and especially not permitted for summarizing reading assignments, where the point of the exercise is to become comfortable interpreting the technical genomics literature. I will not spend my time actively policing their use, but if detected, I will consider it academic misconduct.\n\n\n\nPlease do not come to campus if you are sick! I trust you will only miss class when absolutely necessary, and do not need extensive explanations for absences. However, please notify me as soon as practical, so that we can figure appropriate accommodations.\n\n\n\nI support an inclusive learning environment where diversity and individual differences are understood, respected, appreciated, and recognized as a source of strength. We expect that students, faculty, administrators and staff at MSU will respect differences and demonstrate diligence in understanding how other peoples’ perspectives, behaviors, and worldviews may be different from their own.\n\n\n\nIf you are a student with a disability and wish to use your approved accommodations for this course, please contact me during my office hours to discuss. Please have your Accommodation Notification or Blue Card available for verification of accommodations. Accommodations are approved through the Office of Disability Services located in SUB 174. Please see Disability Services for more information."
+  },
+  {
+    "objectID": "01_syllabus.html#catalog-description",
+    "href": "01_syllabus.html#catalog-description",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Application of genomics methods to conservation, ecology, and evolution. Students gain familiarity with the basic tools and techniques of computational biology and genomics through case studies from the primary literature and analysis of empirical datasets. Examples and questions relevant to conservation biology and fish and wildlife management are emphasized."
+  },
+  {
+    "objectID": "01_syllabus.html#overview",
+    "href": "01_syllabus.html#overview",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "The development of affordable high-throughput sequencing technology in the 2000s and 2010s revolutionized the ability of molecular ecologists, wildlife and conservation biologists, and other environmental scientists to assay genome-wide DNA sequence variation from nonmodel organisms. Genomics methods are now commonly used to study everything from the dietary preferences of sturgeon to genes underpinning local adaptation in wolves, but can be difficult to apply or interpret without specialist training. This course provides a hands-on introduction to the use of genomics in ecology, conservation, and related fields. Students will gain hands-on experience with computational biology, analyzing empirical genomic datasets with commonly applied software on a high-performance computing cluster. Reading assignments from the primary literature will demonstrate the use of focal software packages while emphasizing case studies relevant to conservation biology and fish and wildlife management."
+  },
+  {
+    "objectID": "01_syllabus.html#course-organization-and-format",
+    "href": "01_syllabus.html#course-organization-and-format",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "The course will be offered as a mix of short lectures or demonstrations and discussions on reading assignments (typically Tuesdays) and supervised computer lab activities (typically Thursdays)."
+  },
+  {
+    "objectID": "01_syllabus.html#learning-outcomes",
+    "href": "01_syllabus.html#learning-outcomes",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Compare high-throughput sequencing approaches;\nEvaluate genomics methods sections in the primary literature;\nApply basic tools and techniques from computational biology;\nAnalyze empirical datasets with genomics softwate;\nCreate scripts for custom data analysis tasks."
+  },
+  {
+    "objectID": "01_syllabus.html#grading",
+    "href": "01_syllabus.html#grading",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Your grade will be calculated as the fraction of points earned out of a total of 200. 120 points will come from completing lab assignments (10 points each; turned in the following class period as homework), 60 will come from posting comments or questions in Canvas discussion threads on assigned reading (5 points each; engagement with 12/14 papers needed), and 20 points will come from participation (based on attendance, clasroom participation, and assessment completion)."
+  },
+  {
+    "objectID": "01_syllabus.html#schedule",
+    "href": "01_syllabus.html#schedule",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Week\nTopic\nAssignments\n\n\n\n\n1/12 - 1/16\nIntroduction and Review\n\nPreliminary Assessment\n\n\n\n1/19 - 1/23\nWhat is Genomics?\n\nHohenlohe et al. 2020\nHudson 2008*\nFelsenstein rant #1\n\n\n\n1/26 - 1/30\nComputational Biology Basics\n\nBraga et al. 2023\nSet up GitHub profiles with markdown READMEs (HW1)\n\n\n\n2/2 - 2/6\nComputing Clusters and the Command Line\n\nInstall sofware with mamba environment manager\nbash shell scripting activity (HW2)\n\n\n\n2/9 - 2/13\nSequencing strategies and\nShort Read Quality Control\n\nWatch Illumina video\nFuentes-Pardo et al. 2017\nFastQC Read filtering activity (HW3)\n\n\n\n2/16 - 2/20\neDNA and Metabarcoding\n\nLeempole et al. 2020\nBLAST activity (HW4)\n\n\n\n3/2 - 3/6\nPipelines and Genome Assembly\n\nEkblom & Wolf 2014\nSnakemake activity (HW5)\n\n\n\n3/9 - 3/13\nVariant Calling and Filtering\n\nShafer et al. 2017\nvcftools filtering activity (HW6)\n\n\n\n3/16 - 3/20\nSpring Break\n\n\n\n3/23 - 3/27\nKinship and Inbreeding\n\nHauser et al. 2022\nNgsRelate activity (HW7)\n\n\n\n3/30 - 4/3\nGenetic Diversity and Population Structure\n\nLinck & Battey 2019\nadegenet activity (HW8)\n\n\n\n4/6 - 4/10\nIntrogression and Hybridization\n\nMandeville et al. 2019\nentropy admixture activity (HW9)\n\n\n\n4/13 - 4/17\nPhylogenetics and Conservation Units\n\nLinck et al. 2019\nSVDquartets activity (HW10)\n\n\n\n4/20 - 4/24\nSimulations and Demographic History\n\nHoey et al. 2022\nCapblancq et al. 2020*\nfastsimcoal2 activity (HW11)\n\n\n\n4/27 - 5/1\nDetecting Natural Selection\n\nSchweizer et al. 2016\nbayenv activity (HW12)\n\n\n\n5/4 - 5/8\nFinals Week\n\n\n\n\n* denotes an optional reading assignment"
+  },
+  {
+    "objectID": "01_syllabus.html#reading-list",
+    "href": "01_syllabus.html#reading-list",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Hohenlohe, P. A., Funk, W. C., & Rajora, O. P. (2021). Population genomics for wildlife conservation and management. Molecular Ecology, 30(1), 62-82.\nHudson, M. E. (2008). Sequencing breakthroughs for genomic ecology and evolutionary biology. Molecular Ecology Resources, 8(1), 3-17.\nhttps://felsenst.github.io/rants.html\nBraga, P. H. P., Hébert, K., Hudgins, E. J., Scott, E. R., Edwards, B. P., Sanchez Reyes, L. L., … & Crystal‐Ornelas, R. (2023). Not just for programmers: How GitHub can accelerate collaborative and reproducible research in ecology and evolution. Methods in Ecology and Evolution, 14(6), 1364-1380.\nFuentes‐Pardo, A. P., & Ruzzante, D. E. (2017). Whole‐genome sequencing approaches for conservation biology: Advantages, limitations and practical recommendations. Molecular Ecology, 26(20), 5369-5406.\nLeempoel, K., Hebert, T., & Hadly, E. A. (2020). A comparison of eDNA to camera trapping for assessment of terrestrial mammal diversity. Proceedings of the Royal Society B, 287(1918), 20192353.\nEkblom, R., & Wolf, J. B. (2014). A field guide to whole‐genome sequencing, assembly and annotation. Evolutionary Applications, 7(9), 1026-1042.\nShafer, A. B., Peart, C. R., Tusso, S., Maayan, I., Brelsford, A., Wheat, C. W., & Wolf, J. B. (2017). Bioinformatic processing of RAD‐seq data dramatically impacts downstream population genetic inference. Methods in Ecology and Evolution, 8(8), 907-917.\nHauser, S. S., Galla, S. J., Putnam, A. S., Steeves, T. E., & Latch, E. K. (2022). Comparing genome‐based estimates of relatedness for use in pedigree‐based conservation management. Molecular Ecology Resources, 22(7), 2546-2558.\nLinck, E., & Battey, C. J. (2019). Minor allele frequency thresholds strongly affect population structure inference with genomic data sets. Molecular Ecology Resources, 19(3), 639-647.\nLinck, E., Epperly, K., Van Els, P., Spellman, G. M., Bryson Jr, R. W., McCormack, J. E., … & Klicka, J. (2019). Dense geographic and genomic sampling reveals paraphyly and a cryptic lineage in a classic sibling species complex. Systematic Biology, 68(6), 956-966.\nHoey, J. A., Able, K. W., & Pinsky, M. L. (2022). Genetic decline and recovery of a demographically rebuilt fishery species. Molecular Ecology, 31(22), 5684-5698.\nCapblancq, T., Butnor, J. R., Deyoung, S., Thibault, E., Munson, H., Nelson, D. M., … & Keller, S. R. (2020). Whole‐exome sequencing reveals a long‐term decline in effective population size of red spruce (Picea rubens). Evolutionary Applications, 13(9), 2190-2205.\nSchweizer, R. M., Vonholdt, B. M., Harrigan, R., Knowles, J. C., Musiani, M., Coltman, D., … & Wayne, R. K. (2016). Genetic subdivision and candidate genes under selection in North American grey wolves. Molecular Ecology, 25(1), 380-402."
+  },
+  {
+    "objectID": "01_syllabus.html#drop-add-policy",
+    "href": "01_syllabus.html#drop-add-policy",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "MSU’s registration processes can be found on the Registrar’s website. January 27th is the last day to drop online; February 3rd is the last day to drop without a ‘W’ on your transcript; April 15th is the last day to drop with a ‘W’ on your transcript."
+  },
+  {
+    "objectID": "01_syllabus.html#generative-ai",
+    "href": "01_syllabus.html#generative-ai",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Generative AI tools are permitted to help debug code; they are not permitted as a shortcut to learning functions or commands from software documentation, and especially not permitted for summarizing reading assignments, where the point of the exercise is to become comfortable interpreting the technical genomics literature. I will not spend my time actively policing their use, but if detected, I will consider it academic misconduct."
+  },
+  {
+    "objectID": "01_syllabus.html#attendance-policy",
+    "href": "01_syllabus.html#attendance-policy",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "Please do not come to campus if you are sick! I trust you will only miss class when absolutely necessary, and do not need extensive explanations for absences. However, please notify me as soon as practical, so that we can figure appropriate accommodations."
+  },
+  {
+    "objectID": "01_syllabus.html#inclusivity-statement",
+    "href": "01_syllabus.html#inclusivity-statement",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "I support an inclusive learning environment where diversity and individual differences are understood, respected, appreciated, and recognized as a source of strength. We expect that students, faculty, administrators and staff at MSU will respect differences and demonstrate diligence in understanding how other peoples’ perspectives, behaviors, and worldviews may be different from their own."
+  },
+  {
+    "objectID": "01_syllabus.html#syllabus-language-for-students-with-disabilities",
+    "href": "01_syllabus.html#syllabus-language-for-students-with-disabilities",
+    "title": "BIOE 591: Genomics for Ecology and Conservation",
+    "section": "",
+    "text": "If you are a student with a disability and wish to use your approved accommodations for this course, please contact me during my office hours to discuss. Please have your Accommodation Notification or Blue Card available for verification of accommodations. Accommodations are approved through the Office of Disability Services located in SUB 174. Please see Disability Services for more information."
+  }
+]
