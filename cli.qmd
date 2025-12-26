@@ -241,7 +241,7 @@ rm *
 We will ease into our coding exercises with a brief shell scripting activity. I have created a set of dummy data files that are typical of population genomics---`.fastq.gz` raw sequencing read files, `.fasta` assembled sequence data, text files (`*.txt`), and metadata (`*.csv`) files. First, download these data using the command `curl`: 
 
 ```bash
-curl -O https://elinck.org/genomics_eco_con/data/week_1/dummy_data.tar.gz # download a resource at a url
+curl -O https://elinck.org/genomics_eco_con/data/week_1.tar.gz # download a resource at a url
 tar -xzf dummy_data.tar.gz # this command unzips a "tarball"
 cd dummy_data # enter the data directory
 ```
