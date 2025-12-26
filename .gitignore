@@ -4,6 +4,8 @@ bioe591*
 .DS_Store
 syllabus/
 .Rhistory
+_site/
+data/week_1/
 
 /.quarto/
 **/*.quarto_ipynb
