@@ -2,6 +2,8 @@ command.sh
 bioe591*
 01*
 .DS_Store
+syllabus/
+.Rhistory
 
 /.quarto/
 **/*.quarto_ipynb

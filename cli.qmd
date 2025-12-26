@@ -1,0 +1,268 @@
+---
+format: html
+---
+
+# Markdown & Command Line Basics 
+
+For much of the semester we will be executing programs from a command-line interface, or CLI. In scientific computing, a CLI known as the Unix or Linux Shell (sometimes abbreviated *NIX Shell; see if you can figure out why) is most commonly used and a requirement for many scripts and applications. On Mac and Linux operating systems, the CLI is accessed via an application called Terminal, which by default runs a version of the Unix shell called `zsh` or `bash`. 
+
+Windows users--though likely already equipped with a CLI called PowerShell or CMD---will need to install a Unix shell emulator, as commands and syntax differs with these interpreters. Unless you have prior knowledge and a strong preference otherwise, I recommend [Git for Windows](https://gitforwindows.org/), which comes with a BASH emulator that will work for all lab assignments.   
+
+## Plain Text & Markdown
+
+To write code snippets and submit assignments, you will need to have a plain text editor to work with. Plain text files have numerous advantages over writing in (e.g.) a word processing application. First, they are free and open source, something that may become important to you once you lose an academic software license. Second, the files will always remain usable and readable by humans, whereas if Microsoft Word sunsets its proprietary software, `.docx` files may become useless. Third, they are more or less universally interpretable by other programs (i.e., they are highly *portable*); this allows you to input data and function arguments to software in automated fashion. 
+
+Mac, Linux, and Windows computers all typically come with a preloaded application for this purpose (e.g., `textEdit` on MacOS). You will likely enjoy a slightly more sophisticated editor aimed at writing code, which typically come with features like syntax highlighting and tab autofill / spellcheck (as well as a suite of AI features and easy version control integration that I will discourage you from using until you know the basics). RStudio provides these features, though as a full-on integrated development environment (or IDE) it is somewhat distracting. In rough order of declining preference, here are my suggestions: 
+
+- [BBEdit](https://www.barebones.com/products/bbedit/) (*classic; paid and free tiers, though free is more than sufficient*) 
+- [SublimeText](https://www.sublimetext.com/) (*works pretty well without a subscription, though you'll get nagged*)
+- [VSCode](https://code.visualstudio.com/) (*powerful, free, annoying AI integration*)
+- [Vim](https://www.vim.org/) or [NeoVim](https://neovim.io/) (*the hardcore dork option; if you show me you are effectively using this for your assignments, you get one get-out-of-jail free card for homework*)
+- [Notepad++](https://notepad-plus-plus.org/) (*the best Windows editor!*)  
+
+Writing in plain text necessarily means forgoing formatting. Word processing is handled by a lightweight plain-text-to-formatted-text language called [Markdown](https://www.markdownguide.org/getting-started/). Markdown is portable, simple, and ubiquitous: it is responsible for formatting this assignment, this course website, my lab website, my lecture slides, GitHub READMEs, Reddit posts, and much more besides. The basic idea is that by surrounding words with a handful of characters, you indicate to an interpreter how text should be formatted. For example, in this sentence I have surrounded the last six words with a pair of two asterices **to indicate it should be bold:**  
+
+```markdown
+**to indicate it should be bold:**  
+```
+
+Italics work with a single asterisk at the end of each word, like *this*: 
+
+```markdown
+*this*:
+```
+
+Headers can be rendered with hashtags (`# Title, ## Section, ### Subsection`). Code can indicated by a pair of accents (``` `bash.sh` ```); three in a row on one opens a block of formatted code, which must then be closed by three further down. Depending on the flavor of Markdown, you can indicate syntax highlighting by putting the name of the programming language in brackets after the opening line of accents: 
+
+```{r}
+print("BIOE591")
+```
+
+Tables are wonderfully simple. For example, the following text...
+
+```markdown
+| Student     | Fun Fact             |
+| ----------- | -------------------- |
+| Jason       | Doesn't like to walk |
+| Lizzy       | Has a chubby cat     |
+```
+
+...renders as: 
+
+| Student     | Fun Fact             |
+| ----------- | -------------------- |
+| Jason       | Doesn't like to walk |
+| Lizzy       | Has a chubby cat     |
+
+Block quotes can be indicated by greater-than signs (`>`), e.g.
+
+```markdown
+> Nonethless, Jason is still better at walking than Lizzy's cat.
+```
+
+becomes: 
+
+> Nonethless, Jason is still better at walking than Lizzy's cat.
+
+Numbered lists are equally simple, with the following chunk...
+
+```markdown
+1. Syllabus
+   -  Stern words
+2. Tease Jason
+   - Relent
+```
+
+...rendering as:
+
+1. Syllabus  
+   -  Stern words  
+2. Tease Jason  
+   - Relent  
+
+(Bullet points are handled as you might imagine.)
+
+A cheat sheet to basic and extended syntax [can be found here](https://www.markdownguide.org/cheat-sheet/). The web application [JotBird](https://www.jotbird.com/) is nice for quickly drafting Markdown documents; you may also be interested in downloading a program that can render Markdown as .pdf or .html files locally, such as [Pandoc (recommended)](https://pandoc.org/). (RMarkdown has this ability as well, though you'll have to download LaTeX via [TinyTeX](https://yihui.org/tinytex/), [MacTeX](https://www.tug.org/mactex/), or another source.) 
+
+## Directory Structure
+
+After opening Terminal, it's time to get oriented and learn how to navigate a computer via the CLI. To start, we will figure out where in your file structure you actually *are*, using the equivalent of the `R` function `getwd()`:
+
+```bash
+pwd
+```
+
+Easily memorized as **p**rint **w**orking **d**irectory, this should indicate you are in your home directory (e.g., `/Users/ethanlinck/`), a location you can return from wherever you are by typing `cd ~` and hitting enter. `cd` is a fundamental tool of any CLI, allowing you to **c**hange **d**irectories: 
+
+```bash
+cd / # switches to the root directory, i.e. the highest level in the hierarchical structure of file storage
+cd .. # move up one level in the file structure hierarchy, i.e. from /Users/ethanlinck/ to /Users/
+cd - # switch to the previous directory
+```
+
+It can also use explicit paths. Here is an example with a **relative** path (from my current home directory, `/Users/ethanlinck/`):
+
+```bash
+cd teaching/genomics/
+```
+
+This would navigate to the `genomics` subdirectory of my `teaching` directory from my current location. If I am accidentally *not* in my home directory and there are no such folders where I am, the command will fail. An *absolute* path helps avoid this risk, though at the cost of flexibility: 
+
+```bash
+cd /Users/ethanlinck/teaching/genomics/
+```
+
+Use `cd` and `pwd` in combination to navigate around your computer. Note that if you are correctly typing the start of a path, pressing "tab" should autocomplete it, or present options with the same suffix.. 
+
+You can **m**a**k**e a **dir**ectory with the command mkdir and a path (including the name of the new directory):
+
+```bash
+mkdir /teaching/genomics/
+```
+
+Make a new directory entitled `test/`. We can then create a set of new files to put in `test/` for future manipulation using `echo`, the assignment pipe `>`, and a filename:
+
+```bash
+echo "I love learning" > ~/test/text1.md; 
+echo "I love computers" > ~/test/text2.md; 
+echo "I regret my choices" > ~/test/.secret;
+mkdir ~/test/sub/ 
+```
+
+(Each line below can be entered individually; the semicolons allow you to copy and past the chunk below without manually entering linebreaks. If you misplace a semicolon or otherwise have a typo, type `Ctrl+C` to cancel a command. Typing `exit` closes the current terminal session.)  
+
+Navigate to  `~/test/`.  From a given location---or paired with a path (written in help documents as `<path>`) you can use the command `ls` to list the contents of a directory:
+
+```bash
+ls  ~/test/
+```
+
+The command `ls -a` will reveal "dotfiles", typically hidden text files that begin with a period and contain information that helps software run. In this class, the dotfile `.gitignore` will be useful down the line; we may also manipulate `.bashrc`, which determines settings for the unix shell of a particular user. What are the differences between `ls` and `ls -a` when run in `test/`?
+
+At this point you may be wondering where the argument `-a` came from. The following commands produce documentation (though typing an erroneous argument will also provide a brief example of proper `useage`)
+
+```bash
+man lc #zsh
+lc -h #bash
+```
+
+Commands can be chained together using a pipe (something you may be familiar with from `R`). Here I am counting the number of files in a directory using the commands `ls` and `wc`, with appropriate arguments: 
+
+```bash
+ls -1 ~/test/ | wc -l # list files in a directory, 1 per line; send output to wc function, count lines
+```
+
+The command `cat` can be used to print (or *concatenate*) the contents of a file:
+
+```bash
+cat ~/test/text1.md
+```
+
+Similarly, `head` can be used to print the first `-n` lines of a file. We will demonstrate this with a new file and the application of a double pipe (which appends text to new lines): 
+
+```bash
+echo "test" > file.md
+echo "test" >> file.md
+echo "test" >> file.md
+echo "test" >> file.md
+echo "test" >> file.md
+echo "test" >> file.md
+head -5 file.md 
+```
+
+The command `mv` can be used to move a file to a new location, e.g:
+
+```bash
+mv ~/test/text1.md ~/test/sub/text1.md
+```
+
+This can also be used to *rename* files, even within the same directory:
+
+```bash
+mv ~/test/sub/text1.md ~/test/sub/text0.md
+```
+
+An analog is `cp`, which copies files:
+
+```bash
+cp ~/test/sub/text0.md ~/test/text0.md
+```
+
+Using a `.` in combination with a relative or absolute path will preserve the name of the original file: 
+
+```bash
+cp ~/test/file.md ~/test/sub/. 
+```
+
+Pasting multiple commands in a text document with the suffix `.sh` creates a **shell script**, analogous to one written in `R` or `Python`. To do so, you need a hashed line called a **shebang** to start your script to tell your computer to use a particular CLI. You can then add multiple commands, separated by semi-colons:  
+
+```bash
+#!/usr/bin/env bash
+cd ~/test/; 
+echo "lastly" > newfile.md;
+mv newfile.md ~/test/.;
+echo "file moved"
+```
+
+Save this as `script.sh` in the `test/` directory. To do so you may use your new plain text editor, or type `nano` to access a CLI-based solution available on Mac and Linux machines. (This takes a second to get used to; ask me if you need help. ) Type the command `bash script.sh`. Does it do what you expect? 
+
+Wildcards are characters that match multiple patterns. Most useful for our purposes is `*`, which will match all files in a given directory, or all
+
+```bash
+ls * # matches all files in the present directory
+ls *.md # matches all files with the suffix ".md"
+```
+
+Another useful wildcard is `?`, which matches a single character: 
+
+```bash
+echo "test" > tile.md
+ls ~/test/?ile.md 
+```
+
+Lastly, the command `rm` removes (deletes) files and directories. For example, `rm test/sub/file.md` deletes the file `test/sub/file.md`. Paired with wildcards, you can quickly remove many files in one fell swoop. 
+
+```bash
+rm ~/test/* # removes all files, but not subdirectories
+rm -r ~/test/ # deletes the directory itself using the "recursive" argument -r
+```
+
+:::{.callout-warning title="Using `rm` with caution"}
+
+One pitfall of becoming a CLI ninja is that you will not get warning messages when you inevitably deploy a powerful command somewhere you don't intend to. `rm` paired with a wildcard should be used especially sparingly. What do you think would happen if you navigated to your Desktop and typed the following command?
+
+```bash
+rm *
+```
+:::
+
+:::{.callout-note title="**Homework 1**"}
+
+We will ease into our coding exercises with a brief shell scripting activity. I have created a set of dummy data files that are typical of population genomics---`.fastq.gz` raw sequencing read files, `.fasta` assembled sequence data, text files (`*.txt`), and metadata (`*.csv`) files. First, download these data using the command `curl`: 
+
+```bash
+curl -O https://elinck.org/bioe591/data/week_1/dummy_data.tar.gz # download a resource at a url
+tar -xzf dummy_data.tar.gz # this command unzips a "tarball"
+cd dummy_data # enter the data directory
+```
+
+Using the information above and any other resource available to you*, write a single `bash` script that can perform the following steps: 
+
+Write a bash script called  `01_homework_<your_name>.sh` that does the following:
+
+1) Change into the raw_data directory; 
+2) Create three subdirectories called:
+- `fastq/`
+- `fasta/`
+- `metadata/`
+3) Move files into these directories based on file extension:
+- `*.fastq.gz` to `fastq/`
+- `*.fasta` to `fasta/`
+- `*.csv` to `metadata/`
+4) Count how many files are in each new directory and print to the screen. 
+
+For now, you may keep this in your local directory; we'll work on submitting it as part of next week's activities. 
+
+\* *This will generally include AI tools, and as these are an indispensible part of modern programming, I am hesitant to outright ban them for this course. However, it will be in your best interest to attempt to put this script together yourself---from its component parts---as these commands need to become second nature as you navigate the cluster.* 
+
+:::

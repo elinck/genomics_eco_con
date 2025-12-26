@@ -1,0 +1,85 @@
+---
+format: html
+---
+
+# BIOE591: Preliminary Assessment
+
+This course is targeted at graduate students who plan to work with high-throughput, short-read DNA sequence data. I therefore assume a solid background in genetics as relates to your chosen field. I further assume some proficiency in using the computer, and prior exposure (even if limited) to the basics of scientific programming in R or Python. To help me adjust my instruction to your needs and current skillset, I would like you to answer the following questions in a separate document and email me the answers. (This will not be graded, but will count towards your participation grade.)  
+
+## Genetics
+
+1) What is the Central Dogma?
+
+2) What is DNA? What are the four nucleotides?
+
+3) What is RNA? What are the four ribonucleotides?
+
+4) Where do you find DNA in an organisms?
+
+5) What is an allele, and what is an allele frequency? How would you calculate an allele frequency with DNA sequence data?
+
+6) What is a genetic marker?
+
+7) Where does genetic variation come from?
+
+8) What forces impact patterns of genetic variation?
+
+9) What is a genome?
+
+10) How big is a mammal genome (to an order of magnitude)?
+
+11) What is ploidy? Are humans diploid, haploid, or tetraploid?  
+
+12) What is recombination?
+
+13) What is linkage disequilibrium? 
+
+14) What are three types of mutations?  
+
+15) What is population genetic stucture / population subdivision?  
+
+## Computer Skills
+
+16) What kind of computer do you have, and what operating system does it run?
+
+17) What is memory? How much memory does your computer have?
+
+18) What is storage? How much storage space does your computer have?
+
+19) Create a folder (or **directory**) for this course and provide its path below. 
+
+20) Pick a recent research project, class assignment, or work task that required you to create a directory. How did you structure its contents?   
+
+21) Have you ever used the command line?
+
+22) What is a computing cluster, and have you ever used one?
+
+23) What programming languages have you used, if any?
+
+24) What is a package (or library)?
+
+25) Have you ever written a function ? 
+
+26) What is version control?
+
+27) Have you used Git or GitHub? 
+
+28) What does it mean for an analysis to be reproducible?
+
+29) Have you ever archived data? 
+
+30) What is open source software?
+
+## Open
+
+31) What are you hoping to get out of this class?
+
+32) Do you have your own dataset, or will you be working with an example?
+
+33) What kind of questions do you want to address with data?
+
+34) What are you worried about in this class, if anything?
+
+35) Is there anything else I should know to help you have a good semester?
+
+

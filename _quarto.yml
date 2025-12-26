@@ -10,6 +10,5 @@ website:
 
 format:
   html:
-    theme: flatly
-
-
+    theme: default
+    css: styles.css
