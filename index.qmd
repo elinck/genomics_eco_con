@@ -5,7 +5,7 @@ format: html
 
 **Course:** BIOE 591 (3 Credits)  
 **Prerequisite:** BIOB480/BIOE548 or consent of instructor  
-**Meeting Time:** T/TR 1:40 PM – 2:50 PM  
+**Meeting Time:** T/TR 1:40 PM – 2:55 PM  
 **Place:** 	Wilson 1-154  
 **Instructor:** Dr. Ethan Linck (ethan.linck\@montana.edu; 406-994-2024)  
 **Office Hours:** 1:00 PM – 2:30 T/TR  
