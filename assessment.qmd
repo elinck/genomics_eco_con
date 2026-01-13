@@ -58,7 +58,7 @@ This course is targeted at graduate students who plan to work with high-throughp
 
 24) What is a package (or library)?
 
-25) Have you ever written a function ? 
+25) Have you ever written a function? 
 
 26) What is version control?
 
