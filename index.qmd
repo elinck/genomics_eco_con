@@ -50,7 +50,7 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 - [Software Carpentry: R for Reproducible Scientfic Analysis](https://swcarpentry.github.io/r-novice-gapminder/) 
 - [Software Carpentry: Snakemake for Bioinformatics](https://carpentries-incubator.github.io/snakemake-novice-bioinformatics/)
 - [The Caprentries Incubator: Getting Started with Mamba](https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/01-getting-started-with-conda/index.html)  
-- [HPC Carpentry:](https://www.hpc-carpentry.org/hpc-shell/setup.html)  
+- [HPC Carpentry](https://www.hpc-carpentry.org/hpc-shell/setup.html)  
 - [The Biologists' Guide to Computing](https://www.mrc-lmb.cam.ac.uk/scicomp-new/biologists-guide-to-computing-stable/index.html)
 
 ## Schedule  
