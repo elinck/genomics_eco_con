@@ -59,7 +59,7 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 | Week        | Topic                                      | Assignments                                                                                                         |
 +=============+============================================+=====================================================================================================================+
 | 1/12 - 1/16 | What is Genomics?                          | -   [**Preliminary Assessment**](assessment.qmd)                                                                    |
-|             |                                            | -   [Hohenlohe et al. 2020](https://doi.org/10.1111/mec.15720) [(**pdf**)](papers/hohenlohe_et_al_2020.pdf)           | 
+|             |                                            | -   [Hohenlohe et al. 2020](https://doi.org/10.1111/mec.15720) [(**pdf**)](papers/hohenlohe_et_al_2020.pdf)         |
 |             |                                            | -   [Felsenstein rant #1](https://felsenst.github.io/rants.html)                                                    |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 1/19 - 1/23 | Software Installation & the Command Line   | -   [**Markdown & Command Line Basics (HW1)**](cli.qmd)                                                             |
