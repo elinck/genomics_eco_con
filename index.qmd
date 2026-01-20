@@ -66,8 +66,9 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 |             |                                            | -   [Sandve et al. 2013](https://doi.org/10.1371/journal.pcbi.1003285) [(**pdf**)](papers/sandve_et_al_2013.pdf)    |
 |             |                                            | -   [Brandies & Hogg 2021](https://doi.org/10.1371/journal.pcbi.1008645) [(**pdf**)](papers/brandies_hogg_2021.pdf) |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 1/26 - 1/30 | Version Control with Git & Github          |                                                                                                                     |
-|             |                                            |                                                                                                                     |
+| 1/26 - 1/30 | Version Control with Git & Github          | -  [**Git & GitHub Basics (HW2)**](git.qmd)                                                                         |
+|             |                                            | -  [Blischak et al. 2016](https://doi.org/10.1371/journal.pcbi.1004668) [(**pdf**)](papers/bilschak_et_al_2016.pdf) |
+|             |                                            | -  [Braga et al. 2023](https://doi.org/10.1111/2041-210X.14108) [(**pdf**)](papers/braga_et_al_2023.pdf)            |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 2/2 - 2/6   | Computing Clusters                         |                                                                                                                     |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
