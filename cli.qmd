@@ -250,7 +250,7 @@ Using the information above and any other resource available to you*, write a si
 
 Write a bash script called  `01_homework_<your_name>.sh` that does the following:
 
-1) Change into the raw_data directory; 
+1) Change into the `week_1` directory; 
 2) Create three subdirectories called:
 - `fastq/`
 - `fasta/`
