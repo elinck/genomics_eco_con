@@ -242,8 +242,8 @@ We will ease into our coding exercises with a brief shell scripting activity. I 
 
 ```bash
 curl -L -O https://raw.githubusercontent.com/elinck/genomics_eco_con/main/data/week_1.tar.gz # download a resource at a url
-tar -xzf dummy_data.tar.gz # this command unzips a "tarball"
-cd dummy_data # enter the data directory
+tar -xzf week_1.tar.gz # this command unzips a "tarball"
+cd week_1 # enter the data directory
 ```
 
 Using the information above and any other resource available to you*, write a single `bash` script that can perform the following steps: 
