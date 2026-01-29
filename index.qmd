@@ -8,7 +8,7 @@ format: html
 **Meeting Time:** T/TR 1:40 PM – 2:55 PM  
 **Place:** 	Wilson 1-154  
 **Instructor:** Dr. Ethan Linck (ethan.linck\@montana.edu; 406-994-2024)  
-**Office Hours:** 1:00 PM – 2:30 T/TR  
+**Office Hours:** 1:00 PM – 4:00 Weds  
 **Materials:** A laptop (tablets will not suffice). Windows users will need to download and install [Git for Windows](https://gitforwindows.org/) as a Unix shell emulator.   
 
 ## Catalog Description
@@ -58,21 +58,25 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | Week        | Topic                                      | Assignments                                                                                                         |
 +=============+============================================+=====================================================================================================================+
-| 1/12 - 1/16 | What is Genomics?                          | -   [**Preliminary Assessment**](assessment.qmd)                                                                    |
-|             |                                            | -   [Hohenlohe et al. 2020](https://doi.org/10.1111/mec.15720) [(**pdf**)](papers/hohenlohe_et_al_2020.pdf)         |
-|             |                                            | -   [Felsenstein rant #1](https://felsenst.github.io/rants.html)                                                    |
+| 1/12 - 1/16 | What is Genomics?                          | - [**Preliminary Assessment**](assessment.qmd)                                                                      |
+|             |                                            | - [Hohenlohe et al. 2020](https://doi.org/10.1111/mec.15720) [(**pdf**)](papers/hohenlohe_et_al_2020.pdf)           |
+|             |                                            | - [Felsenstein rant #1](https://felsenst.github.io/rants.html)                                                      |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 1/19 - 1/23 | Software Installation & the Command Line   | -   [**Markdown & Command Line Basics (HW1)**](cli.qmd)                                                             |
-|             |                                            | -   [Sandve et al. 2013](https://doi.org/10.1371/journal.pcbi.1003285) [(**pdf**)](papers/sandve_et_al_2013.pdf)    |
-|             |                                            | -   [Brandies & Hogg 2021](https://doi.org/10.1371/journal.pcbi.1008645) [(**pdf**)](papers/brandies_hogg_2021.pdf) |
+| 1/19 - 1/23 | Markdown & the Command Line                | - [**Markdown & Command Line Basics (HW1)**](cli.qmd)                                                               |
+|             |                                            | - [Sandve et al. 2013](https://doi.org/10.1371/journal.pcbi.1003285) [(**pdf**)](papers/sandve_et_al_2013.pdf)      |
+|             |                                            | - [Brandies & Hogg 2021](https://doi.org/10.1371/journal.pcbi.1008645) [(**pdf**)](papers/brandies_hogg_2021.pdf)   |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 1/26 - 1/30 | Version Control with Git & Github          | -  [**Git & GitHub Basics (HW2)**](git.qmd)                                                                         |
-|             |                                            | -  [Blischak et al. 2016](https://doi.org/10.1371/journal.pcbi.1004668) [(**pdf**)](papers/bilschak_et_al_2016.pdf) |
-|             |                                            | -  [Braga et al. 2023](https://doi.org/10.1111/2041-210X.14108) [(**pdf**)](papers/braga_et_al_2023.pdf)            |
+| 1/26 - 1/30 | Version Control with Git & Github          | - [**Git & GitHub Basics (HW2)**](git.qmd)                                                                          |
+|             |                                            | - [Blischak et al. 2016](https://doi.org/10.1371/journal.pcbi.1004668) [(**pdf**)](papers/bilschak_et_al_2016.pdf)  |
+|             |                                            | - [Braga et al. 2023](https://doi.org/10.1111/2041-210X.14108) [(**pdf**)](papers/braga_et_al_2023.pdf)             |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 2/2 - 2/6   | Computing Clusters                         |                                                                                                                     |
+| 2/2 - 2/6   | Computing Clusters                         | - [**Introduction to Tempest (HW3)**](hpc.qmd)                                                                      |
+|             |                                            | - [Alnasir 2021](https://doi.org/10.1371/journal.pcbi.1009207)[(**pdf**)](papers/alnasir_2021.pdf)                  |
+|             |                                            | - [Tempest Documentation](https://www.montana.edu/uit/rci/tempest/)                                                 |
+|             |                                            | - [Globus Documentation](https://www.montana.edu/uit/rci/globus/)                                                   |
+|             |                                            | - [MSU VPN Documentation](https://www.montana.edu/uit/computing/desktop/vpn/)                                       |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 2/9 - 2/13  | Sequencing strategies and                  |                                                                                                                     |
+| 2/9 - 2/13  | Sequencing Strategies and                  |                                                                                                                     |
 |             | Short Read Quality Control                 |                                                                                                                     |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 2/16 - 2/20 | eDNA and Metabarcoding                     |                                                                                                                     |

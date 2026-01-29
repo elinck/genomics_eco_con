@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>hpc – BIOE591: Genomics for Ecology &amp; Conservation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIOE591: Genomics for Ecology &amp; Conservation</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="using-msus-tempest-cluster" class="level1">
+<h1>Using MSU’s Tempest Cluster</h1>
+<p>Up until now, each of you has been working on a different computer—your own. These differences include operating system (Mac vs.&nbsp;Windows vs.&nbsp;Linux), RAM, available storage capacity, number of CPUs, and preinstalled software. We’ve likely already run into problems because of this diversity: Different software versions use different commands, or have different security levels, for instance. As fun as troubleshooting has been, the remainder of the class will go much smoother if we only have to face installation and execution issues once—as a <em>group</em>. We will also be running software that requires RAM and computational resources far beyond what the typical student laptop can provide. For this reason, the goal of today’s lab is to become acquainted with the basics of MSU’s high-powered computing (HPC) cluster, <a href="https://www.montana.edu/uit/rci/tempest/">Tempest</a>.</p>
+<p>As you will recall from your reading and discussion, Tempest is run by MSU’s Research Cyberinfrastructure group. The largest supercomputer in Montana, it provides researchers with an exceptionally powerful set of computational resources. Some of you may already have accounts on Tempest under your PI, who at minimum is able to access 256 CPUs, 1024GB of memory, and 2 GPUs (of which up to 1 can be an A100 GPU). These terms may still be unfamiliar, so let’s review them. Traditionally, a <em>CPU</em> (or central processing unit) was considered the basic unit of computing, capable of handling one operation at a time. However, this language is a holdover of an era where all CPUs were what is described as single-core, i.e., a single processor. Modern CPUs may have multiple cores: My laptop, for instance, has 8 cores within its CPU. Regardless, CPUs in a cluster are located on nodes, which you can think of as a standalone computer—i.e., something with its own storage and memory and one or CPUs—albeit one with more firepower than any personal machine. In an HPC, nodes are connected to each other over a network. <em>Memory</em> is what holds running programs and all their data. A <em>GPU</em> (which is beyond the scope of this class) is a special kind of super-fast processor that speeds things up by running jobs in parallel (i.e., at the same time).</p>
+<p>Each PI account on Tempest has its own <em>partition</em>. To understand this concept, it is helpful to consider a 3D abstraction of computation resources provided by RCI:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/cores.png" class="img-fluid figure-img"></p>
+<figcaption><em>Total resources are defined by cores used x memory needed x runtime</em></figcaption>
+</figure>
+</div>
+<p>Tempest is far more powerful than most of us will ever need. Yet it is still finite, and thus must balance simultaneous requests for resources among users. Partitions are part of its solution to this dilemma: on-demand memory, storage, and runtime for each lab. Within each lab, however, different accounts may compete for available CPUs and RAM, requiring a way to schedule tasks. (More on that below.) For now, it is sufficient to know that you will be accessing either your PI’s partition (if you’ve previously requested access) or the special partition set up for this class.</p>
+<section id="logging-in" class="level2">
+<h2 class="anchored" data-anchor-id="logging-in">Logging in</h2>
+<p>One of the many perks of Tempest is its web-based graphical user interface (GUI), which provides a familiar point-and-click environment to run programs like RStudio or Jupyter Notebooks. I am sorry to say that we will be completely ignoring Tempest Web in favor of its command-line-based version. This is not simply my rigid aesthetic preference. All or nearly all of the programs we will run are command-line only, and so navigating the HPC the old-fashioned way is a prerequisite to competence. We start by learning how to log onto the HPC via <code>ssh</code> (something known as a secure shell protocol). First, however, you’ll need to ensure you are connected to <a href="https://www.montana.edu/uit/computing/desktop/vpn/">MSU’s VPN</a>. Hopefully you had time to install this before class and give it a test run—clicking “Connect” will prompt login via NetID, followed by required two-factor authentication (2FA). Go ahead and connect to the VPN now. Assuming you are successful, the next step is to open up your terminal and enter the following command (replacing <code>&lt;net_id&gt;</code> with your own Net ID, of course):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="op">&lt;</span>net_id<span class="op">&gt;</span>@tempest-login.msu.montana.edu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Having done so, you should see your terminal interface change to reflect the following new file system:</p>
+<pre><code>[&lt;net_id&gt;@tempest-login ~]$</code></pre>
+<p>This means you have successfully logged on to Tempest, and are now navigating a (virtual) computer on the HPC known as the “Login Node”. Type <code>pwd</code>. You should see a path reflecting either your PI’s account (<code>/home/&lt;net_id&gt;</code>) or an account linked to this class. Take a minute to navigate around and familiarize yourself with the files structure of the HPC and its contents using familiar commands (<code>ls</code>, <code>cd</code>). Note the directory <code>bioe-591-genomics/</code> with its subdirectories <code>students/</code> and <code>course-materials/</code>. In <code>students/</code>, make a new directory with your name (<code>mkdir name</code>). This can be a pre-submission home for the scripts and data used in this class moving forward.</p>
+</section>
+<section id="transferring-files" class="level2">
+<h2 class="anchored" data-anchor-id="transferring-files">Transferring Files</h2>
+<p>Now that you are on Tempest, a natural question is how you might transfer the files and scripts you need for your own research onto the cluster. MSU’s answer—typical of research HPCs across the country—is <a href="https://www.montana.edu/uit/rci/globus/">Globus</a>. Globus is what is known as a data transfer client, meaning an application allowing rapid movement of large files among secured locations in a network. You may be excited to learn that it has a GUI, and that unlike the GUI for Tempest, we will be taking advantage of it. You should also be broadly familiar with the purpose and use of Globus from your reading earlier this week. Ideally you’ve already installed <a href="https://docs.globus.org/globus-connect-personal/">Globus Connect Personal</a>, too. If not, go ahead and do so now. Instructions for <a href="https://docs.globus.org/globus-connect-personal/install/mac/">Mac</a> and <a href="https://docs.globus.org/globus-connect-personal/install/windows/">Windows</a> are available here. Once downloaded and installed, you’ll need to open the app, grant it appropriate permissions, log in with institutional information, your Net ID, and password. The next step will be to establish a “Collection” on your laptop. This is simply Globus’ term for connecting to the broader Globus network in a way that will allow you to transfer data across different computers. Name your collection and exit set up after ensuring</p>
+<p>Next, return to your browser and navigate to the <a href="https://www.montana.edu/uit/rci/globus/">Globus Web interface</a>. Click “LOG IN”, select “Montana State University - Bozeman”, and follow the prompts for your Net ID and 2FA. You should see a page similar to the following:</p>
+<p><img src="images/globus.png" class="img-fluid" alt="The Globus interface."> These two panes show the file structures of two different nodes in the Globus network. In this class, this will always be Tempest and your own computer, but you may find yourself accessing MSU’s long-term storage solution (<a href="https://www.montana.edu/uit/rci/blackmore/">Blackmore</a>) as well. To start, click on the left-hand pane and type “montana#tempest” (this may or may not autopopulate) and click “Search”. You should see a box with that name and three green tiles on the left-hand side pop up. Click this, and let it load. Assuming all is functioning, you will be rewarded with a visual view of the directories you previously navigated by the command line.</p>
+<p>Next, click on the right-hand pane. Search for the name of the collection on your laptop, or alternatively, click the “Your Collections” tab, where it may already be listed. In either case, double-click it once it appears, and you should see your own local file structure appear.</p>
+<p>You are now ready to transfer your first file from your computer to Globus. For now, any plain text file will do; recall that if you would quickly create one with minimal contents, you may do so from the command line with (e.g.) the following commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> globus_test.txt<span class="kw">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"test"</span> <span class="op">&gt;</span> globus_test.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>On the left-hand side of Globus’ web interface, navigate to the <code>students/</code> subdirectory of <code>bioe-591-genomics</code>, and from there to your own personal subdirectory. Click anywhere on the right-hand side of Globus, and navigate whatever directory contains the file you wish to transfer to Tempest. Select it, and click “Start”. A message should appear indicating you’ve begun the file transfer process; depending on the configuration of your devices, you may also recieve email notifications to this effect and confirming the eventual successful transfer. For a miniscule plain text file, this will be very fast—within a minute, the file should be visible in the Tempest portion of the browser. For larger files, this can take minutes to hours, but is nonetheless faster and more secure than common alternatives.</p>
+</section>
+<section id="managing-environments-with-mamba" class="level2">
+<h2 class="anchored" data-anchor-id="managing-environments-with-mamba">Managing Environments with <code>Mamba</code></h2>
+<p>A significant challenge in successfully running software from the command line is properly installing software and its <em>dependencies</em> (other software packages a given program relies upon to run). Manually loading each and every program required for a particular analysis is both tedious and error-prone, as mutual compatibility is often predicated on the particular version of a tool. If you’ve ever loaded a complex <code>R</code> package using CRAN and the <code>install.packages()</code> function, you’ve seen one solution to this problem. For many other types of software—particularly command-line tools and <code>Python</code> versions—an “environment manager” called <code>Mamba</code> is widely used.</p>
+<p>First, a little history. <code>Mamba</code> (<a href="https://mamba.readthedocs.io/en/latest/">documentation here</a>) is the less-bloated, faster equivalent of another environment manager called <code>Anaaconda</code> (or <code>Conda</code>; <a href="https://docs.conda.io/en/latest/">documentation here</a>). Its commands are equivalent, so any software that provides command-line instructions for installing it via <code>Conda</code> can be loaded in the same way. This will make more sense once you see it in practice; for now, the important thing is to recognize <code>Mamba</code> as the primary way we will install bioinformatics and genomics tools on the cluster.</p>
+<p>Of course, <code>Mamba</code> is itself a program that must be installed. Luckily, Research Cyberinfrastructure has done so for us already. To access <code>Mamba</code> from the class Tempest partition (or your PIs), we will use a command-line tool called <code>module</code>. “Modules”—themselves a solution to the challenges of software installation—modify your path and configure your shell to allow you to run software that is installed at a higher level elsewhere on a computer or HPC. The details of this are outside our purview, but for now, recognize that running an application requires directing your computer to its location the way you would a standalone script (e.g., <code>bash /user/you/homework/script.sh</code>), and that your “environment” (the conditions of your user account) can be modified to avoid the need for absolute paths (e.g., they provide the ability to instead run <code>bash script.sh</code> from anywhere on the cluster when logged in).</p>
+<p>Several commands are helpful for working with modules: <code>module avail</code> will produce a LONG list of all modules loaded by RCI, while <code>module search &lt;name_of_module&gt;</code> can winnow this down to packages of interest. Feel free to try these; you may need to type <code>q</code> to exit their output once you’ve finished scrolling (with the arrow keys). Next, enter the following commands:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load Mamba/23.11.0-0<span class="kw">;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will load the newest version of <code>Mamba</code> on your account, and print a set of instructions describing how the program is used to your screen. To further confirm the module you have loaded is the one you intended, you can type <code>module list</code>, which should spit back <code>Mamba/23.11.0-0</code>. Before we go further, it can be useful to know how to backtrack, i.e.&nbsp;clean your environment of modules to load something new (or a different version of the same thing). You can do so simply with <code>module unload &lt;package&gt;</code>, e.g.&nbsp;<code>module unload Mamba/23.11.0-0</code> in the current case. (You may have noticed that typing the first few characters of a module name and pressing tab on your keyboard will authopopulate your screen with all possibilites that match that string up until that point. This can be useful for quickly showing versions——typing <code>module load Mamba</code> + tab after unloading <code>Mamba/23.11.0-0</code> will print two alternatives. For now, stick with the most recent.)</p>
+<p>You might think we are now ready to use <code>Mamba</code> itself. Unfortunately, there is one more cryptic step. Enter the following command into your terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>In doing so, you will manipulate an environmental variable (something that only exists in the RAM of a particular shell / Terminal window / job) called <code>$PATH</code>. Your <code>$PATH</code> provides a list of directories that contain versions of software, allowing you to run them from the command line without their absolute paths. “But wait!”, I can hear you asking already. “Isn’t this what <code>module load</code>?”. Yes, to an extent. However, unlike simpler programs, certain environment managers (the programs <code>Conda</code> and <code>Mamba</code> among them) need the ability to manipulate your shell itself (the *nix interface of the Terminal when accessing the HPC). The command above gives them this ability, albeit only once a session. (If this feels like magic, that’s fine. Once you’ve entered the command above, you can forget it until you need it again.)</p>
+<p>Confirm the command has taken effect by printing your <code>$PATH</code> to the screen:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(As long as paths with <code>mamba</code> or <code>conda</code> are visible in the toutput, it is likely working as intended.)</p>
+<p>Though it can facilitate multiple workflows, <code>Mamba</code> is arguably best used by creating named environments containing particular versions of software that can be loaded and unloaded as needed. To demonstrate its utility, we’ll work with a simple, efficient commandline tool called <a href="https://github.com/lh3/seqtk"><code>seqtk</code></a>. <code>Seqtk</code> is useful for converting sequence data between common formats, reporting summary statistics, merging files, and other basic operations. We will install <code>seqtk</code> in its own environment, which we will create and give a unique name (“demo):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">--name</span> demo <span class="at">-c</span> bioconda seqtk</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, <code>create</code> initializes a new environment, the <code>--name</code> argument sets the name of the evnironment, <code>-c</code> tells the program to look for the software on an archive called <a href="https://bioconda.github.io/">Bioconda</a>, and <code>seqtk</code> is the name of the software. If you wished to install multiple software packages into the <code>demo</code> environment, you could add additional names after <code>seqtk</code> as needed. However, you would first need to confirm they are available via <code>Conda</code> / <code>Mamba</code>—something easily done by googling “Mamba <software>”, which brings up documentation <a href="https://bioconda.github.io/recipes/seqtk/README.html">like this</a>, replete with command line “recipes” for installation.</software></p>
+<p>You will be prompted to confirm the full set of dependencies and programs necessary to run <code>seqtk</code>. Type <code>Y</code>. The installation should finish, providing instructions for how to activate the environment. Ignore these for now. Type <code>mamba env list</code>. You should see <code>demo</code> and <code>base</code> appear, the latter referring to <code>Mamba</code>’s default state.</p>
+<p>Confusingly, we will activate this environment using a <code>conda</code> command, something that is an artifact of the <code>Mamba</code> version available via RCI module.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see <code>(base)</code> on the left-hand side of your terminal change to <code>(demo)</code>. Verify you have loaded the proper environment by typing <code>seqtk</code>. If all has gone well, you should see a list of commands and their uses.</p>
+<p>At this point, and at the risk of hopelessly confusing you, I am going to show you a second, preferable way to create environments. Let’s clean up by deactivating the current environment and then deleting it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> deactivate<span class="kw">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env remove <span class="at">-n</span> demo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We go about replacing it using a recipe encoded in something called a <code>.yaml</code> (or <code>.yml</code>) file, which are simply plain text files containing an easily interpreted language with information on software configurations and versions. This format pops up repeatedly (at the start of <code>.Rmarkdown</code> documents, for instance), so it is worth recognizing, even if it doesn’t deserve much thought. Create a file named <code>demo_new.yml</code>, and paste the following code into it using <code>nano</code> or another text editor:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> demo_new</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">channels</span><span class="kw">:</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> conda-forge</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> bioconda</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dependencies</span><span class="kw">:</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> seqtk</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This file provides detailed information to <code>Mamba</code> on exactly how to create a new environment. It is thus advantageous for any situation where you want your work to be reproduced with minimal hassle: running an analysis on a more powerful computer, sharing a pipeline with colleagues, or providing reviewers everything they need to generate the same results from your study. (The alternative—saving the long, one-off commands used to create environments in some sort of document—becomes cumbersome when multiple software packages are required, and is more prone to errors when used by others with different shell configurations.)</p>
+<p>We can create (or recreate) a mamba environment using this file with the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> demo_new.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As before, activate the environment and confirm <code>seqtk</code> is available to you:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate demo_new</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="scheduling-jobs-with-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="scheduling-jobs-with-slurm">Scheduling Jobs with <code>SLURM</code></h2>
+<p>The last thing we will cover as part of our introduction to using Tempest and other HPCs is job scheduling. Up until this point, everything we have done has occured on what is known as the <strong>log-in node</strong>—a computer with minimal memory, storage, and cores used to navigate directories, install software, and test simple commands that do not require substantial computational resources. Permissions and safety checks vary across machines, but in some contexts, attempting to do anything more on the log-in node can result in crashing the entire HPC, something I am sure you all want to avoid being responsible for. As discussed above, resource-intensive jobs must be requested using a job scheduler, which in our case is a program called <code>SLURM</code>. We will learn the basics of <code>SLURM</code> to run a simple <code>seqtk</code> command in our new <code>Mamba</code> environment.</p>
+<p>To start, navigate to <code>bioe-591-genomics/class-resources/scripts/</code>. Typing <code>ls</code> will reveal a single file named <code>demo.sbatch</code>. Examine its contents (with <code>cat</code> or <code>nano</code>). You should see the following text appear:</p>
+<pre><code>#!/bin/bash
+##
+## example-array.slurm.sh: submit an array of jobs with a varying parameter
+##
+## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.
+## All other lines are read by the shell.
+##
+#SBATCH --account=priority-bioe-591-genomics        #specify the account to use
+#SBATCH --job-name=demo                             # job name
+#SBATCH --partition=priority              # queue partition to run the job in
+#SBATCH --nodes=1                       # number of nodes to allocate
+#SBATCH --ntasks-per-node=1             # number of descrete tasks - keep at one except for MPI
+#SBATCH --cpus-per-task=1              # number of cores to allocate
+#SBATCH --time=0-00:10:00                 # Maximum job run time
+#SBATCH --output=seqtk_demo-%j.out
+#SBATCH --error=seqtk_demo-%j.err
+
+## Run 'man sbatch' for more information on the options above.
+
+module load Mamba/23.11.0-0
+eval "$(conda shell.bash hook)"
+conda activate demo
+echo "reads     bases" &gt; size.txt
+seqtk size ~/bioe-591-genomics/course-materials/data/catamenia_analis.fastq.gz &gt;&gt; size.txt
+</code></pre>
+<p>In the text above, lines with two hashtags (<code>##</code>) are comments, while lines with a single hashtag (<code>#</code>) are instructions to <a href="https://slurm.schedmd.com/documentation.html"><code>Slurm</code></a>. You should spend some time on Tempest’s <a href="https://www.montana.edu/uit/rci/tempest/getting-started-terminal/index.html">instructions for how to use this job scheduler</a>, but we will now briefly address its key components. The first executed line—<code>#SBATCH --account=priority-bioe-591-genomics</code>—indicates the account you are requesting resources on. If you have Tempest access for reasons other than this class (i.e., you are a member of a lab with its own partition), you may want to change this; you should already know the name of the partition, but in general these follow the form <code>priority-firstnamelastname</code>. The second line (<code>#SBATCH --job-name=demo</code>) is, obviously enough, the name of a particular job; you’ll want to change this as needed. The third line, <code>#SBATCH --partition=priority</code>, indicates that you are requesting the <code>priority</code> partition within your account. Doing so is almost always the right move for serious analyses. A detailed rundown of paritions is <a href="https://www.montana.edu/uit/rci/tempest/system/partition-information.html">available here</a>; note that the <code>group</code> and <code>test</code> partitions use resources from elsewhere on the cluster as available, and have runtime limits.</p>
+<p>Other critical settings include <code>#SBATCH --nodes=1</code> , <code>#SBATCH --cpus-per-task=1</code> <code>#SBATCH --ntasks-per-node=1</code>, and <code>#SBATCH --time=0-00:10:00</code>, which define the number of nodes, CPUs per task, nodes per task, and overall runtime you are requesting. Setting these can be an art; too low, and your analyses might drag on for all 14 days before timing out; too high, and it may never run as shorter jobs take priority in the queue. In general, I will make the resources you should request explicit, but for your independent work on the cluster in the future, know that these variables are key for troubleshooting.</p>
+<p>The last lines in the prefix we will address are <code>#SBATCH --output=seqtk_demo-%j.out</code> and <code>#SBATCH --error=seqtk_demo-%j.err</code>. These define the names and locations of text files that record the standard output (<code>*.out</code>; what gets printed to the screen) and error messages (<code>*.err</code>) of the program(s) you are running. The character <code>%j</code> automatically populates the unique job number associated with your resource request, and should be left as is, but the name of both files should be changed accordingly.</p>
+<p>Below the <code>#SBATCH</code> block are a set of commands that the HPC will actually execute using the resources requested. They should look mostly familiar, as the first three are what you’ve used to load the <code>Mamba</code> module, modify your <code>$PATH</code> to allow <code>Mamba</code> or <code>Conda</code> to load environments, and then load the <code>demo</code> environment you created earlier (in order to make the tool <code>Seqtk</code> available). The next line is a simple <code>bash</code> command to create a new file with two labeled columns separated by a tab. The final line calls <code>seqtk</code> to assess the quantity of DNA sequence data in the file <code>catamenia_analis.fastq.gz</code>. We will discuss this format in length next week, but for now, it may be helpful to know that it stores data from short-read sequencing of a set of exons from a single <a href="https://ebird.org/species/batsee1">Band-tailed Seedeater</a>.</p>
+<p>Copy this script to your own directory (<code>cp ~/bioe-591-genomics/course-materials/scripts/demo.sbatch ~/bioe-591-genomics/students/user/.</code>) Move it to a subdirectory for scripts if you like. Using <code>nano</code>, edit the job name, output, and error messages to something personal. Next, place your first Tempest resource request via the following command (run from the location of the <em>copied</em> file, not its original home in <code>course-materials/</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> demo.sbatch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You should see a message reading <code>Submitted batch job XXXXXXXX</code>. Enter the following command:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will show all pending or running jobs on your account. Alternatively, you can use the following command to show only those jobs you as a user are running (as opposed to the several other classmates using the <code>priority-bioe-591-genomics</code> account):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">squeue</span> <span class="at">-u</span> <span class="va">$USER</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This particular job finishes almost instantly, so you’ll see <code>COMPLETED</code> as output from the first command, and empty data columns for the second. But for most tasks in bioinformatics and genomics, runtime is measured in minutes to hours to days, and using these commands can be a helpful check on whether the cluster is doing the work you expect it to be.</p>
+<p>Since the job is done, type <code>ls</code>. You’ll see that in the directory you called the script from, two files with the suffixes <code>.out</code> and <code>.err</code> have been generated. Recall that you specified the name of these in the <code>##SBATCH</code> block of your <code>Slurm</code> script. Use <code>cat</code> or <code>nano</code> to inspect their contents. Both will be empty (unless something has gone very wrong), but in many cases, these files will be invaluable for troubleshooting why an analysis didn’t work the way you expected. Next, view <code>site.txt</code>. You should see two labeled columns (manually specified with <code>echo</code> in our script), with the relevant data underneath.</p>
+<p>What happens if you’ve made a mistake, or a job seems to have stalled out, and you’d like to cancel it? Using <code>sacct</code> to identify the job ID (also printed on the screen in response to running <code>sbatch</code>) allows you to selectively kill tasks:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> JOBID</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Less precisely, you can cancel all tasks running on your account with the <code>--user</code> flag and your ID (visible in your shell as <code>[myuserid@tempest-login ~]$</code>).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">scancel</span> <span class="at">--user</span><span class="op">=</span>myuserid</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>Seqtk</code> is a very simple tool, but this basic process—configure an <code>.sbatch</code> script to request resources, use <code>bash</code> and / or <code>mamba</code> to load the relevant software and environment, run a command using a loaded tool, ocassionally killing tasks—is one that you will follow over and over again. You will be surprised (I hope!) at how quickly it becomes natural.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="**Homework 3**">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><strong>Homework 3</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Today’s homework assignment is intended to give you a little more practice using <code>Slurm</code> and tools like <code>seqtk</code>. As usual, I would like you to upload your script (in this case, an <code>.sbatch</code> file) to GitHub. The easiest way to do this is to use Globus to transfer it back to your laptop and local <code>.git</code> repository (though see the note below for an advanced alternative). Specifically, I’d like you to complete the following steps:</p>
+<ol type="1">
+<li>Copy the demo <code>.sbatch</code> script used above. Edit any relevant variables in the <code>#SBATCH</code> configuration block.</li>
+<li>Below the <code>#SBATCH</code> block, edit the commands as needed to randomly sample 1000 reads from the file <code>catamenia_analis.fastq.gz</code> and save the output as something unique in your local directory. A few hints follow.</li>
+</ol>
+<ul>
+<li>First, you’ll still need to load <code>Mamba</code> and the <code>demo</code> environment.</li>
+<li>Second, the command beginning with <code>echo</code> that creates labeled columns for the output of <code>seqtk size</code> is no longer relevant.</li>
+<li>Third, you’ll need to look at the <code>Seqtk</code> documentation to figure out how to subsample reads. To do so you may either search the internet or load <code>Mamba</code> and activate the <code>demo</code> environment on the log-in node. This will not stick around for your <code>.sbatch</code> run—you’ll still need to include the commands to do so in your script—but it will allow you to type <code>seqtk</code> to see useage examples. Each listed command can then be paired with <code>seqtk</code> (e.g., <code>seqtk size</code>) to get additional details details.</li>
+</ul>
+<ol start="3" type="1">
+<li>Run your script and confirm it works. Note that paths will be important: you do not have write permission in the <code>course-materials</code> directory, so saving the output to your own directory is critical.</li>
+</ol>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="**Linking GitHub to Tempest**">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span><strong>Linking GitHub to Tempest</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Though Globus is convenient and powerful, you may find yourself wanting to use <code>Git</code> and GitHub directly from the cluster. Doing so requires a different approach than configuring your own laptop due to</p>
+<pre><code>ssh-keygen -t ed25519 -C "lamarck@mnhn.fr"
+</code></pre>
+<p>This creates two hidden files: a private key (<code>~/.ssh/id_ed25519</code>) and a public key (<code>~/.ssh/id_ed25519.pub</code>) that function as passwords for authentication. Extract the password from your public key by typing <code>cat ~/.ssh/id_ed25519.pub</code> and then selecting the entire line that begins <code>ssh-ed25519 AAAA...</code>. Save this somewhere convenient, and navigate to GitHub. Under <a href="https://github.com/settings/">“Settings”</a>, navigate to <a href="https://github.com/settings/keys">“SSH and GPG keys”</a>, click “New SSH key”, name it something helpful, and paste the copied password in the “Key” field. Click save. You should now be able to work with <code>Git</code> as normal. To quickly test your setup, navigate to your repository for this class, click “Git Clone”, and switch to the “SSH” tab to securely clone it. Copy the command and paste it in your terminal on the log-in node of Tempest. It should look something like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:username/class_repo.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you then see the appropriate directory, you’re all set.</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
