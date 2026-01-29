@@ -71,7 +71,7 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 |             |                                            | - [Braga et al. 2023](https://doi.org/10.1111/2041-210X.14108) [(**pdf**)](papers/braga_et_al_2023.pdf)             |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 2/2 - 2/6   | Computing Clusters                         | - [**Introduction to Tempest (HW3)**](hpc.qmd)                                                                      |
-|             |                                            | - [Alnasir 2021](https://doi.org/10.1371/journal.pcbi.1009207) [(**pdf**)](papers/alnasir_2021.pdf)                  |
+|             |                                            | - [Alnasir 2021](https://doi.org/10.1371/journal.pcbi.1009207) [(**pdf**)](papers/alnasir_2021.pdf)                 |
 |             |                                            | - [Tempest Documentation](https://www.montana.edu/uit/rci/tempest/)                                                 |
 |             |                                            | - [Globus Documentation](https://www.montana.edu/uit/rci/globus/)                                                   |
 |             |                                            | - [MSU VPN Documentation](https://www.montana.edu/uit/computing/desktop/vpn/)                                       |
