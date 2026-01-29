@@ -197,7 +197,7 @@ Next, return to your working directory. Using `nano` or another text editor, edi
 
 In general, following the advice provided by error messages is solid practice. Type `git pull`. The following text should appear:
 
-```
+```bash
 Auto-merging README.md  
 CONFLICT (content): Merge conflict in README.md  
 Automatic merge failed; fix conflicts and then commit the result.  
@@ -205,7 +205,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 This is a common sticking point and can be one of the most difficult aspects of working with a VCS for beginners. Luckily, the solution is relatively simple. Using `nano` or another editor, open the `README.md` file. You'll see text similar to the following:
 
-```
+```bash
 <<<<<<< HEAD
 local edit
 =======
@@ -225,7 +225,7 @@ git log --oneline --graph
 
 You should now feel comfortable---well, at least understand the purpose, in the abstract---of the following commands: 
 
-```
+```bash
 git status
 git add
 git commit
@@ -235,7 +235,7 @@ git log --oneline --graph
 git checkout -b
 ```
 
-With time, these should become second nature, and help you develop 
+With time, these should become second nature, and help you develop efficient, safe, and reproducible workflows. 
 
 :::{.callout-note title="**Homework 2**"}
 

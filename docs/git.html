@@ -240,15 +240,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Our final <code>Git</code> lesson involves deliberately breaking something, which we do with the hope that it will help you troubleshoot accidental errors in the future. Back on your GitHub repository, navigate to <code>README.md</code> and click the edit button (a sketch of a pencil on the righthand side of the document when seen from the landing page). Doing so opens a text editor. In the contents of the file, add a line reading “github edit” or similar. You will be prompted to commit this edit—go ahead and do so.</p>
 <p>Next, return to your working directory. Using <code>nano</code> or another text editor, edit your local copy of <code>README.md</code>, adding the line “local edit”. Save, add, and commit. Now, attempt to push your work to GitHub (<code>git push</code>). You should see an error message that reads <code>Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref. You may want to first integrate the remote changes (e.g., 'git pull ...') before pushing again.</code></p>
 <p>In general, following the advice provided by error messages is solid practice. Type <code>git pull</code>. The following text should appear:</p>
-<pre><code>Auto-merging README.md  
-CONFLICT (content): Merge conflict in README.md  
-Automatic merge failed; fix conflicts and then commit the result.  </code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Auto-merging</span> README.md  </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CONFLICT</span> <span class="er">(</span><span class="ex">content</span><span class="kw">)</span><span class="bu">:</span> Merge conflict in README.md  </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Automatic</span> merge failed<span class="kw">;</span> <span class="ex">fix</span> conflicts and then commit the result.  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This is a common sticking point and can be one of the most difficult aspects of working with a VCS for beginners. Luckily, the solution is relatively simple. Using <code>nano</code> or another editor, open the <code>README.md</code> file. You’ll see text similar to the following:</p>
-<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-local edit
-=======
-github edit
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; origin/main</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="op">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> HEAD</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">local</span> <span class="va">edit</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">=======</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="ex">github</span> edit</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> origin/main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The arrows (<code>&gt;&gt;&gt;</code>) and equals signs (<code>===</code>) have been added by <code>Git</code> to highlight a conflict between the two versions. All the software is doing is prompting you to choose between the two file versions (or combine them). Edit as you see fit—which typically involves removing those delimiters—add, commit, and push. Crisis averted!</p>
 <p>Finally, it can be useful to visualize exactly how your working directory and remote repository have changed and merged over time. To do so, use the following command:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -256,14 +256,14 @@ github edit
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
 <p>You should now feel comfortable—well, at least understand the purpose, in the abstract—of the following commands:</p>
-<pre><code>git status
-git add
-git commit
-git pull
-git push
-git log --oneline --graph
-git checkout -b</code></pre>
-<p>With time, these should become second nature, and help you develop</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With time, these should become second nature, and help you develop efficient, safe, and reproducible workflows.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="**Homework 2**">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

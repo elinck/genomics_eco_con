@@ -10,7 +10,7 @@ As you will recall from your reading and discussion, Tempest is run by MSU's Res
 
 Each PI account on Tempest has its own *partition*. To understand this concept, it is helpful to consider a 3D abstraction of computation resources provided by RCI: 
 
-![*Total resources are defined by cores used x memory needed x runtime*](images/cores.png)
+![*Total resources are defined by cores used x memory needed x runtime*](images/cores.png){width=40%}
 
 Tempest is far more powerful than most of us will ever need. Yet it is still finite, and thus must balance simultaneous requests for resources among users. Partitions are part of its solution to this dilemma: on-demand memory, storage, and runtime for each lab. Within each lab, however, different accounts may compete for available CPUs and RAM, requiring a way to schedule tasks. (More on that below.) For now, it is sufficient to know that you will be accessing either your PI's partition (if you've previously requested access) or the special partition set up for this class.
 
@@ -24,11 +24,17 @@ ssh <net_id>@tempest-login.msu.montana.edu
 
 Having done so, you should see your terminal interface change to reflect the following new file system:
 
-```
+```bash
 [<net_id>@tempest-login ~]$
 ```
 
 This means you have successfully logged on to Tempest, and are now navigating a (virtual) computer on the HPC known as the "Login Node". Type `pwd`. You should see a path reflecting either your PI's account (`/home/<net_id>`) or an account linked to this class. Take a minute to navigate around and familiarize yourself with the files structure of the HPC and its contents using familiar commands (`ls`, `cd`). Note the directory `bioe-591-genomics/` with its subdirectories `students/` and `course-materials/`. In `students/`, make a new directory with your name (`mkdir name`). This can be a pre-submission home for the scripts and data used in this class moving forward. 
+
+:::{.callout-warning title="**Cluster Safety**"}  
+
+Different HPCs allow different tiers of users different permissions, often as a way of preventing command-line accidents, e.g. typing the wrong `bash` one-liner and overwriting something important to the overall function of the machine. Regardless, you should assume that anything you type on the cluster has the potential to do unintended harm, and double-check it carefuly. In particular, apply `rm` combined with wildcards like `*` with extreme caution. Consider the consequences of accidentally deleting another user's dissertation analysis or data. You'd likely skip the country at the very least; becoming a monastic and renouncing all earthly pleasures is a distinct possibility. 
+
+:::
 
 ## Transferring Files
 
@@ -55,7 +61,7 @@ On the left-hand side of Globus' web interface, navigate to the `students/` subd
 
 A significant challenge in successfully running software from the command line is properly installing software and its *dependencies* (other software packages a given program relies upon to run). Manually loading each and every program required for a particular analysis is both tedious and error-prone, as mutual compatibility is often predicated on the particular version of a tool. If you've ever loaded a complex `R` package using CRAN and the `install.packages()` function, you've seen one solution to this problem. For many other types of software---particularly command-line tools and `Python` versions---an "environment manager" called `Mamba` is widely used.
 
-First, a little history. `Mamba` ([documentation here](https://mamba.readthedocs.io/en/latest/)) is the less-bloated, faster equivalent of another environment manager called `Anaaconda` (or `Conda`; [documentation here](https://docs.conda.io/en/latest/)). Its commands are equivalent, so any software that provides command-line instructions for installing it via `Conda` can be loaded in the same way. This will make more sense once you see it in practice; for now, the important thing is to recognize `Mamba` as the primary way we will install bioinformatics and genomics tools on the cluster.
+First, a little history. `Mamba` ([documentation here](https://mamba.readthedocs.io/en/latest/)) is the less-bloated, faster equivalent of another environment manager called `Anaconda` (or `Conda`; [documentation here](https://docs.conda.io/en/latest/)). Its commands are equivalent, so any software that provides command-line instructions for installing it via `Conda` can be loaded in the same way. This will make more sense once you see it in practice; for now, the important thing is to recognize `Mamba` as the primary way we will install bioinformatics and genomics tools on the cluster.
 
 Of course, `Mamba` is itself a program that must be installed. Luckily, Research Cyberinfrastructure has done so for us already. To access `Mamba` from the class Tempest partition (or your PIs), we will use a command-line tool called `module`. "Modules"---themselves a solution to the challenges of software installation---modify your path and configure your shell to allow you to run software that is installed at a higher level elsewhere on a computer or HPC. The details of this are outside our purview, but for now, recognize that running an application requires directing your computer to its location the way you would a standalone script (e.g., `bash /user/you/homework/script.sh`), and that your "environment" (the conditions of your user account) can be modified to avoid the need for absolute paths (e.g., they provide the ability to instead run `bash script.sh` from anywhere on the cluster when logged in). 
 
@@ -74,7 +80,7 @@ You might think we are now ready to use `Mamba` itself. Unfortunately, there is 
 ```bash
 eval "$(conda shell.bash hook)"
 ```
-In doing so, you will manipulate an environmental variable (something that only exists in the RAM of a particular shell / Terminal window / job) called `$PATH`. Your `$PATH` provides a list of directories that contain versions of software, allowing you to run them from the command line without their absolute paths. "But wait!", I can hear you asking already. "Isn't this what `module load`?". Yes, to an extent. However, unlike simpler programs, certain environment managers (the programs `Conda` and `Mamba` among them) need the ability to manipulate your shell itself (the *nix interface of the Terminal when accessing the HPC). The command above gives them this ability, albeit only once a session. (If this feels like magic, that's fine. Once you've entered the command above, you can forget it until you need it again.)
+In doing so, you will manipulate an environmental variable (something that only exists in the RAM of a particular shell / Terminal window / job) called `$PATH`. Your `$PATH` provides a list of directories that contain versions of software, allowing you to run them from the command line without their absolute paths. "But wait!", I can hear you asking already. "Isn't this what `module load` does?". Yes, to an extent. However, unlike simpler programs, certain environment managers (the programs `Conda` and `Mamba` among them) need the ability to manipulate your shell itself (the *nix interface of the Terminal when accessing the HPC). The command above gives them this ability, albeit only once a session. (If this feels like magic, that's fine. Once you've entered the command above, you can forget it until you need it again.)
 
 Confirm the command has taken effect by printing your `$PATH` to the screen:
 
@@ -84,7 +90,7 @@ echo $PATH
 
 (As long as paths with `mamba` or `conda` are visible in the toutput, it is likely working as intended.)
 
-Though it can facilitate multiple workflows, `Mamba` is arguably best used by creating named environments containing particular versions of software that can be loaded and unloaded as needed. To demonstrate its utility, we'll work with a simple, efficient commandline tool called [`seqtk`](https://github.com/lh3/seqtk). `Seqtk` is useful for converting sequence data between common formats, reporting summary statistics, merging files, and other basic operations. We will install `seqtk` in its own environment, which we will create and give a unique name ("demo): 
+Though it can facilitate multiple workflows, `Mamba` is arguably best used by creating named environments containing particular versions of software that can be loaded and unloaded as needed. To demonstrate its utility, we'll work with a simple, efficient commandline tool called [`Seqtk`](https://github.com/lh3/seqtk). `Seqtk` is useful for converting sequence data between common formats, reporting summary statistics, merging files, and other basic operations. We will install `Seqtk` in its own environment, which we will create and give a unique name ("demo): 
 
 ```bash
 mamba env create --name demo -c bioconda seqtk
@@ -128,14 +134,14 @@ We can create (or recreate) a mamba environment using this file with the followi
 mamba env create -f demo_new.yml
 ```
 
-As before, activate the environment and confirm `seqtk` is available to you:
+As before, activate the environment and confirm `Seqtk` is available to you:
 
 ```bash
 conda activate demo_new
 seqtk
 ```
 
-## Scheduling Jobs with `SLURM`
+## Scheduling Jobs with `Slurm`
 
 The last thing we will cover as part of our introduction to using Tempest and other HPCs is job scheduling. Up until this point, everything we have done has occured on what is known as the **log-in node**---a computer with minimal memory, storage, and cores used to navigate directories, install software, and test simple commands that do not require substantial computational resources. Permissions and safety checks vary across machines, but in some contexts, attempting to do anything more on the log-in node can result in crashing the entire HPC, something I am sure you all want to avoid being responsible for. As discussed above, resource-intensive jobs must be requested using a job scheduler, which in our case is a program called `SLURM`. We will learn the basics of `SLURM` to run a simple `seqtk` command in our new `Mamba` environment.
 
@@ -229,12 +235,12 @@ Today's homework assignment is intended to give you a little more practice using
 
 :::{.callout-tip title="**Linking GitHub to Tempest**"}
 
-Though Globus is convenient and powerful, you may find yourself wanting to use `Git` and GitHub directly from the cluster. Doing so requires a different approach than configuring your own laptop due to 
+Though Globus is convenient and powerful, you may find yourself wanting to use `Git` and GitHub directly from the cluster. Doing so requires a different approach than configuring your own laptop due to how HPCs handle network security, involving something called an ssh key. To begin, navigate to your home directory (`cd ~/.`) on the log-in node and type the following command: 
 
-```
+```bash
 ssh-keygen -t ed25519 -C "lamarck@mnhn.fr"
-
 ```
+
 This creates two hidden files: a private key (`~/.ssh/id_ed25519`) and a public key (`~/.ssh/id_ed25519.pub`) that function as passwords for authentication. Extract the password from your public key by typing `cat ~/.ssh/id_ed25519.pub` and then selecting the entire line that begins `ssh-ed25519 AAAA...`. Save this somewhere convenient, and navigate to GitHub. Under ["Settings"](https://github.com/settings/), navigate to ["SSH and GPG keys"](https://github.com/settings/keys), click "New SSH key", name it something helpful, and paste the copied password in the "Key" field. Click save. You should now be able to work with `Git` as normal. To quickly test your setup, navigate to your repository for this class, click "Git Clone", and switch to the "SSH" tab to securely clone it. Copy the command and paste it in your terminal on the log-in node of Tempest. It should look something like this: 
 
 ```bash
