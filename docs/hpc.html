@@ -234,31 +234,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="scheduling-jobs-with-slurm">Scheduling Jobs with <code>Slurm</code></h2>
 <p>The last thing we will cover as part of our introduction to using Tempest and other HPCs is job scheduling. Up until this point, everything we have done has occured on what is known as the <strong>log-in node</strong>—a computer with minimal memory, storage, and cores used to navigate directories, install software, and test simple commands that do not require substantial computational resources. Permissions and safety checks vary across machines, but in some contexts, attempting to do anything more on the log-in node can result in crashing the entire HPC, something I am sure you all want to avoid being responsible for. As discussed above, resource-intensive jobs must be requested using a job scheduler, which in our case is a program called <code>SLURM</code>. We will learn the basics of <code>SLURM</code> to run a simple <code>seqtk</code> command in our new <code>Mamba</code> environment.</p>
 <p>To start, navigate to <code>bioe-591-genomics/class-resources/scripts/</code>. Typing <code>ls</code> will reveal a single file named <code>demo.sbatch</code>. Examine its contents (with <code>cat</code> or <code>nano</code>). You should see the following text appear:</p>
-<pre><code>#!/bin/bash
-##
-## example-array.slurm.sh: submit an array of jobs with a varying parameter
-##
-## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.
-## All other lines are read by the shell.
-##
-#SBATCH --account=priority-bioe-591-genomics        #specify the account to use
-#SBATCH --job-name=demo                             # job name
-#SBATCH --partition=priority              # queue partition to run the job in
-#SBATCH --nodes=1                       # number of nodes to allocate
-#SBATCH --ntasks-per-node=1             # number of descrete tasks - keep at one except for MPI
-#SBATCH --cpus-per-task=1              # number of cores to allocate
-#SBATCH --time=0-00:10:00                 # Maximum job run time
-#SBATCH --output=seqtk_demo-%j.out
-#SBATCH --error=seqtk_demo-%j.err
-
-## Run 'man sbatch' for more information on the options above.
-
-module load Mamba/23.11.0-0
-eval "$(conda shell.bash hook)"
-conda activate demo
-echo "reads     bases" &gt; size.txt
-seqtk size ~/bioe-591-genomics/course-materials/data/catamenia_analis.fastq.gz &gt;&gt; size.txt
-</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co">## example-array.slurm.sh: submit an array of jobs with a varying parameter</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">## Lines starting with #SBATCH are read by Slurm. Lines starting with ## are comments.</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co">## All other lines are read by the shell.</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">##</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=priority-bioe-591-genomics        #specify the account to use</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=demo                             # job name</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=priority              # queue partition to run the job in</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1                       # number of nodes to allocate</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks-per-node=1             # number of descrete tasks - keep at one except for MPI</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1              # number of cores to allocate</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=0-00:10:00                 # Maximum job run time</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=seqtk_demo-%j.out</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=seqtk_demo-%j.err</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">## Run 'man sbatch' for more information on the options above.</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load Mamba/23.11.0-0</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate demo</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"reads     bases"</span> <span class="op">&gt;</span> size.txt</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="ex">seqtk</span> size ~/bioe-591-genomics/course-materials/data/intro/catamenia_analis.fastq.gz <span class="op">&gt;&gt;</span> size.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>In the text above, lines with two hashtags (<code>##</code>) are comments, while lines with a single hashtag (<code>#</code>) are instructions to <a href="https://slurm.schedmd.com/documentation.html"><code>Slurm</code></a>. You should spend some time on Tempest’s <a href="https://www.montana.edu/uit/rci/tempest/getting-started-terminal/index.html">instructions for how to use this job scheduler</a>, but we will now briefly address its key components. The first executed line—<code>#SBATCH --account=priority-bioe-591-genomics</code>—indicates the account you are requesting resources on. If you have Tempest access for reasons other than this class (i.e., you are a member of a lab with its own partition), you may want to change this; you should already know the name of the partition, but in general these follow the form <code>priority-firstnamelastname</code>. The second line (<code>#SBATCH --job-name=demo</code>) is, obviously enough, the name of a particular job; you’ll want to change this as needed. The third line, <code>#SBATCH --partition=priority</code>, indicates that you are requesting the <code>priority</code> partition within your account. Doing so is almost always the right move for serious analyses. A detailed rundown of paritions is <a href="https://www.montana.edu/uit/rci/tempest/system/partition-information.html">available here</a>; note that the <code>group</code> and <code>test</code> partitions use resources from elsewhere on the cluster as available, and have runtime limits.</p>
 <p>Other critical settings include <code>#SBATCH --nodes=1</code> , <code>#SBATCH --cpus-per-task=1</code> <code>#SBATCH --ntasks-per-node=1</code>, and <code>#SBATCH --time=0-00:10:00</code>, which define the number of nodes, CPUs per task, nodes per task, and overall runtime you are requesting. Setting these can be an art; too low, and your analyses might drag on for all 14 days before timing out; too high, and it may never run as shorter jobs take priority in the queue. In general, I will make the resources you should request explicit, but for your independent work on the cluster in the future, know that these variables are key for troubleshooting.</p>
 <p>The last lines in the prefix we will address are <code>#SBATCH --output=seqtk_demo-%j.out</code> and <code>#SBATCH --error=seqtk_demo-%j.err</code>. These define the names and locations of text files that record the standard output (<code>*.out</code>; what gets printed to the screen) and error messages (<code>*.err</code>) of the program(s) you are running. The character <code>%j</code> automatically populates the unique job number associated with your resource request, and should be left as is, but the name of both files should be changed accordingly.</p>

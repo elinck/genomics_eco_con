@@ -76,8 +76,10 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 |             |                                            | - [Globus Documentation](https://www.montana.edu/uit/rci/globus/)                                                   |
 |             |                                            | - [MSU VPN Documentation](https://www.montana.edu/uit/computing/desktop/vpn/)                                       |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 2/9 - 2/13  | Sequencing Strategies and                  |                                                                                                                     |
-|             | Short Read Quality Control                 |                                                                                                                     |
+| 2/9 - 2/13  | Sequencing Strategies and                  | - [Understanding & Filtering .`fastq` files](reads.qmd)                                                             |
+|             | Short Read Quality Control                 | - [Illumina Sequencing-by-Synthesis Video](https://www.youtube.com/watch?v=EDVKxSNdSic)                             |      
+|             |                                            | - [Fuentes-Pardo & Ruzzante 2017](https://doi.org/10.1111%2Fmec.14264) [(**pdf**)](papers/fuentes-pardo_2017.pdf)   |
+|             |                                            | - [Toews et al. 2016 (optional)](https://doi.org/10.1642/AUK-15-51.1) [(**pdf**)](papers/toews_et_al_2016.pdf)      |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 2/16 - 2/20 | eDNA and Metabarcoding                     |                                                                                                                     |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+

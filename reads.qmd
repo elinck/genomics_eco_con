@@ -1,0 +1,5 @@
+---
+format: html
+---
+
+# Understanding `.fastq` Data and Short Read Quality Control

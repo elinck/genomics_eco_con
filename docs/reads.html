@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BIOE591: Genomics for Ecology &amp; Conservation</title>
+<title>reads – BIOE591: Genomics for Ecology &amp; Conservation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -91,7 +91,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -107,217 +107,13 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">BIOE591: Genomics for Ecology &amp; Conservation</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><strong>Course:</strong> BIOE 591 (3 Credits)<br>
-<strong>Prerequisite:</strong> BIOB480/BIOE548 or consent of instructor<br>
-<strong>Meeting Time:</strong> T/TR 1:40 PM – 2:55 PM<br>
-<strong>Place:</strong> Wilson 1-154<br>
-<strong>Instructor:</strong> Dr.&nbsp;Ethan Linck (ethan.linck@montana.edu; 406-994-2024)<br>
-<strong>Office Hours:</strong> 1:00 PM – 4:00 Weds<br>
-<strong>Materials:</strong> A laptop (tablets will not suffice). Windows users will need to download and install <a href="https://gitforwindows.org/">Git for Windows</a> as a Unix shell emulator.</p>
-<section id="catalog-description" class="level2">
-<h2 class="anchored" data-anchor-id="catalog-description">Catalog Description</h2>
-<p>Application of genomics methods to conservation, ecology, and evolution. Students gain familiarity with the basic tools and techniques of computational biology and genomics through case studies from the primary literature and analysis of empirical datasets. Examples and questions relevant to conservation biology and fish and wildlife management are emphasized.</p>
-</section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The development of affordable high-throughput sequencing technology in the 2000s and 2010s revolutionized the ability of molecular ecologists, wildlife and conservation biologists, and other environmental scientists to assay genome-wide DNA sequence variation from nonmodel organisms. Genomics methods are now commonly used to study everything from the dietary preferences of sturgeon to genes underpinning local adaptation in wolves, but can be difficult to apply or interpret without specialist training. This course provides a hands-on introduction to the use of genomics in ecology, conservation, and related fields. Students will gain hands-on experience with computational biology, analyzing empirical genomic datasets with commonly applied software on a high-performance computing cluster. Reading assignments from the primary literature will demonstrate the use of focal software packages while emphasizing case studies relevant to conservation biology and fish and wildlife management.</p>
-</section>
-<section id="course-organization-and-format" class="level2">
-<h2 class="anchored" data-anchor-id="course-organization-and-format">Course Organization and Format</h2>
-<p>The course will be offered as a mix of short lectures or demonstrations and discussions on reading assignments (typically Tuesdays) and supervised computer lab activities (typically Thursdays).</p>
-</section>
-<section id="learning-outcomes" class="level2">
-<h2 class="anchored" data-anchor-id="learning-outcomes">Learning Outcomes</h2>
-<ul>
-<li>Compare high-throughput sequencing approaches;</li>
-<li>Evaluate genomics methods sections in the primary literature;</li>
-<li>Apply basic tools and techniques from computational biology;</li>
-<li>Analyze empirical datasets with genomics softwate;</li>
-<li>Create scripts for custom data analysis tasks.</li>
-</ul>
-</section>
-<section id="grading" class="level2">
-<h2 class="anchored" data-anchor-id="grading">Grading</h2>
-<p>Your grade will be calculated as the fraction of points earned out of a total of 200. 120 points will come from completing lab assignments (10 points each; turned in the following class period as homework), 60 will come from posting comments or questions in Canvas discussion threads on assigned reading (5 points each; engagement with 12/14 papers needed), and 20 points will come from participation (based on attendance, leading at least one paper discussion and participating in the classroom, and completing the assessment).</p>
-</section>
-<section id="resources" class="level2">
-<h2 class="anchored" data-anchor-id="resources">Resources</h2>
-<p>I assume a solid grasp of basic genetics and evolution. If you consider yourself rusty in these areas, I recommend reviewing <a href="https://elinck.org/popgen_congen_notes/">the lecture notes from my Conservation Genetics course (BIOB480 / BIOE548)</a>. I take for granted that you will have computer skills typical of a first-year graduate student in the middle of the third decade of the 21st century. This means: proficiency with what Gotelli <a href="https://gotellilab.github.io/Bio381/Lectures/Introduction.html">calls the “unholy trinity”</a> of M.S. Word, Excel and Powerpoint; a knowledge of basic computing hardware and operating systems; a knowledge of where to find things on your computer; and some background with scientific programming, even if shallow.</p>
-<p>Throughout the semester, you will likely find yourself resorting to Google, ChatGPT, and other resources to help run software and troubleshoot error messages. The following cheat sheets, tutorials and courses may also be of interest:</p>
-<ul>
-<li><a href="https://education.github.com/git-cheat-sheet-education.pdf">Official GitHub Cheatsheet</a><br>
-</li>
-<li><a href="https://mukulrathi.com/git-beginner-cheatsheet/">Git Beginner Cheatsheet</a></li>
-<li><a href="chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://adibro.github.io/Data-Science-Resources/Cheat-Sheets/CL-Git/Command-Line_Cheat-Sheet.pdf">Command Line Cheatsheet #1</a></li>
-<li><a href="https://www.git-tower.com/blog/command-line-cheat-sheet">Command Line Cheatsheet #2</a></li>
-<li><a href="https://swcarpentry.github.io/shell-novice/">Software Carpentry: The Unix Shell</a></li>
-<li><a href="https://swcarpentry.github.io/python-novice-inflammation/">Software Carpentry: Programming with Python</a></li>
-<li><a href="https://swcarpentry.github.io/r-novice-gapminder/">Software Carpentry: R for Reproducible Scientfic Analysis</a></li>
-<li><a href="https://carpentries-incubator.github.io/snakemake-novice-bioinformatics/">Software Carpentry: Snakemake for Bioinformatics</a></li>
-<li><a href="https://carpentries-incubator.github.io/introduction-to-conda-for-data-scientists/01-getting-started-with-conda/index.html">The Caprentries Incubator: Getting Started with Mamba</a><br>
-</li>
-<li><a href="https://www.hpc-carpentry.org/hpc-shell/setup.html">HPC Carpentry</a><br>
-</li>
-<li><a href="https://www.mrc-lmb.cam.ac.uk/scicomp-new/biologists-guide-to-computing-stable/index.html">The Biologists’ Guide to Computing</a></li>
-</ul>
-</section>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">Schedule</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Week</th>
-<th>Topic</th>
-<th>Assignments</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1/12 - 1/16</td>
-<td>What is Genomics?</td>
-<td><ul>
-<li><a href="./assessment.html"><strong>Preliminary Assessment</strong></a></li>
-<li><a href="https://doi.org/10.1111/mec.15720">Hohenlohe et al.&nbsp;2020</a> <a href="papers/hohenlohe_et_al_2020.pdf">(<strong>pdf</strong>)</a></li>
-<li><a href="https://felsenst.github.io/rants.html">Felsenstein rant #1</a></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>1/19 - 1/23</td>
-<td>Markdown &amp; the Command Line</td>
-<td><ul>
-<li><a href="./cli.html"><strong>Markdown &amp; Command Line Basics (HW1)</strong></a></li>
-<li><a href="https://doi.org/10.1371/journal.pcbi.1003285">Sandve et al.&nbsp;2013</a> <a href="papers/sandve_et_al_2013.pdf">(<strong>pdf</strong>)</a></li>
-<li><a href="https://doi.org/10.1371/journal.pcbi.1008645">Brandies &amp; Hogg 2021</a> <a href="papers/brandies_hogg_2021.pdf">(<strong>pdf</strong>)</a></li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>1/26 - 1/30</td>
-<td>Version Control with Git &amp; Github</td>
-<td><ul>
-<li><a href="./git.html"><strong>Git &amp; GitHub Basics (HW2)</strong></a></li>
-<li><a href="https://doi.org/10.1371/journal.pcbi.1004668">Blischak et al.&nbsp;2016</a> <a href="papers/bilschak_et_al_2016.pdf">(<strong>pdf</strong>)</a></li>
-<li><a href="https://doi.org/10.1111/2041-210X.14108">Braga et al.&nbsp;2023</a> <a href="papers/braga_et_al_2023.pdf">(<strong>pdf</strong>)</a></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>2/2 - 2/6</td>
-<td>Computing Clusters</td>
-<td><ul>
-<li><a href="./hpc.html"><strong>Introduction to Tempest (HW3)</strong></a></li>
-<li><a href="https://doi.org/10.1371/journal.pcbi.1009207">Alnasir 2021</a> <a href="papers/alnasir_2021.pdf">(<strong>pdf</strong>)</a></li>
-<li><a href="https://www.montana.edu/uit/rci/tempest/">Tempest Documentation</a></li>
-<li><a href="https://www.montana.edu/uit/rci/globus/">Globus Documentation</a></li>
-<li><a href="https://www.montana.edu/uit/computing/desktop/vpn/">MSU VPN Documentation</a></li>
-</ul></td>
-</tr>
-<tr class="odd">
-<td>2/9 - 2/13</td>
-<td>Sequencing Strategies and Short Read Quality Control</td>
-<td><ul>
-<li><a href="./reads.html">Understanding &amp; Filtering .<code>fastq</code> files</a></li>
-<li><a href="https://www.youtube.com/watch?v=EDVKxSNdSic">Illumina Sequencing-by-Synthesis Video</a></li>
-<li><a href="https://doi.org/10.1111%2Fmec.14264">Fuentes-Pardo &amp; Ruzzante 2017</a> <a href="papers/fuentes-pardo_2017.pdf">(<strong>pdf</strong>)</a></li>
-<li><a href="https://doi.org/10.1642/AUK-15-51.1">Toews et al.&nbsp;2016 (optional)</a> <a href="papers/toews_et_al_2016.pdf">(<strong>pdf</strong>)</a></li>
-</ul></td>
-</tr>
-<tr class="even">
-<td>2/16 - 2/20</td>
-<td>eDNA and Metabarcoding</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3/2 - 3/6</td>
-<td>Pipelines and Genome Assembly</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>3/9 - 3/13</td>
-<td>Variant Calling and Filtering</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3/16 - 3/20</td>
-<td>Spring Break</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>3/23 - 3/27</td>
-<td>Kinship and Inbreeding</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>3/30 - 4/3</td>
-<td>Genetic Diversity and Population Structure</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4/6 - 4/10</td>
-<td>Introgression and Hybridization</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>4/13 - 4/17</td>
-<td>Phylogenetics and Conservation Units</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>4/20 - 4/24</td>
-<td>Simulations and Demographic History</td>
-<td></td>
-</tr>
-<tr class="odd">
-<td>4/27 - 5/1</td>
-<td>Detecting Natural Selection</td>
-<td></td>
-</tr>
-<tr class="even">
-<td>5/4 - 5/8</td>
-<td>Finals Week</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="drop-add-policy" class="level2">
-<h2 class="anchored" data-anchor-id="drop-add-policy">Drop / Add Policy</h2>
-<p>MSU’s registration processes can be found on the Registrar’s website. January 27th is the last day to drop online; February 3rd is the last day to drop without a ‘W’ on your transcript; April 15th is the last day to drop with a ‘W’ on your transcript.</p>
-</section>
-<section id="generative-ai" class="level2">
-<h2 class="anchored" data-anchor-id="generative-ai">Generative AI</h2>
-<p>Generative AI tools are permitted to help debug code; they are <em>not</em> permitted as a shortcut to learning functions or commands from software documentation, and <em>especially not</em> permitted for summarizing reading assignments, where the point of the exercise is to become comfortable interpreting the technical genomics literature. I will not spend my time actively policing their use, but if detected, I will consider it academic misconduct.</p>
-</section>
-<section id="attendance-policy" class="level2">
-<h2 class="anchored" data-anchor-id="attendance-policy">Attendance Policy</h2>
-<p>Please do not come to campus if you are sick! I trust you will only miss class when absolutely necessary, and do not need extensive explanations for absences. However, please notify me as soon as practical, so that we can figure appropriate accommodations.</p>
-</section>
-<section id="inclusivity-statement" class="level2">
-<h2 class="anchored" data-anchor-id="inclusivity-statement">Inclusivity Statement</h2>
-<p>I support an inclusive learning environment where diversity and individual differences are understood, respected, appreciated, and recognized as a source of strength. We expect that students, faculty, administrators and staff at MSU will respect differences and demonstrate diligence in understanding how other peoples’ perspectives, behaviors, and worldviews may be different from their own.</p>
-</section>
-<section id="syllabus-language-for-students-with-disabilities" class="level2">
-<h2 class="anchored" data-anchor-id="syllabus-language-for-students-with-disabilities">Syllabus Language for Students with Disabilities</h2>
-<p>If you are a student with a disability and wish to use your approved accommodations for this course, please contact me during my office hours to discuss. Please have your Accommodation Notification or Blue Card available for verification of accommodations. Accommodations are approved through the Office of Disability Services located in SUB 174. Please see Disability Services for more information.</p>
+<section id="understanding-.fastq-data-and-short-read-quality-control" class="level1">
+<h1>Understanding <code>.fastq</code> Data and Short Read Quality Control</h1>
 
 
 </section>
