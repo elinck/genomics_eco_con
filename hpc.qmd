@@ -16,13 +16,17 @@ Tempest is far more powerful than most of us will ever need. Yet it is still fin
 
 ## Logging in
 
-One of the many perks of Tempest is its web-based graphical user interface (GUI), which provides a familiar point-and-click environment to run programs like RStudio or Jupyter Notebooks. I am sorry to say that we will be completely ignoring Tempest Web in favor of its command-line-based version. This is not simply my rigid aesthetic preference. All or nearly all of the programs we will run are command-line only, and so navigating the HPC the old-fashioned way is a prerequisite to competence. We start by learning how to log onto the HPC via `ssh` (something known as a secure shell protocol). First, however, you'll need to ensure you are connected to [MSU's VPN](https://www.montana.edu/uit/computing/desktop/vpn/). Hopefully you had time to install this before class and give it a test run---clicking "Connect" will prompt login via NetID, followed by required two-factor authentication (2FA). Go ahead and connect to the VPN now. Assuming you are successful, the next step is to open up your terminal and enter the following command (replacing `<net_id>` with your own Net ID, of course):
+One of the many perks of Tempest is its web-based graphical user interface (GUI), which provides a familiar point-and-click environment to run programs like RStudio or Jupyter Notebooks. I am sorry to say that we will be completely ignoring Tempest Web in favor of its command-line-based version. This is not simply my rigid aesthetic preference. All or nearly all of the programs we will run are command-line only, and so navigating the HPC the old-fashioned way is a prerequisite to competence. We start by learning how to log onto the HPC via `ssh` (something known as a secure shell protocol). First, however, you'll need to ensure you are connected to [MSU's VPN](https://www.montana.edu/uit/computing/desktop/vpn/). Hopefully you had time to install this before class and give it a test run---clicking "Connect" will prompt login via NetID, followed by required two-factor authentication (2FA). Go ahead and connect to the VPN now. 
+
+Next, you'll need to [follow RCI's instructions](https://www.montana.edu/uit/rci/tempest/getting-started-terminal/setting-up-ssh-key/index.html) for how to set up an `ssh` key using the command line and Tempest Web interface, itself only accesible via VPN or MSU secure. (Note that while the tutorial indicates you should paste your key in the `authorized_keys` file, some students have only had success once they *also* pasted it in the `id_rsa` file.)  
+
+Once you've done so and closed your browser window, the next step is to open up your terminal and enter the following command (replacing `<net_id>` with your own Net ID, of course):
 
 ```bash
 ssh <net_id>@tempest-login.msu.montana.edu
 ```
 
-Having done so, you should see your terminal interface change to reflect the following new file system:
+Assuming you successfulyl added your `ssh` key to the cluster, you should see your terminal interface change to reflect the following new file system:
 
 ```bash
 [<net_id>@tempest-login ~]$
@@ -93,7 +97,7 @@ echo $PATH
 Though it can facilitate multiple workflows, `Mamba` is arguably best used by creating named environments containing particular versions of software that can be loaded and unloaded as needed. To demonstrate its utility, we'll work with a simple, efficient commandline tool called [`Seqtk`](https://github.com/lh3/seqtk). `Seqtk` is useful for converting sequence data between common formats, reporting summary statistics, merging files, and other basic operations. We will install `Seqtk` in its own environment, which we will create and give a unique name ("demo): 
 
 ```bash
-mamba env create --name demo -c bioconda seqtk
+mamba create -n demo -c conda-forge -c bioconda seqtk
 ```
 
 Here, `create` initializes a new environment, the `--name` argument sets the name of the evnironment, `-c` tells the program to look for the software on an archive called [Bioconda](https://bioconda.github.io/), and `seqtk` is the name of the software. If you wished to install multiple software packages into the `demo` environment, you could add additional names after `seqtk` as needed. However, you would first need to confirm they are available via `Conda` / `Mamba`---something easily done by googling "Mamba <software>", which brings up documentation [like this](https://bioconda.github.io/recipes/seqtk/README.html), replete with command line "recipes" for installation.
