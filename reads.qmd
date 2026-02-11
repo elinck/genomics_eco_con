@@ -113,9 +113,9 @@ You should note two things. First, the headers are identical other than the numb
 
 ## Filtering Reads with `fastp`
 
-We will now learn the basics of the traditional first step of preparing sequence data for analysis: trimming adapter sequences and filtering reads based on quality and levels of missing data. Recall from your reading last class that preparing genomic libraries typically involves appending adapter sequences to each sample. These contain [oligonucleotides](https://en.wikipedia.org/wiki/Oligonucleotide) used in sequencing reactions, as well as unique indices that permit data to be disambiguated (i.e., matched to known samples). Though relatively short, including adapter sequences in downstream processing steps could cause numerous errors, and thus must be removed prior to alignment. Additionally, low but pervasive sequencing errors will result in variable quality among reads. Ensuring reliable data necessarily involves filtering out reads with the highest likelihood of errors. 
+We will now learn the basics of the traditional first step of preparing sequence data for analysis: trimming adapter sequences and filtering reads based on quality and levels of missing data. Recall from your reading last class that preparing genomic libraries typically involves appending adapter sequences to each sample. These contain [oligonucleotides](https://en.wikipedia.org/wiki/Oligonucleotide) used in sequencing reactions, as well as unique indices that permit data to be disambiguated (i.e., matched to known samples). Though relatively short, including adapter sequences in downstream processing steps could cause numerous errors, and thus must be removed prior to alignment. Additionally, rare but pervasive sequencing errors will result in variable quality among reads. Ensuring reliable data necessarily involves filtering out reads with the highest likelihood of errors. 
 
-To achieve these goals, we will use a clever, simple tool called `fastp`. Please briefly read or skim [the documentation here before continuing.](https://github.com/OpenGene/fastp) before proceeding. Some of it will likely be above your head, but you will hopefully recognize a simple command-line syntax from using `seqtk` the week prior: the name of the program, the name of a particular task it performs, and parameters. 
+To achieve these goals, we will use a clever, simple tool called `fastp`. Please briefly read or skim [the documentation here](https://github.com/OpenGene/fastp) before proceeding. Some of it will likely be above your head, but you will hopefully recognize a simple command-line syntax from using `seqtk` the week prior: the name of the program, the name of a particular task it performs, and parameters. 
 
 As with last week and the weeks to come, we will begin by setting up a `mamba` environment for `fastp`. If it's your first time logging on today, you'll need to load the `mamba` module and make it callable:
 
@@ -134,13 +134,13 @@ dependencies:
   - fastp
 ```
 
-Create a new environment with the command `mamba env create -f fastp.yaml`. Activate the environment, and type `fastp`. You should see a suite of commands matching those in the documentation. Discussing how to a highly informed decision about which parameter settings to use is beyond our purview (and realistically beyond the purview of most `fastp` users). Luckily, the program's default parameters are sensible for the majority of cases: it automatically detects and removes commonly used adapters, trims error-prone bases from both ends until a quality threshhold is reached, ditches reads below 15 bp in length (from super-short DNA fragments), ditches reads where 40% or more bases are low quality, and trims repetitive sequences from ends (if present). Quality filtering is based on **Phred scores**, which are a transformation of error probabilities at each base: 
+Create a new environment with the command `mamba env create -f fastp.yaml`. Activate the environment, and type `fastp`. You should see a suite of commands matching those in the documentation. Discussing how to make a highly informed decision about which parameter settings to use is beyond our purview (and realistically beyond the purview of most `fastp` users). Luckily, however, the program's default parameters are sensible for the majority of cases: it automatically detects and removes commonly used adapters, trims error-prone bases from both ends until a quality threshhold is reached, ditches reads below 15 bp in length (from super-short DNA fragments), ditches reads where 40% or more bases are low quality, and trims repetitive sequences from ends (if present). Quality filtering is based on **Phred scores**, which are a transformation of error probabilities at each base: 
 
 $$
 Q = -10log_{10}(P_{error})
 $$
 
-In other words, a Phred score of 10 (typically reported as Q10) means there is a 1 in 10 probability of error; Q20, a 1/100 probability; Q30, a 1/1000 probablity. But where does the probability of error come from?, I can hear you asking. The answer is numerous aspects of the sequencing process itself, such as fluorescence intensity and the overlap of different "signals" for nucleotides. For now, the important thing is that filtering by Phred scores gives you control over the error you are willing to tolerate in your data.
+In other words, a Phred score of 10 (typically reported as Q10) means there is a 1 in 10 probability of error; Q20, a 1/100 probability; Q30, a 1/1000 probablity. *But where does the probability of error come from?*, I can hear you asking. The answer is numerous aspects of the sequencing process itself, such as fluorescence intensity and the overlap of different "signals" for nucleotides. For now, the important thing is that filtering by Phred scores gives you control over the error you are willing to tolerate in your data.
 
 Other `fastp` parameters include paths for input files, output files, and reports. Very few of these need to be set explicitly, as we will see when we use the tool shortly. To do so, we will again need to schedule a job via `Slurm`. Copy the file `~/bioe-591-genomics/course-materials/scripts/fastp.sbatch` to your own directory. It should look like this: 
 
@@ -198,9 +198,9 @@ The program should finish running on most data within a few minutes. Navigate to
 Today's homework assignment has four components: 
 
 1) The main goal is to write an `sbatch` script that will run `fastp` on all samples of your focal species and summarize the output. (I realize this will involve re-trimming one sample; overwriting the files you generated above is fine.) You may do so anyway you see fit, so long as the script is robust and achieves that goal. However, you will likely use one of the following three approaches.
-  - Copy and paste your `fastp` command as many times as necessary, editing paths as necessary.
-  - Use `fastp`'s [built-in "batch processing" script](https://github.com/OpenGene/fastp?tab=readme-ov-file#batch-processing).
-  - Write a bash script that runs your `fastp` command on each file in a repository (or list of files). Using online resources to do so is fine, but I request that you add a comment to each line of code explaining what it is doing. Here is one possibility, though note that as written it will only `echo` the commands it generates, not run them: 
+   - Copy and paste your `fastp` command as many times as necessary, editing paths as necessary.
+   - Use `fastp`'s [built-in "batch processing" script](https://github.com/OpenGene/fastp?tab=readme-ov-file#batch-processing).
+   - Write a bash script that runs your `fastp` command on each file in a repository (or list of files). Using online resources to do so is encouraged, but I request that you add a comment to each line of code explaining what it is doing. Here is one possibility, though note that as written it will only `echo` the commands it generates, not run them: 
 
 ```bash
 for r1 in data/*_R1*.fastq.gz; do
@@ -216,10 +216,10 @@ done
 2) Once you have written your `sbatch` script, push it to your GitHub repository as `04_homework_<your_name>.sh`. Next, transfer the `fastp.html` report from the cluster to your computer, and rename it in the format `04_fastp_<your_name>.html`. Push this to GitHub as well. 
 
 3) Open `04_fastp_<your_name>.html` in your web browser. In a separate Markdown file named `04_interpretation_<your_name>.md`, answer the following brief questions:
-  - What percentage of reads passed filtering?
-  - What percentage of reads were low quality?
-  - What is the estimated insert size, and what percentage of your reads is it based on?
-  - At approximately what read position does mean quality drop below Q30 on read2 after filtering? How does this differ from the position at which mean quality drops below Q30 on read2 *before* filtering?
+   - What percentage of reads passed filtering?
+   - What percentage of reads were low quality?
+   - What is the estimated insert size, and what percentage of your reads is it based on?
+   - At approximately what read position does mean quality drop below Q30 on read2 after filtering? How does this differ from the position at which mean quality drops below Q30 on read2 *before* filtering?
 
 4) Assess the structure of your GitHub repository, organize as needed, and edit your `README.md` to explain what files and directories contain and where to find them. You now have `.sbatch` scripts, an `.html` document, and a `.md` file with answers to the questions above. These could be arranged in subdirectories, corresponding to the week they were assigned, separated into `scripts/`, `markdown/` and `reports/` subdirectories, or sorted in some other way. What you do is up to you, but make sure it is clear and well documented. (And don't forget to add, commit, and push your changes!)
 
