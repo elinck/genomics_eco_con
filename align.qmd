@@ -130,7 +130,7 @@ samtools tview sample.sorted.bam hemoglobin_references.fasta
 Use the arrow keys to navigate this visualization, typing `q` to exit as needed. The top line shows the reference sequence; matching characters on the forward strand are shown as periods (`.`), while matching characters on the reverse strand are shown as commas (`,`). Nucleotides are only shown where one or more reads differ from the reference sequence; gaps in the alignment (or where reads were broken to improve their mapping) are shown as spaces. Hopefully you find this as satisfying as I do. The `tview` command has additional options, which you can [read about in the documentation](http://www.htslib.org/doc/samtools-tview.html); leaving out a path to a reference sequence will show all nucleotides, for example, while the `-p` flag will open the alignment at the specified position. 
 
 
-![*Examining alignments with `samtools tview`*](images/tview.png){width=60%}
+![*Examining alignments with `samtools tview`*](images/tview.png)
 
 
 Lastly, we should examine mapping statistics. Both of the following commands are O.K. to run on the log-in node for this minimal dataset, but would be more safely put in a `SLURM` script / `.sbatch` file: 
