@@ -84,7 +84,8 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 | 2/16 - 2/20 | Reference Genomes & Alignment              | - [**Aligning Reads to References (HW5)**](align.qmd)                                                               |
 |             |                                            | - [Shafer et al. 2017](https://doi.org/10.1111%2F2041-210X.12700) [(**pdf**)](papers/shafer_et_al_2017.pdf)         |            
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 2/23 - 2/27 | Variant Calling                            | - Variant Calling from Alignments (HW6)                                                                             |                        |             |                                            | - [Zimmerman et al. 2020](https://doi.org/10.1186/s12864-020-06783-9) [(**pdf**)](papers/zimmerman_et_al_2020.pdf)  |            
+| 2/23 - 2/27 | Variant Calling                            | - Variant Calling from Alignments (HW6)                                                                             |
+|             |                                            | - [Zimmerman et al. 2020](https://doi.org/10.1186/s12864-020-06783-9) [(**pdf**)](papers/zimmerman_et_al_2020.pdf)  |
 |             |                                            | - [Morin et al. 2004 (optional)](https://doi.org/10.1016/j.tree.2004.01.009) [(**pdf**)](papers/morin_2004.pdf)     |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
 | 3/2 - 3/6   | Variant Filtering                          |                                                                                                                     |
