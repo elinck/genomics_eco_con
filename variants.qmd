@@ -1,0 +1,135 @@
+---
+format: html
+---
+
+## Variant Calling
+
+Following alignment, the next step in a bioinformatics pipeline is *variant calling*. Variant calling takes `.sam` or `.bam` data---a map of reads against reference sequences---and evaluates depth and quality scores to decide on the identity of the nucleotide present at each sequenced position in a sample. These nucleotides are then flagged as variants if they differ from the reference sequence. Most variants in your data will be SNPs (single nucleotide polymorphisms); however, insertions and deletions of sequences are also detected. 
+
+We will perform variant calling using [`bcftools`](https://samtools.github.io/bcftools/), a package in the `samtools` family of bioinformatics software. First, create a new `Mamba` environment named `bcftools`: 
+
+```bash
+name: bcftools
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - bcftools>=1.17
+  - htslib>=1.17
+  - samtools>=1.17
+```
+```bash
+mamba env create -f bcftools.yaml
+```
+
+With `Mamba` loaded (`module load Mamba/23.11.0-0; eval "$(conda shell.bash hook)`), activate this new environment (`conda activate bcftools`). The two commands we will use are `bcftools mpileup` and `bcftools call`. Read the usage information; you should also visit the [manual](https://samtools.github.io/bcftools/bcftools.html) and [documentation](https://samtools.github.io/bcftools/howtos/index.html) on the program's website. Note that these tools are meant to be used in tandem by piping the output from `mpileup` directly to `call`. Doing so improves efficiency by avoiding the need to write a new file; however, we will first run `mpileup` seaparately for pedagogical reasons. To do so, prepare a new `.sbatch` script that loads `Mamba`, makes it callable, loads your `bcftools` environment, and runs the following command, substituting `sample.sorted.sam` for a sorted `.sam` file from a single individual of your focal species:
+
+```bash
+bcftools mpileup -f hemoglobin_references.fasta sample.sorted.bam | head -n 50 > mpileup_output.txt
+```
+
+This job should run quickly, in part because we are truncating the fill output by piping it directly to `head -n 50`, i.e. only writing the first 50 lines of the data stream. Open the file `mpileup_output.txt`. Following many rows of header information beginning with two hashtags (`##`), you should see something similar to the following: 
+
+```bash
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	sample.sorted.bam
+HBAA_Sicalis_luteiventris	2	.	G	<*>	0	.	DP=7;I16=7,0,0,0,251,9189,0,0,420,25200,0,0,140,3350,0,0;QS=1,0;MQ0F=0	PL:AD	0,21,156:7,0
+HBAA_Sicalis_luteiventris	3	.	G	<*>	0	.	DP=7;I16=7,0,0,0,274,10798,0,0,420,25200,0,0,142,3382,0,0;QS=1,0;MQ0F=0	PL:AD	0,21,166:7,0
+HBAA_Sicalis_luteiventris	4	.	C	<*>	0	.	DP=7;I16=7,0,0,0,279,11143,0,0,420,25200,0,0,144,3418,0,0;QS=1,0;MQ0F=0	PL:AD	0,21,168:7,0
+HBAA_Sicalis_luteiventris	5	.	T	<*>	0	.	DP=7;I16=7,0,0,0,275,10831,0,0,420,25200,0,0,146,3458,0,0;QS=1,0;MQ0F=0	PL:AD	0,21,166:7,0
+HBAA_Sicalis_luteiventris	6	.	C	<*>	0	.	DP=7;I16=7,0,0,0,269,10503,0,0,420,25200,0,0,148,3502,0,0;QS=1,0;MQ0F=0	PL:AD	0,21,165:7,0
+```
+
+Let's slowly break this down. The first row (beginning with `#`) provides column names. `CHROM` is the specific sequence ( or contig / chromosome / scaffold) from your `.fasta`-formatted reference that the base detailed in a given row of the file is found on. `POS` is its position on the reference sequence; `ID` is an identifier not relevant to de novo alignment and assembly (and thus blank for our data); `REF` is the nucleotide at that position in the reference sequence, `ALT` is a column for any alternate allele detected at that position (currently blank, because variant calling has yet to occur); and `QUAL` is a quality score for a variant call (also blank, for the same reasons). The column `FILTER` is a placeholder for subsequent data cleaning---the character `.` indicates no filtering has occurred---while `INFO` includes information of depth of coverage (`DP`) and other internal statistics not worth our time. 
+
+The final two columns (under `FORMAT` and `sample.sorted.bam`, your sample ID) are where the magic happens, though this is slightly less evident in our intermediate output than the final `.vcf`. The `FORMAT` string `PL:AD` indicates that the data that follows corresponds to the likelihoods of the sample's genotype being homozygous for the reference allele, heterozygous, or homozygous for the alternate allele (`PL:`) followed by the depth of alleles (`:AD`). In this case, the likelihoods for the genotype of the individual at this position are 0,21,and 156. These scores indicate the probability of each of the genotypes listed above given your data; lower indicates a higher probability. The corresponding allele depths are 7 and 0---i.e., there were 7 reads containing the reference allele and none containing the alternate allele. 
+
+What is missing from this file is a decisive *call* for the genotype at this position in this sample (or the identity of an alternate allele at all). To achieve this, we will return to recommended usage of `mpileup`, piping output directly to `call` and creating a file in variant call format (`.vcf`). Create a new `.sbatch` script (as usual, naming it something distinctive is helpful). This can identical to the one used previously other than swapping out `head -n 50 > mpileup_output.txt` for `bcftools call -mv -Ov -o sample.vcf`, e.g.: 
+
+```bash
+bcftools mpileup -f hemoglobin_references.fasta sample.sorted.bam | bcftools call -mv -Ov -o sample.vcf
+```
+
+Here, the combined argument `-mv` indicates `bcftools` should use its multiallelic caller (`-m`; i.e., not only permit biallelic SNPs) and output variants only (`-v`), not all sites. The flags `-o` and `-Ov` tell `bcftools` to write the command's output to file and format that file as a `.vcf`, respectively. 
+
+Run your script. Though it will take longer than piping output to `head`, it should still finish within a few minutes. View the output using `head -n 50 sample.vcf` or similar. The file should look very familiar---in fact, it will be nearly identical to the output of `mpileup`. After another long header block (`##`), you will again find data on individual sites organized by rows: 
+
+```bash
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	sample.sorted.bam
+HBAA_Sicalis_luteiventris	18	.	A	G	140.416	.	DP=7;VDB=0.00064207;SGB=-0.636426;MQ0F=0;AC=2;AN=2;DP4=0,0,7,0;MQ=60	GT:PL:AD	1/1:170,21,0:0,7
+HBAA_Sicalis_luteiventris	37	.	A	G	172.416	.	DP=10;VDB=0.00667786;SGB=-0.662043;MQ0F=0;AC=2;AN=2;DP4=0,0,9,0;MQ=60	GT:PL:AD	1/1:202,27,0:0,9
+HBAA_Sicalis_luteiventris	118	.	G	A	225.417	.	DP=14;VDB=0.553359;SGB=-0.670168;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,2;MQ=60	GT:PL:AD	1/1:255,30,0:0,10
+HBAA_Sicalis_luteiventris	119	.	C	G	225.417	.	DP=14;VDB=0.556779;SGB=-0.670168;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,2;MQ=60	GT:PL:AD	1/1:255,30,0:0,10
+HBAA_Sicalis_luteiventris	123	.	C	T	225.417	.	DP=14;VDB=0.489788;SGB=-0.680642;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,8,4;MQ=60	GT:PL:AD	1/1:255,36,0:0,12
+HBAA_Sicalis_luteiventris	189	.	T	A	225.417	.	DP=25;VDB=0.199618;SGB=-0.692352;MQSBZ=0;MQ0F=0;AC=2;AN=2;DP4=0,0,16,5;MQ=60	GT:PL:AD	1/1:255,63,0:0,21
+HBAA_Sicalis_luteiventris	216	.	CCT	C	228.39	.	INDEL;IDV=29;IMF=0.90625;DP=32;VDB=0.151207;SGB=-0.693079;RPBZ=-1.6492;MQBZ=0;MQSBZ=0;BQBZ=-1.70201;SCBZ=-2.21152;MQ0F=0;AC=2;AN=2;DP4=2,0,21,8;MQ=60	GT:PL:AD	1/1:255,67,0:2,29
+HBAA_Sicalis_luteiventris	222	.	T	C	228.349	.	DP=32;VDB=0.222814;SGB=-0.692914;RPBZ=1.66724;MQBZ=5;MQSBZ=-1.82574;BQBZ=1.45879;SCBZ=-2.65344;MQ0F=0;AC=2;AN=2;DP4=0,1,20,5;MQ=59	GT:PL:AD	1/1:255,63,0:1,25
+```
+
+Despite its similarity to `mpileup`'s output, there are important differences. First, notice that the `POS` column does not include every site, jumping to 18 and then 37, 118, etc. This is due to the `-v` argument detailed above---only sites that are *variant* in the sample have been exported. Next, notice that the `ALT` column has been filled, indicating the nucleotide that varies from the reference sequence. `QUAL` now has a quality score, reflecting our confidence in the call at this position. `FILTER` is again blank, while `INFO` includes the same data on read depth (`DP`), following by a suite of other useful criteria: variant distance bias (`VDB`), a metric that evaluates whether variants are clustered together near the ends of reads where they are more likely to be alignment errors; `SGB` is a metric of strand bias (not relevant to us as this point); `AC` is the count of alternate alleles at that position for the sample (i.e., it can have a maximum value of 2); `AN` is the total number of alleles at that position (meaning $f(\text{alt. allele})=\frac{AC}{AN}$); and `MQ0F` is the fraction of reads with a mapping quality of 0. The field `DP4` gives the number of 1) forward-mapping reference alleles, 2) reverse-mapping reference alleles, 3) forward alternate alleles, and 4) reverse alternate alleles. (This a metric relavant to understanding "strand bias", which we will ignore.) 
+
+Last in the `INFO` row---but importantly---`MQ` is mapping quality, which is calculated as: 
+
+$$
+MQ=-10log_{10}(P(\text{read is correctly mapped}))
+$$
+
+A score of 60 thus means there is only a 1 in 1,000,000 chance it is misplaced (`-10*log10(1e-6)` in `R`); a score of 20, commonly used as a cutoff for unreliable variants, means there is a 1/100 chance it is misplaced (`-10*log10(1e-6)`). (These values are what is known as a [Phred quality score](https://en.wikipedia.org/wiki/Phred_quality_score), which you may recognize from trimming and filtering reads.)
+
+The final columns are again `FORMAT` and your sample's filename. You will notice that under `FORMAT` the string `PL:AD` has become `GT:PL:AD`. `GT` is, unsurprisingly, genotype; this indicates a genotype call has been made. The sample ID column begins with this value: 0/0 if the sample is homozygous for the reference allele (which we have prevented from being included in this file using the `-v` flag), 0/1 if it is heterozygous, and 1/1 if it is homozygous for the alternate allele. The remaining fields---likelihoods and allelic depth---are as described above. 
+
+All SNPs in your `.vcf` will follow this basic format. However, not all variants are SNPs. Position 216 of the example I have provided is instead a *deletion* mutation: where the reference sequence has three nucleotides (`CCT`), the sample has only one (`C`). As a result, the `INFO` field begins with the string `INDEL` (short for "insertion or deletion"), and includes additional metrics associated with the confidence of the call (e.g., `IDV` is the number of reads that supported the indel). Indels are often filtered out to simplify analyses, something we will do in classes to come; for now, it is sufficient to know they are a different category of variant that pose particular challenges in sequence alignment and genotyping. 
+
+I am a firm believer in the value of knowing your way around a `.vcf`. Of course, in practice, you are rarely going to spend the time examining one line-by-line. Instead, you are likely to want some way to summarize the info. The command `bcftools stats` does just such a thing, albeit at unwieldy length. For now, we can pipe the command to `grep` (a `bash` command that searches for text patterns) to isolate rows assocated with the high-level stats (this can be run on the log-in node):
+
+```bash
+bcftools stats sample.vcf | grep ^SN
+```
+
+This will produce a data summary for your file, which is largely self-explanatory (note here that "records" is the combined number of all variants):
+
+```bash
+SN	0	number of samples:	1
+SN	0	number of records:	387
+SN	0	number of no-ALTs:	0
+SN	0	number of SNPs:	368
+SN	0	number of MNPs:	0
+SN	0	number of indels:	19
+SN	0	number of others:	0
+SN	0	number of multiallelic sites:	1
+SN	0	number of multiallelic SNP sites:	1
+```
+
+Even more efficient is this one-liner to count the number of variants in your `.vcf`...
+
+```bash
+bcftools view -H sample.vcf | wc -l
+```
+
+...or SNPs alone:
+
+```bash
+bcftools view -H -v snps cohort.vcf | wc -l
+```
+
+(You should see how these could be easily paired with a `for` loop and / or wildcards to generate data on a large number of files.)
+
+At this point you have identified variants relative to a reference genome for a single sample of your focal species, something driven home by the first line of the output above. But a single sample does not get you very far if you are interested in population genetics! We therefore need to produce a *multisample* `.vcf` file, using all the `.sam`/`.bam` alignments you generated last week. Luckily, doing so introduces no new concepts or commands, and will be left for your homework. 
+
+:::{.callout-note title="**Homework 6**"}
+The command used to generate a multisample `.vcf` can take several forms. The documentation for `bcftools mpileup` prompts you to enter a list of each `.bam` file you wish to include following your arguments:
+
+```bash 
+Usage: bcftools mpileup [options] in1.bam [in2.bam [...]]
+```
+
+(Recall that you will have to pipe this to `call`, e.g. `bcftools mpileup -f hemoglobin_references.fasta sample.sorted.bam sample2.sorted.bam | bcftools call -mv -Ov -o multi_sample.vcf`)
+
+A second option is to replace specific `.bam` filenames with a wildcard that will capture all samples---`*sorted.bam`, for example. This is convenient but potentially riskier; if you choose to do so, it is good to first make sure the wildcard produces the list of files you expect it to using a less-consequential command like `ls *.bam`. As usual, any script that gets the job done safely is sufficient. 
+
+For homework, then, please complete the following tasks: 
+
+1) Successfully generate a multisample `.vcf` including all individuals of your focal species. Note that you may need to generate `.bam` files from your `.sam` alignments if you did not do so last week (`samtools view -b sample.sam > sample.bam` in an environment where `samtools` is accesible). 
+2) Generate a text file with the output from `bcftools stats` for your multisample `.vcf`, checking to make sure it includes the right number of individuals. 
+3) Add, commit, and push this summary and the `.sbatch` script used for multisample variant calling to your GitHub repository, making the usual changes to `README.md` and directory organization as needed.
+:::
+

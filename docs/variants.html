@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>variants – BIOE591: Genomics for Ecology &amp; Conservation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIOE591: Genomics for Ecology &amp; Conservation</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="variant-calling" class="level2">
+<h2 class="anchored" data-anchor-id="variant-calling">Variant Calling</h2>
+<p>Following alignment, the next step in a bioinformatics pipeline is <em>variant calling</em>. Variant calling takes <code>.sam</code> or <code>.bam</code> data—a map of reads against reference sequences—and evaluates depth and quality scores to decide on the identity of the nucleotide present at each sequenced position in a sample. These nucleotides are then flagged as variants if they differ from the reference sequence. Most variants in your data will be SNPs (single nucleotide polymorphisms); however, insertions and deletions of sequences are also detected.</p>
+<p>We will perform variant calling using <a href="https://samtools.github.io/bcftools/"><code>bcftools</code></a>, a package in the <code>samtools</code> family of bioinformatics software. First, create a new <code>Mamba</code> environment named <code>bcftools</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> bcftools</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bcftools<span class="op">&gt;</span>=1.17</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> htslib<span class="op">&gt;</span>=1.17</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> samtools<span class="op">&gt;</span>=1.17</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> bcftools.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>With <code>Mamba</code> loaded (<code>module load Mamba/23.11.0-0; eval "$(conda shell.bash hook)</code>), activate this new environment (<code>conda activate bcftools</code>). The two commands we will use are <code>bcftools mpileup</code> and <code>bcftools call</code>. Read the usage information; you should also visit the <a href="https://samtools.github.io/bcftools/bcftools.html">manual</a> and <a href="https://samtools.github.io/bcftools/howtos/index.html">documentation</a> on the program’s website. Note that these tools are meant to be used in tandem by piping the output from <code>mpileup</code> directly to <code>call</code>. Doing so improves efficiency by avoiding the need to write a new file; however, we will first run <code>mpileup</code> seaparately for pedagogical reasons. To do so, prepare a new <code>.sbatch</code> script that loads <code>Mamba</code>, makes it callable, loads your <code>bcftools</code> environment, and runs the following command, substituting <code>sample.sorted.sam</code> for a sorted <code>.sam</code> file from a single individual of your focal species:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> mpileup <span class="at">-f</span> hemoglobin_references.fasta sample.sorted.bam <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 50 <span class="op">&gt;</span> mpileup_output.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This job should run quickly, in part because we are truncating the fill output by piping it directly to <code>head -n 50</code>, i.e.&nbsp;only writing the first 50 lines of the data stream. Open the file <code>mpileup_output.txt</code>. Following many rows of header information beginning with two hashtags (<code>##</code>), you should see something similar to the following:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CHROM  POS ID  REF ALT QUAL    FILTER  INFO    FORMAT  sample.sorted.bam</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   2   .   G   <span class="op">&lt;</span><span class="pp">*</span><span class="op">&gt;</span> 0   .   DP=7<span class="kw">;</span><span class="va">I16</span><span class="op">=</span>7,0,0,0,251,9189,0,0,420,25200,0,0,140,3350,0,0<span class="kw">;</span><span class="va">QS</span><span class="op">=</span>1,0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0  <span class="ex">PL:AD</span>   0,21,156:7,0</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   3   .   G   <span class="op">&lt;</span><span class="pp">*</span><span class="op">&gt;</span> 0   .   DP=7<span class="kw">;</span><span class="va">I16</span><span class="op">=</span>7,0,0,0,274,10798,0,0,420,25200,0,0,142,3382,0,0<span class="kw">;</span><span class="va">QS</span><span class="op">=</span>1,0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0 <span class="ex">PL:AD</span>   0,21,166:7,0</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   4   .   C   <span class="op">&lt;</span><span class="pp">*</span><span class="op">&gt;</span> 0   .   DP=7<span class="kw">;</span><span class="va">I16</span><span class="op">=</span>7,0,0,0,279,11143,0,0,420,25200,0,0,144,3418,0,0<span class="kw">;</span><span class="va">QS</span><span class="op">=</span>1,0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0 <span class="ex">PL:AD</span>   0,21,168:7,0</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   5   .   T   <span class="op">&lt;</span><span class="pp">*</span><span class="op">&gt;</span> 0   .   DP=7<span class="kw">;</span><span class="va">I16</span><span class="op">=</span>7,0,0,0,275,10831,0,0,420,25200,0,0,146,3458,0,0<span class="kw">;</span><span class="va">QS</span><span class="op">=</span>1,0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0 <span class="ex">PL:AD</span>   0,21,166:7,0</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   6   .   C   <span class="op">&lt;</span><span class="pp">*</span><span class="op">&gt;</span> 0   .   DP=7<span class="kw">;</span><span class="va">I16</span><span class="op">=</span>7,0,0,0,269,10503,0,0,420,25200,0,0,148,3502,0,0<span class="kw">;</span><span class="va">QS</span><span class="op">=</span>1,0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0 <span class="ex">PL:AD</span>   0,21,165:7,0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Let’s slowly break this down. The first row (beginning with <code>#</code>) provides column names. <code>CHROM</code> is the specific sequence ( or contig / chromosome / scaffold) from your <code>.fasta</code>-formatted reference that the base detailed in a given row of the file is found on. <code>POS</code> is its position on the reference sequence; <code>ID</code> is an identifier not relevant to de novo alignment and assembly (and thus blank for our data); <code>REF</code> is the nucleotide at that position in the reference sequence, <code>ALT</code> is a column for any alternate allele detected at that position (currently blank, because variant calling has yet to occur); and <code>QUAL</code> is a quality score for a variant call (also blank, for the same reasons). The column <code>FILTER</code> is a placeholder for subsequent data cleaning—the character <code>.</code> indicates no filtering has occurred—while <code>INFO</code> includes information of depth of coverage (<code>DP</code>) and other internal statistics not worth our time.</p>
+<p>The final two columns (under <code>FORMAT</code> and <code>sample.sorted.bam</code>, your sample ID) are where the magic happens, though this is slightly less evident in our intermediate output than the final <code>.vcf</code>. The <code>FORMAT</code> string <code>PL:AD</code> indicates that the data that follows corresponds to the likelihoods of the sample’s genotype being homozygous for the reference allele, heterozygous, or homozygous for the alternate allele (<code>PL:</code>) followed by the depth of alleles (<code>:AD</code>). In this case, the likelihoods for the genotype of the individual at this position are 0,21,and 156. These scores indicate the probability of each of the genotypes listed above given your data; lower indicates a higher probability. The corresponding allele depths are 7 and 0—i.e., there were 7 reads containing the reference allele and none containing the alternate allele.</p>
+<p>What is missing from this file is a decisive <em>call</em> for the genotype at this position in this sample (or the identity of an alternate allele at all). To achieve this, we will return to recommended usage of <code>mpileup</code>, piping output directly to <code>call</code> and creating a file in variant call format (<code>.vcf</code>). Create a new <code>.sbatch</code> script (as usual, naming it something distinctive is helpful). This can identical to the one used previously other than swapping out <code>head -n 50 &gt; mpileup_output.txt</code> for <code>bcftools call -mv -Ov -o sample.vcf</code>, e.g.:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> mpileup <span class="at">-f</span> hemoglobin_references.fasta sample.sorted.bam <span class="kw">|</span> <span class="ex">bcftools</span> call <span class="at">-mv</span> <span class="at">-Ov</span> <span class="at">-o</span> sample.vcf</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Here, the combined argument <code>-mv</code> indicates <code>bcftools</code> should use its multiallelic caller (<code>-m</code>; i.e., not only permit biallelic SNPs) and output variants only (<code>-v</code>), not all sites. The flags <code>-o</code> and <code>-Ov</code> tell <code>bcftools</code> to write the command’s output to file and format that file as a <code>.vcf</code>, respectively.</p>
+<p>Run your script. Though it will take longer than piping output to <code>head</code>, it should still finish within a few minutes. View the output using <code>head -n 50 sample.vcf</code> or similar. The file should look very familiar—in fact, it will be nearly identical to the output of <code>mpileup</code>. After another long header block (<code>##</code>), you will again find data on individual sites organized by rows:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#CHROM  POS ID  REF ALT QUAL    FILTER  INFO    FORMAT  sample.sorted.bam</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   18  .   A   G   140.416 .   DP=7<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.00064207<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.636426<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,7,0<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60    <span class="ex">GT:PL:AD</span>    1/1:170,21,0:0,7</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   37  .   A   G   172.416 .   DP=10<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.00667786<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.662043<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,9,0<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60   <span class="ex">GT:PL:AD</span>    1/1:202,27,0:0,9</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   118 .   G   A   225.417 .   DP=14<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.553359<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.670168<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,8,2<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60 <span class="ex">GT:PL:AD</span>    1/1:255,30,0:0,10</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   119 .   C   G   225.417 .   DP=14<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.556779<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.670168<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,8,2<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60 <span class="ex">GT:PL:AD</span>    1/1:255,30,0:0,10</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   123 .   C   T   225.417 .   DP=14<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.489788<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.680642<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,8,4<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60 <span class="ex">GT:PL:AD</span>    1/1:255,36,0:0,12</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   189 .   T   A   225.417 .   DP=25<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.199618<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.692352<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,0,16,5<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60    <span class="ex">GT:PL:AD</span>    1/1:255,63,0:0,21</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   216 .   CCT C   228.39  .   INDEL<span class="kw">;</span><span class="va">IDV</span><span class="op">=</span>29<span class="kw">;</span><span class="va">IMF</span><span class="op">=</span>0.90625<span class="kw">;</span><span class="va">DP</span><span class="op">=</span>32<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.151207<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.693079<span class="kw">;</span><span class="va">RPBZ</span><span class="op">=</span>-1.6492<span class="kw">;</span><span class="va">MQBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>0<span class="kw">;</span><span class="va">BQBZ</span><span class="op">=</span>-1.70201<span class="kw">;</span><span class="va">SCBZ</span><span class="op">=</span>-2.21152<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>2,0,21,8<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>60   <span class="ex">GT:PL:AD</span>    1/1:255,67,0:2,29</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">HBAA_Sicalis_luteiventris</span>   222 .   T   C   228.349 .   DP=32<span class="kw">;</span><span class="va">VDB</span><span class="op">=</span>0.222814<span class="kw">;</span><span class="va">SGB</span><span class="op">=</span>-0.692914<span class="kw">;</span><span class="va">RPBZ</span><span class="op">=</span>1.66724<span class="kw">;</span><span class="va">MQBZ</span><span class="op">=</span>5<span class="kw">;</span><span class="va">MQSBZ</span><span class="op">=</span>-1.82574<span class="kw">;</span><span class="va">BQBZ</span><span class="op">=</span>1.45879<span class="kw">;</span><span class="va">SCBZ</span><span class="op">=</span>-2.65344<span class="kw">;</span><span class="va">MQ0F</span><span class="op">=</span>0<span class="kw">;</span><span class="va">AC</span><span class="op">=</span>2<span class="kw">;</span><span class="va">AN</span><span class="op">=</span>2<span class="kw">;</span><span class="va">DP4</span><span class="op">=</span>0,1,20,5<span class="kw">;</span><span class="va">MQ</span><span class="op">=</span>59  <span class="ex">GT:PL:AD</span>    1/1:255,63,0:1,25</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Despite its similarity to <code>mpileup</code>’s output, there are important differences. First, notice that the <code>POS</code> column does not include every site, jumping to 18 and then 37, 118, etc. This is due to the <code>-v</code> argument detailed above—only sites that are <em>variant</em> in the sample have been exported. Next, notice that the <code>ALT</code> column has been filled, indicating the nucleotide that varies from the reference sequence. <code>QUAL</code> now has a quality score, reflecting our confidence in the call at this position. <code>FILTER</code> is again blank, while <code>INFO</code> includes the same data on read depth (<code>DP</code>), following by a suite of other useful criteria: variant distance bias (<code>VDB</code>), a metric that evaluates whether variants are clustered together near the ends of reads where they are more likely to be alignment errors; <code>SGB</code> is a metric of strand bias (not relevant to us as this point); <code>AC</code> is the count of alternate alleles at that position for the sample (i.e., it can have a maximum value of 2); <code>AN</code> is the total number of alleles at that position (meaning <span class="math inline">\(f(\text{alt. allele})=\frac{AC}{AN}\)</span>); and <code>MQ0F</code> is the fraction of reads with a mapping quality of 0. The field <code>DP4</code> gives the number of 1) forward-mapping reference alleles, 2) reverse-mapping reference alleles, 3) forward alternate alleles, and 4) reverse alternate alleles. (This a metric relavant to understanding “strand bias”, which we will ignore.)</p>
+<p>Last in the <code>INFO</code> row—but importantly—<code>MQ</code> is mapping quality, which is calculated as:</p>
+<p><span class="math display">\[
+MQ=-10log_{10}(P(\text{read is correctly mapped}))
+\]</span></p>
+<p>A score of 60 thus means there is only a 1 in 1,000,000 chance it is misplaced (<code>-10*log10(1e-6)</code> in <code>R</code>); a score of 20, commonly used as a cutoff for unreliable variants, means there is a 1/100 chance it is misplaced (<code>-10*log10(1e-6)</code>). (These values are what is known as a <a href="https://en.wikipedia.org/wiki/Phred_quality_score">Phred quality score</a>, which you may recognize from trimming and filtering reads.)</p>
+<p>The final columns are again <code>FORMAT</code> and your sample’s filename. You will notice that under <code>FORMAT</code> the string <code>PL:AD</code> has become <code>GT:PL:AD</code>. <code>GT</code> is, unsurprisingly, genotype; this indicates a genotype call has been made. The sample ID column begins with this value: 0/0 if the sample is homozygous for the reference allele (which we have prevented from being included in this file using the <code>-v</code> flag), 0/1 if it is heterozygous, and 1/1 if it is homozygous for the alternate allele. The remaining fields—likelihoods and allelic depth—are as described above.</p>
+<p>All SNPs in your <code>.vcf</code> will follow this basic format. However, not all variants are SNPs. Position 216 of the example I have provided is instead a <em>deletion</em> mutation: where the reference sequence has three nucleotides (<code>CCT</code>), the sample has only one (<code>C</code>). As a result, the <code>INFO</code> field begins with the string <code>INDEL</code> (short for “insertion or deletion”), and includes additional metrics associated with the confidence of the call (e.g., <code>IDV</code> is the number of reads that supported the indel). Indels are often filtered out to simplify analyses, something we will do in classes to come; for now, it is sufficient to know they are a different category of variant that pose particular challenges in sequence alignment and genotyping.</p>
+<p>I am a firm believer in the value of knowing your way around a <code>.vcf</code>. Of course, in practice, you are rarely going to spend the time examining one line-by-line. Instead, you are likely to want some way to summarize the info. The command <code>bcftools stats</code> does just such a thing, albeit at unwieldy length. For now, we can pipe the command to <code>grep</code> (a <code>bash</code> command that searches for text patterns) to isolate rows assocated with the high-level stats (this can be run on the log-in node):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> stats sample.vcf <span class="kw">|</span> <span class="fu">grep</span> ^SN</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will produce a data summary for your file, which is largely self-explanatory (note here that “records” is the combined number of all variants):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of samples:  1</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of records:  387</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of no-ALTs:  0</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of SNPs: 368</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of MNPs: 0</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of indels:   19</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of others:   0</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of multiallelic sites:   1</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="ex">SN</span>  0   number of multiallelic SNP sites:   1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Even more efficient is this one-liner to count the number of variants in your <code>.vcf</code>…</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-H</span> sample.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>…or SNPs alone:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-H</span> <span class="at">-v</span> snps cohort.vcf <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(You should see how these could be easily paired with a <code>for</code> loop and / or wildcards to generate data on a large number of files.)</p>
+<p>At this point you have identified variants relative to a reference genome for a single sample of your focal species, something driven home by the first line of the output above. But a single sample does not get you very far if you are interested in population genetics! We therefore need to produce a <em>multisample</em> <code>.vcf</code> file, using all the <code>.sam</code>/<code>.bam</code> alignments you generated last week. Luckily, doing so introduces no new concepts or commands, and will be left for your homework.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="**Homework 6**">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><strong>Homework 6</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The command used to generate a multisample <code>.vcf</code> can take several forms. The documentation for <code>bcftools mpileup</code> prompts you to enter a list of each <code>.bam</code> file you wish to include following your arguments:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Usage:</span> bcftools mpileup <span class="pp">[</span><span class="ss">options</span><span class="pp">]</span> in1.bam [in2.bam <span class="pp">[</span><span class="ss">...</span><span class="pp">]</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>(Recall that you will have to pipe this to <code>call</code>, e.g.&nbsp;<code>bcftools mpileup -f hemoglobin_references.fasta sample.sorted.bam sample2.sorted.bam | bcftools call -mv -Ov -o multi_sample.vcf</code>)</p>
+<p>A second option is to replace specific <code>.bam</code> filenames with a wildcard that will capture all samples—<code>*sorted.bam</code>, for example. This is convenient but potentially riskier; if you choose to do so, it is good to first make sure the wildcard produces the list of files you expect it to using a less-consequential command like <code>ls *.bam</code>. As usual, any script that gets the job done safely is sufficient.</p>
+<p>For homework, then, please complete the following tasks:</p>
+<ol type="1">
+<li>Successfully generate a multisample <code>.vcf</code> including all individuals of your focal species. Note that you may need to generate <code>.bam</code> files from your <code>.sam</code> alignments if you did not do so last week (<code>samtools view -b sample.sam &gt; sample.bam</code> in an environment where <code>samtools</code> is accesible).</li>
+<li>Generate a text file with the output from <code>bcftools stats</code> for your multisample <code>.vcf</code>, checking to make sure it includes the right number of individuals.</li>
+<li>Add, commit, and push this summary and the <code>.sbatch</code> script used for multisample variant calling to your GitHub repository, making the usual changes to <code>README.md</code> and directory organization as needed.</li>
+</ol>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
