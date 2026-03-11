@@ -8,7 +8,7 @@ Over the last four weeks you have quality filtered and trimmed reads, aligned th
 
 Tuesday's reading should have helped solidify your understanding of what workflow managers are and what they do. It should also have provided some specific background on `Snakemake`, tool we will learn to deploy below. Note that this is only one of the several workflow managers you might choose for your own research, with [Nextflow](https://www.nextflow.io/) in particular bragging similarly wide use. But because `Snakemake` is based on `Python`, a program language likely to be more famililar to you (or at least readable) than "Groovy" ([seriously](https://www.nextflow.io/docs/latest/script.html)), it will be our choice. 
 
-Snakemake has [extensive documentation](https://snakemake.readthedocs.io/en/stable/). I do not begin to presume you will read much of it, but as usual, it is worth getting oriented to over the course of 5-10 minutes. You may then creat a config file (`snakemake.yaml`) to program via `Mamba`: 
+Snakemake has [extensive documentation](https://snakemake.readthedocs.io/en/stable/). I do not begin to presume you will read much of it, but as usual, it is worth getting oriented to over the course of 5-10 minutes. You may then create a config file (`snakemake.yaml`) to program via `Mamba`: 
 
 ```bash
 name: snakemake
@@ -282,7 +282,7 @@ rule all:
 
 (However, this will not be necessary if a subsequent rule takes both as input---which, of course, is exactly what is needed for `bwa mem`.) 
 
-Thus concludes our unit on pipelines. Though our introduction to `Snakemake` has been necessarily cursory, I hope it has demonstrated its potential power, and sets you off on a lifetime of productive. bioinformatics Good luck, be safe, and have fun. 
+Thus concludes our unit on pipelines. Though our introduction to `Snakemake` has been necessarily cursory, I hope it has demonstrated its potential power, and sets you off on a lifetime of productive. bioinformatics. Good luck, be safe, and have fun. 
 
 :::{.callout-note title="**Homework 8**"}
 
