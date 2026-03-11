@@ -92,7 +92,7 @@ Throughout the semester, you will likely find yourself resorting to Google, Chat
 |             |                                            | - [Linck & Battey 2019](https://doi.org/10.1111/1755-0998.12995) [(**pdf**)](papers/linck_battey_2019.pdf)          |
 |             |                                            | - [Hemstrom et al. 2024](https://doi.org/10.1038/s41576-024-00738-6) [(**pdf**)](papers/hemstrom_et_al_2024.pdf)    |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
-| 3/9 - 3/13  | Workflow Managers                          | - [**Intro to Snakemake (HW8)**]                                                                                    |
+| 3/9 - 3/13  | Workflow Managers                          | - [**Intro to Snakemake (HW8)**](snakemake.qmd)                                                                     |
 |             |                                            | - [Köster & Rahmann 2012](https://doi.org/10.1093/bioinformatics/bts480) [(**pdf**)](papers/koster_rahmann_2012.pdf)|
 |             |                                            | - [Reiter et al. 2021](https://doi.org/10.1093/gigascience/giaa140) [(**pdf**)](papers/reiter_et_al_2021.pdf)       |
 +-------------+--------------------------------------------+---------------------------------------------------------------------------------------------------------------------+
