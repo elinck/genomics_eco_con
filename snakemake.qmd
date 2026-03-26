@@ -291,7 +291,7 @@ The goal of this week's homework---due the Thursday following Spring Break---is 
 1) Update `env/` subdirectory with the necessary `.yaml` config files for `Mamba` environments. 
 2) Update your `Snakefile` with rules covering all remaining steps in your pipeline. 
 3) Confirm that the pipeline works with a dry run, troubleshooting as needed. Once any issues are resolved, execute the dry run command again, saving the output to a text file using the `>` operator. 
-4) Run the pipeline on your actua; data. (As mentioned above, you may consider only using two samples to speed up processing time). Create an `.html` `Snakemake` report file.
+4) Run the pipeline on your actual data. (As mentioned above, you may consider only using two samples to speed up processing time). Create an `.html` `Snakemake` report file.
 5) Add, commit, and push your Snakefile, dry run output file, and `.html` report to GitHub. Organize directories and revise your `README.md` as per usual. 
 :::
 

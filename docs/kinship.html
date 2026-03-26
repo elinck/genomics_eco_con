@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>kinship – BIOE591: Genomics for Ecology &amp; Conservation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ff63373b1067ca6f91cf1456aa1f00a2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">BIOE591: Genomics for Ecology &amp; Conservation</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="calculating-kinship-coefficients" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-kinship-coefficients">Calculating Kinship Coefficients</h2>
+<p>For the remainder of the semester we will transition from assembling genomic data and calling variants to analyzing these data to answer biological questions. Doing so will involve the continued use of command-line programs and <code>.sbatch</code> scripts but add the use of the <code>R</code> programming language and several packages developed for population genomics adn data visualization. Today’s lab involves a bit of both, calculating kinship coefficients for empirical data from <a href="https://doi.org/10.1111/1755-0998.13630">Hauser et al.&nbsp;2022</a> using multiple methods. You will recall their study assessed consistency of kinship estimates from both reduced representation and whole genome sequence data across a range of taxa. As is customary on publication, the authors deposited <code>.vcf</code> files in the <a href="https://doi.org/10.5061/dryad.3n5tb2rkp"><code>Dryad</code></a> archive; I have downloaded to our class directory for your use (<code>~/bioe-591-genomes/course-materials/data/kinship/</code>). To begin, choose a single dataset to use in the following tutorials. (As usual, you will not be able to write in this directory, so remember to change output file paths or copy a <code>.vcf</code> into your own subdirectory. )</p>
+<section id="working-with-ngsrelate" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-ngsrelate">Working with <code>ngsRelate</code></h3>
+<p>The first tool we will use is the command-line program <a href="https://github.com/angsd/ngsrelate"><code>ngsRelate</code></a>, part of the <a href="https://www.popgen.dk/angsd/index.php/ANGSD"><code>ANGSD</code></a> ecosystem of methods for working with low-coverage sequence data. Importantly, <code>ngsRelate</code> can work directly from genotype likelihoods, incorporating uncertainty in variants into downstream estimates. However, it can also take a <code>.vcf</code> file with hard-called genotypes; we will follow Hauser et al.&nbsp;in doing so below.</p>
+<p>As usually, <code>ngsRelate</code> can be installed via <code>Mamba</code> and the <code>bioconda</code> channel:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> ngsrelate</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> ngsrelate</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bcftools</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> htslib</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mamba</span> env create <span class="at">-f</span> ngsrelate.yaml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Once you have done so and confirmed the installation was successful with command <code>ngsRelate</code>, create an <code>.sbatch</code> script with the usual header information and module / <code>Mamba</code> initialization, updated for a new job name. You will also need to use <code>tabix</code> (from <code>htslib</code>) to index the <code>.vcf</code> file and <code>bcftools query</code> to extract sample IDs; compressing it with <code>gzip</code> is also a good idea. Following those commands, <code>ngsRelate</code> can be run in a single line:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=priority-bioe-591-genomics        </span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=ngsrelate                            </span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --partition=priority              </span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --nodes=1                       </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks-per-node=1             </span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=1              </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=0-10:00:00                 </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=ngsrelate-%j.out</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=ngsrelate-%j.err</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="ex">module</span> load Mamba/23.11.0-0<span class="kw">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># gzip the vcf</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> view <span class="at">-Oz</span> <span class="at">-o</span> sample.vcf.gz sample.recode.vcf</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># index the vcf</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="ex">tabix</span> <span class="at">-p</span> vcf sample.vcf.gz</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a sample ID file </span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="ex">bcftools</span> query <span class="at">-l</span> sample.vcf.gz <span class="op">&gt;</span> sample_ids.txt</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># call ngsRelate</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="ex">ngsRelate</span> <span class="at">-h</span> sample.vcf.gz <span class="at">-T</span> GT <span class="at">-c</span> 1 <span class="at">-O</span> sample.ngsrelate.out <span class="at">-z</span> sample_ids.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Above, the flag <code>-h</code> indicates an input <code>.vcf</code>, <code>-T</code> instructs the program to use genotypes instead of Phred-scaled likelihoods (e.g., data under the <code>PL</code> column of a <code>.vcf</code>, which are often absent), <code>-c</code> specifies the number of cores needed, <code>-O</code> is the path for an output file, and <code>-z</code> inputs the list of sample IDs created by <code>bcftools query</code>. Run the script with <code>sbatch</code>. Even using a single core, the analysis should complete in a manner of minutes. Examine <code>sample.ngsrelate.out</code> using <code>head</code>. You should see something like the following (scroll right to view the entire text file):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">a</span>   b   nSites  J9  J8  J7  J6  J5  J4  J3  J2  J1  rab Fa  Fb  theta   inbred_relatedness_1_2  inbred_relatedness_2_1  fraternity  identity    zygosity    2of3_IDB    FDiff   loglh   nIter   bestoptimll coverage    2dsfs   R0  R1  KING    2dsfs_loglike   2dsfsf_niter</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span>   1   13374   0.998610    0.000004    0.000003    0.000020.000000 0.000063    0.000000    0.001299    0.000000    0.000000.001362 0.001321    0.000002    0.000000    0.000000    0.001300.000000 0.001302    0.001346    0.000020    <span class="at">-19679.443977</span>   78  <span class="at">-1</span>  0.971101    4.349743e-01,1.627332e-01,2.734623e-02,1.748214e-01,1.164063e-01,2.195767e-02,3.280485e-02,2.277343e-02,6.182655e-03    0.516734    0.263103    <span class="at">-0.006334</span>   <span class="at">-21871.119570</span>   10</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span>   2   13442   0.999888    0.000000    0.000000    0.000000.000000 0.000007    0.000002    0.000000    0.000103    0.000100.000111 0.000103    0.000104    0.000104    0.000103    0.000000.000103 0.000103    0.000108    0.000003    <span class="at">-19574.629564</span>   50  <span class="at">-1</span>  0.976038    4.329153e-01,1.693494e-01,2.289844e-02,1.824367e-01,1.063359e-01,2.463403e-02,2.989518e-02,2.559036e-02,5.944733e-03    0.496480    0.233806    0.001218    <span class="at">-21904.265296</span>   10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>Each column is described in detail in the "Output format" section of [the documentation](https://github.com/angsd/ngsrelate). The most important of these are 13 through 23, which are 11 summary statistics spanning familiar (e.g., 13, which is $R_{AB}$) and unfamiliar (e.g., 23, "Two-out-of-three IBD") ways of measuring kinship and inbreeding. The final columns use a two-dimensional site frequency spectrum to calculate three aditional metrics, of which no. 31 should be familiar ("KING-robust" from Hauser et al. 2022). Once you have oriented yourself to this output (and made sure it is saved somewhere convenient) you may exit the Tempest command-line interface; the remainder of the lab will use</code>RStudio` from its web application environment.</p>
+</section>
+<section id="working-with-related-and-r-libraries-for-population-genetics" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-related-and-r-libraries-for-population-genetics">Working with <code>related</code> and <code>R</code> Libraries for Population Genetics</h3>
+<p>Population genomic variant data are often formatted as matrices, with individuals on one axis, loci on the other, and genotype values filling in cells. As a result, programming languages that are commonly used for data science and statistics—such as <code>R</code>, <code>Python</code>, and <code>Julia</code>—can be readily adapted for population genetic analyses. While <code>Python</code> will likely be the dominant player in this area moving forward thanks to a burgeoning ecosystem of packages built around the simulator <a href="https://tskit.dev/msprime/docs/stable/intro.html"><code>msprime</code></a>, <a href="https://scikit-allel.readthedocs.io/en/stable/"><code>scikit-allel</code></a>, and other packages that have moved to embrace the tree sequence data format, <code>R</code> is more widely used by ecologists and conservation biologists and has a diversity of relevant libraries. We will thus emphasize <code>R</code>-based tools for the remainder of the class, though I encourage you to consider alternatives as needed.</p>
+<p>To begin, we will learn how to load a <code>.vcf</code> file into <code>R</code>, examine its features, and calculate preliminary summary statistics. Though you are welcome to download local copies of our example data if you prefer, it will be easier to run these analyses on Tempest using its built in <code>RStudio</code> app. Access this via the <a href="https://tempest-web.msu.montana.edu/">Tempest Web Portal</a>, logging in when prompted. Navigate next to the “Apps” dropdown menu and click “All Apps”. Scroll down to <code>RStudio</code>, click it, and select the most recent version (R 4.5.1 as of March 2026). Below, you will see options for your partition, RAM, CPUs, and runtime, just as if you were submitting an <code>.sbatch</code> script.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tempestweb.png" class="img-fluid figure-img" style="width:75.0%"></p>
+<figcaption><em>Accessing Tempest Web</em></figcaption>
+</figure>
+</div>
+<p>Once you click “Launch”, you will be taken to a landing page that displays a pane with the job ID (e.g., “RStudio (3798037)”), its specifications, and text that reads “Your session is currently starting… Please be patient as this process can take a few minutes.” A few moments later this should be replaced by a button labeled with “Connect to RStudio”. Do so, and you will find yourself in its familiar integrated development environment, albeit with a file browser that is navigating your home directory on Tempest.</p>
+<p>You will now want to create an <code>.R</code> script or an R Markdown document to continue following the tutorial. In either case, please add comments explaining the purpose of the each line of code, as you’ll submit it as part of today’s homework assignment. First, we’ll ensure the proper libraries are installed…</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"related"</span>, <span class="at">repos=</span><span class="st">"http://R-Forge.R-project.org"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"adegenet"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"vcfR"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pegas"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>…and loaded, along with libraries that have already been installed in your container:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(related)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegenet)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcfR)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pegas)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We will use the <a href="https://knausb.github.io/vcfR_documentation/"><code>vcfR</code> library</a> to handle <code>.vcf</code> data, as it is generally the fastest and most robust solution to this task (though there are alternatives). Editing the path below as necessary, load the same example dataset you analyzed with <code>ngsRelate</code> using the <code>read.vcfR</code> function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vcf <span class="ot">&lt;-</span> <span class="fu">read.vcfR</span>(<span class="at">file =</span> <span class="st">"data/sample.recode.vcf"</span>, <span class="at">verbose =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>After printing updates on progess to the console, your <code>.vcf</code> will be loaded in the object named <code>vcf</code>. Typing its name should summarize the number of samples, “chromosomes” (equivalent to positions in ddRADseq data), and variants. Additional attributes of the object can be accessed using the <code>@</code> operator (similar to <code>$</code> in other contexts). Specifically, you can view metadata (the <code>.vcf</code> file’s header), the first columns of the <code>.vcf</code> (<code>vcf@fix</code>), and its genotype matrix (<code>vcf@gt</code>):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vcf</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>vcf<span class="sc">@</span>meta</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>vcf<span class="sc">@</span>fix</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>vcf<span class="sc">@</span>gt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This <code>vcfR</code> object is best considered a precursor to the analysis-specific data formats different libraries will require. Perhaps the most common of these are <code>genind</code> objects, used by the packages <code>adegenet</code> and<code>pegas</code>, among others. We will us <code>vcfR</code>’s built-in conversion function to create a <code>genind</code> with a new name:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>genind_obj <span class="ot">&lt;-</span> <span class="fu">vcfR2genind</span>(vcf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As usual, it pays to get oriented. Entering the object’s name will describe its content and geatures. Like <code>vcfR</code> objects, <code>genind</code> objects store data with the <code>@</code> operator. You can access the genotype data directly with <code>tab</code>, where it is labeled by chromosome and position (the first two columns of a <code>.vcf</code>) and coded as 0 (homozygous for the reference allele), 1 (heterozygous), or 2 (homozygous for the alternate allele). The attribute <code>loc.n.all</code> includes the number of alleles for each locus; accessing it with <code>summary()</code> provides a quick check that only biallelic SNPs are included in the data:</p>
+<pre><code>genind_obj
+head(genind_obj@tab)
+summary(genind_obj@loc.n.all)</code></pre>
+<p>We can next calculate observed and expected heterozygosity at each locus (SNP) using <code>adegenet</code>’s <code>summary()</code> function and then selecting the appropriate attributes from its output with the <code>$</code> operator. (This may take some time for larger datasets!)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>af_summary <span class="ot">&lt;-</span> adegenet<span class="sc">::</span><span class="fu">summary</span>(genind_obj) <span class="co"># here it is important to specify which package's summary function is used!</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>af_summary <span class="co"># view object</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>h_o <span class="ot">&lt;-</span> af_summary<span class="sc">$</span>Hobs</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>H_e <span class="ot">&lt;-</span> af_summary<span class="sc">$</span>Hexp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Viewing these heteorzygosity objects with <code>head</code> should show an object of class <code>double</code> containing a label for each SNP and an estimate of its observed or estimated heterozygosity. We can more easily summarize this information by creating a dataframe that compares estimates across loci (rows):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h_o)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(h_e)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>het_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">locus =</span> <span class="fu">names</span>(h_o), <span class="at">h_o =</span> h_o, <span class="at">h_e =</span> h_e)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(het_df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The inbreeding coefficient <span class="math inline">\(F_{IS}\)</span> can be calculated as <span class="math inline">\(1 - \frac{H_o}{H_e}\)</span>, which is easily translated to <code>R</code>. Removing NA values allows you to calculate mean <span class="math inline">\(F_{IS}\)</span> across all loci, though this may not be particularly meaningful for your data if it was previously filtered for deviations from Hardy-Weinberg Equilibrium (HWE):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>Fis_per_locus <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> (Ho <span class="sc">/</span> He)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Fis_per_locus</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Fis_per_locus, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Speaking of which, assessing whether loci are in HWE can be done by inputting a <code>loci</code> object to the <code>hw.test()</code> function in <code>pegas</code>. Below, the argument <code>B = 100</code> specifies the number of replicates for a Monte Carlo allele permutation procedure; this necessarily takes some time (1-5 minutes), which will scale with the value you select. This will produce a <code>double</code> with <span class="math inline">\(\chi^2\)</span> test statistics and their signficance:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>loci_obj <span class="ot">&lt;-</span> <span class="fu">genind2loci</span>(genind_obj)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>hwe_results <span class="ot">&lt;-</span> pegas<span class="sc">::</span><span class="fu">hw.test</span>(loci_obj, <span class="at">B =</span> <span class="dv">100</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>hwe_results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can isolate significant deviations from HWE by filtering the <em>p</em>-value column (<code>Pr.exact</code>) by a threshold of your choosing:</p>
+<pre><code>hwe_results %&gt;% as.tibble() %&gt;% filter(Pr.exact&lt;0.05)</code></pre>
+<p>The calculations and analyses above are only a brief introduction to what is possible to do with a <code>.vcf</code> file in <code>R</code>; like any programming language, the largest constraint will be your creativity and skillset. In future labs we will return to <code>adegenet</code> and <code>pegas</code> and explore common tasks such as principal component analyses of genotype matrices. For now, we will return to the theme of this week’s lab and calculate kinship coefficients. Unfortunately, <code>related</code> relies on its own custom data format, which we will have to convert manually from the genotype matrix of our initial <code>vcfR</code> object using the <code>extract.gt()</code> function:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>gt_filtered <span class="ot">&lt;-</span> vcfR<span class="sc">::</span><span class="fu">extract.gt</span>(vcf, <span class="at">element =</span> <span class="st">"GT"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can then perform a tedious set of operations to cover these data—presented as character strings—into a dataframe of integers:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># sample ids</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>sample_ids <span class="ot">&lt;-</span> <span class="fu">colnames</span>(gt_filtered)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>gt_to_alleles <span class="ot">&lt;-</span> <span class="cf">function</span>(gt_vector) {</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># split "0/1" or "0|1" into two integer alleles, returning a 2-column matrix (samples x 2 alleles)</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  allele1 <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="fu">length</span>(gt_vector))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  allele2 <span class="ot">&lt;-</span> <span class="fu">integer</span>(<span class="fu">length</span>(gt_vector))</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(gt_vector)) {</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> gt_vector[i]</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">is.na</span>(g) <span class="sc">||</span> g <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"./."</span>, <span class="st">"."</span>, <span class="st">"./"</span>, <span class="st">"/."</span>)) {</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>      allele1[i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>      allele2[i] <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>      parts <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">strsplit</span>(g, <span class="st">"[/|]"</span>)[[<span class="dv">1</span>]])</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>      allele1[i] <span class="ot">&lt;-</span> parts[<span class="dv">1</span>] <span class="sc">+</span> <span class="dv">1</span>L    <span class="co"># shift: 0-&gt;1 (ref), 1-&gt;2 (alt)</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>      allele2[i] <span class="ot">&lt;-</span> parts[<span class="dv">2</span>] <span class="sc">+</span> <span class="dv">1</span>L</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cbind</span>(allele1, allele2)</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>allele_list <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">"list"</span>, <span class="fu">nrow</span>(gt_filtered))</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(gt_filtered))) {</span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>  allele_list[[v]] <span class="ot">&lt;-</span> <span class="fu">gt_to_alleles</span>(gt_filtered[v, ])</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a><span class="co"># combine: each element is (n_samples x 2); bind column-wise</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>allele_matrix <span class="ot">&lt;-</span> <span class="fu">do.call</span>(cbind, allele_list)</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a><span class="co"># add individual IDs as the first column</span></span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>coancestry_input <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">IndID =</span> sample_ids, allele_matrix,</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>                               <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a><span class="co"># column names: IndID, L1_a, L1_b, L2_a, L2_b, ...</span></span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>locus_names <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="fu">rep</span>(<span class="fu">paste0</span>(<span class="st">"L"</span>, <span class="fu">seq_len</span>(<span class="fu">nrow</span>(gt_filtered))),</span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>                          <span class="at">each =</span> <span class="dv">2</span>),</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"_a"</span>, <span class="st">"_b"</span>), <span class="fu">nrow</span>(gt_filtered)))</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(coancestry_input) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"IndID"</span>, locus_names)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This will be large in both dimenions, so previewing its structure is best done by slicing column and row indices down to something manageable:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coancestry_input[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You’ll see individual IDs as rows, with a single locus broken into two columns—a and b—representing diploid alleles. These data are now ready to be input into the <code>related::coancestry()</code> function. Before you do so, examine its documentation by typing <code>?related::coancestry()</code> into the console. You’ll note arguments indicating which coefficients to calculate, random seed values, the number of bootstraps to calculate, and much more besides. Running the function as indicated below will take some time (~3 minutes); by default, it will print output on which dyad (pairwise comparison) it is currently running. Removing arguments below can speed up operations:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>kin_results <span class="ot">&lt;-</span> related<span class="sc">::</span><span class="fu">coancestry</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">genotype.data =</span> coancestry_input,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">wang          =</span> <span class="dv">1</span>,      <span class="co"># 1 = compute; 0 = skip</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dyadml        =</span> <span class="dv">1</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">quellergt     =</span> <span class="dv">1</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The <code>kin_results</code> object produced is a <code>list</code> containing both the kinship coefficient estimates calculated and data on allele frequencies for each locus. It is thus quite large, and needs to be summarized. Do so by using <code>head()</code> and selecting the <code>relatedness</code> attribute:</p>
+<pre class="head(kin_results$relatedness)"><code></code></pre>
+<p>You’ll see columns indexing each dyad, the individuals involved, and then each kinship coefficient produced.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="**Homework 9**">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><strong>Homework 9</strong>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In an ideal world, this week’s homework would involve reproducing an analysis of the correlation between pedigree-based and genomic estimates of kinship from Hauser et al.&nbsp;2022. Unfortunately, the authors did not make their pedigree data publicly available. Instead, we will compare kinship estimates for the same dataset from <code>ngsRelate</code> and <code>related::coancestry()</code>. I will not be prescriptive as to how you choose to do this: it could be with summary statistics (e.g., mean, median, quantiles), a scatter plot (this would require matching pairwise comparisons in the proper order, which may or may not happen automatically in the output of both programs), or a pair of histograms of estimate values. Regardless of the approach you choose, I expect you to submit the following material to GitHub, and update your <code>README.md</code> and organizational scheme accordingly:</p>
+<ol type="1">
+<li>Your <code>.sbatch</code> script for running <code>ngsRelate</code>;</li>
+<li>Your <code>R</code> or <code>R Markdown</code> script for the tutorial, with a separate section for this assignment, with code commented as needed;</li>
+<li>Any figures or data output from this comparison (e.g., a <code>.png</code> of your historgrams).</li>
+</ol>
+<p>(This assignment requires you to draw on your own knowledge of <code>R</code>. You should thus feel free to use internet resources to help you complete it. LLMs are permitted provided you use prompts granularly—i.e., do not simply ask it to complete the assignment—and comment the output explaining the role of each line of code it generates.)</p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
