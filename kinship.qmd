@@ -55,14 +55,14 @@ bcftools query -l sample.vcf.gz > sample_ids.txt
 ngsRelate -h sample.vcf.gz -T GT -c 1 -O sample.ngsrelate.out -z sample_ids.txt
 ```
 
-Above, the flag `-h` indicates an input `.vcf`, `-T` instructs the program to use genotypes instead of Phred-scaled likelihoods (e.g., data under the `PL` column of a `.vcf`, which are often absent), `-c` specifies the number of cores needed, `-O` is the path for an output file, and `-z` inputs the list of sample IDs created by `bcftools query`. Run the script with `sbatch`. Even using a single core, the analysis should complete in a manner of minutes. Examine `sample.ngsrelate.out` using `head`. You should see something like the following (scroll right to view the entire text file): 
+Above, the flag `-h` indicates an input `.vcf`, `-T` instructs the program to use genotypes instead of Phred-scaled likelihoods (e.g., data under the `PL` column of a `.vcf`, which are often absent), `-c` specifies the number of cores needed, `-O` is the path for an output file, and `-z` inputs the list of sample IDs created by `bcftools query`. Run the script with `sbatch`. Even using a single core, the analysis should complete in a manner of minutes. Examine `sample.ngsrelate.out` using `head`. You should see something like the following, albeit with individual IDs in column positions 3 and 4 (scroll right to view the entire text file): 
 
 ```bash
 a	b	nSites	J9	J8	J7	J6	J5	J4	J3	J2	J1	rab	Fa	Fb	theta	inbred_relatedness_1_2	inbred_relatedness_2_1	fraternity	identity	zygosity	2of3_IDB	FDiff	loglh	nIter	bestoptimll	coverage	2dsfs	R0	R1	KING	2dsfs_loglike	2dsfsf_niter
 0	1	13374	0.998610	0.000004	0.000003	0.000020.000000	0.000063	0.000000	0.001299	0.000000	0.000000.001362	0.001321	0.000002	0.000000	0.000000	0.001300.000000	0.001302	0.001346	0.000020	-19679.443977	78	-1	0.971101	4.349743e-01,1.627332e-01,2.734623e-02,1.748214e-01,1.164063e-01,2.195767e-02,3.280485e-02,2.277343e-02,6.182655e-03	0.516734	0.263103	-0.006334	-21871.119570	10
 0	2	13442	0.999888	0.000000	0.000000	0.000000.000000	0.000007	0.000002	0.000000	0.000103	0.000100.000111	0.000103	0.000104	0.000104	0.000103	0.000000.000103	0.000103	0.000108	0.000003	-19574.629564	50	-1	0.976038	4.329153e-01,1.693494e-01,2.289844e-02,1.824367e-01,1.063359e-01,2.463403e-02,2.989518e-02,2.559036e-02,5.944733e-03	0.496480	0.233806	0.001218	-21904.265296	10
 ```
-`
+
 Each column is described in detail in the "Output format" section of [the documentation](https://github.com/angsd/ngsrelate). The most important of these are 13 through 23, which are 11 summary statistics spanning familiar (e.g., 13, which is $R_{AB}$) and unfamiliar (e.g., 23, "Two-out-of-three IBD") ways of measuring kinship and inbreeding. The final columns use a two-dimensional site frequency spectrum to calculate three aditional metrics, of which no. 31 should be familiar ("KING-robust" from Hauser et al. 2022). Once you have oriented yourself to this output (and made sure it is saved somewhere convenient) you may exit the Tempest command-line interface; the remainder of the lab will use `RStudio` from its web application environment. 
 
 ### Working with `related` and `R` Libraries for Population Genetics 
@@ -119,7 +119,7 @@ genind_obj <- vcfR2genind(vcf)
 
 As usual, it pays to get oriented. Entering the object's name will describe its content and geatures. Like `vcfR` objects, `genind` objects store data with the `@` operator. You can access the genotype data directly with `tab`, where it is labeled by chromosome and position (the first two columns of a `.vcf`) and coded as 0 (homozygous for the reference allele), 1 (heterozygous), or 2 (homozygous for the alternate allele). The attribute `loc.n.all` includes the number of alleles for each locus; accessing it with `summary()` provides a quick check that only biallelic SNPs are included in the data: 
 
-```
+```r
 genind_obj
 head(genind_obj@tab)
 summary(genind_obj@loc.n.all)
@@ -161,7 +161,7 @@ hwe_results
 
 You can isolate significant deviations from HWE by filtering the *p*-value column (`Pr.exact`) by a threshold of your choosing: 
 
-```
+```r
 hwe_results %>% as.tibble() %>% filter(Pr.exact<0.05)
 ```
 
@@ -235,11 +235,11 @@ kin_results <- related::coancestry(
 
 The `kin_results` object produced is a `list` containing both the kinship coefficient estimates calculated and data on allele frequencies for each locus. It is thus quite large, and needs to be summarized. Do so by using `head()` and selecting the `relatedness` attribute: 
 
-```head(kin_results$relatedness)
+```r
+head(kin_results$relatedness)
 ```
 
-You'll see columns indexing each dyad, the individuals involved, and then each kinship coefficient produced.
-
+You'll see columns indexing each dyad, the individuals involved, and then each kinship coefficient produced. These data will be the basis for your homework assignment. 
 
 :::{.callout-note title="**Homework 9**"}
 
