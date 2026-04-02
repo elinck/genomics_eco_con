@@ -29,7 +29,7 @@ Because `Snakemake` is larger and has more dependencies than most if not all too
 #SBATCH --nodes=1                       
 #SBATCH --ntasks-per-node=1             
 #SBATCH --cpus-per-task=1              
-#SBATCH --time=0-10:00:00                 
+#SBATCH --time=0-00:30:00                 
 #SBATCH --output=snake_install-%j.out
 #SBATCH --error=snake_install-%j.err
 
