@@ -464,7 +464,7 @@ $size
 </div>
 </div>
 </div>
-<p>DAPC takes these hard-coded assignments and determines which principal components contribute to them. It</p>
+<p>DAPC takes these hard-coded assignments and determines which principal components contribute to them, as well as any uncertainty in ancestry. (It is thus designed to discriminate on the basis of user-input populations, and should be used in combination with <span class="math inline">\(K\)</span>-means clustering or other approaches for detecting and / or designating structure.)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>dapc1 <span class="ot">&lt;-</span> <span class="fu">dapc</span>(species_genind, <span class="at">pop =</span> grp<span class="sc">$</span>grp, <span class="at">n.pca =</span> <span class="dv">50</span>, <span class="at">n.da =</span> <span class="dv">2</span>)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>dapc1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -560,9 +560,9 @@ $eig (eigenvalues): 2986  vector    length content
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>grp_auto<span class="sc">$</span>Kstat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     K=1      K=2      K=3      K=4      K=5      K=6      K=7      K=8 
-365.2108 365.0958 366.3905 368.7773 370.4943 371.9258 374.1778 376.2656 
+365.2108 365.0958 366.3905 368.5782 369.9612 372.1372 374.0104 376.1985 
      K=9     K=10 
-377.9740 380.3467 </code></pre>
+377.9166 379.9365 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot!</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>

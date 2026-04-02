@@ -211,7 +211,7 @@ ggplot(pc, aes(x = PC1, y = PC2, color = cluster)) +
   geom_text(aes(label = sample), vjust = -0.5, size = 3) 
 ```
 
-DAPC takes these hard-coded assignments and determines which principal components contribute to them. It  
+DAPC takes these hard-coded assignments and determines which principal components contribute to them, as well as any uncertainty in ancestry. (It is thus designed to discriminate on the basis of user-input populations, and should be used in combination with $K$-means clustering or other approaches for detecting and / or designating structure.) 
 
 ```{r}
 dapc1 <- dapc(species_genind, pop = grp$grp, n.pca = 50, n.da = 2)
