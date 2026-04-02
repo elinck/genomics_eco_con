@@ -26,7 +26,7 @@ Once you've done so and closed your browser window, the next step is to open up 
 ssh <net_id>@tempest-login.msu.montana.edu
 ```
 
-Assuming you successfulyl added your `ssh` key to the cluster, you should see your terminal interface change to reflect the following new file system:
+Assuming you successfully added your `ssh` key to the cluster, you should see your terminal interface change to reflect the following new file system:
 
 ```bash
 [<net_id>@tempest-login ~]$
