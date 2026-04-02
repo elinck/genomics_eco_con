@@ -136,19 +136,6 @@ eval "$(conda shell.bash hook)"
 snakemake --profile profile/slurm --use-conda
 ```
 
-You should also add a configuration file for your job scheduler (`profiles/slurm/config.yaml`): 
-
-```bash
-executor: slurm
-jobs: 20
-latency-wait: 60
-default-resources:
-  - runtime=30
-  - mem_mb=4000
-  - slurm_partition=priority
-  - slurm_account=priority-bioe-591-genomics
-```
-
 In theory, you should be ready to run the workflow. Before we do so, however, it is useful to perform a so-called dry run by invoking the same command with the addition of the argument `-n`. Doing so will test whether your paths and `Snakemake` syntax is correct and preview the steps it will run---something particularly helpful when they are not what you expect! Conveniently, this can be done on the login node (though recall you will need to make `Mamba` and the `conda` command accessible via `module load Mamba/23.11.0-0; eval "$(conda shell.bash hook)"`): 
 
 ```bash
