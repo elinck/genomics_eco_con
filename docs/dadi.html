@@ -247,26 +247,26 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="working-with-dadi">Working with <code>dadi</code></h3>
 <p>Regardless of the source of your data, <code>dadi</code> requires you to assign individuals (as labeled in your <code>.vcf</code>) to the populations you intend to model. Using <code>nano</code> or another text editor, save the following as a file named <code>pops.txt</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sample</span>  pop</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_0</span>   pop1</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_1</span>   pop1</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_2</span>   pop1</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_3</span>   pop1</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_4</span>   pop1</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_5</span>   pop1</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_6</span>   pop1</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_7</span>   pop1</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_8</span>   pop1</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_9</span>   pop1</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_10</span>  pop1</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_11</span>  pop1</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_12</span>  pop1</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_13</span>  pop1</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_14</span>  pop1</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_15</span>  pop1</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_16</span>  pop1</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_17</span>  pop1</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_18</span>  pop1</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_19</span>  pop1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_0</span>   pop</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_1</span>   pop</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_2</span>   pop</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_3</span>   pop</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_4</span>   pop</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_5</span>   pop</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_6</span>   pop</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_7</span>   pop</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_8</span>   pop</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_9</span>   pop</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_10</span>  pop</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_11</span>  pop</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_12</span>  pop</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_13</span>  pop</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_14</span>  pop</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_15</span>  pop</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_16</span>  pop</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_17</span>  pop</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_18</span>  pop</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="ex">ind_19</span>  pop</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We can read this in along with our <code>.vcf</code> and convert it into the format <code>dadi expects</code>:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vcf_file <span class="op">=</span> <span class="st">"bottleneck_sim.vcf"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>popfile <span class="op">=</span> <span class="st">"pops.txt"</span></span>
@@ -293,7 +293,7 @@ window.Quarto = {
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    phi <span class="op">=</span> dadi.PhiManip.phi_1D(xx)</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    phi <span class="op">=</span> dadi.Integration.one_pop(phi, xx, T, nu)</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    fs_model <span class="op">=</span> dadi.Spectrum.from_phi(phi, ns, (xx,))</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fs_model```</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> fs_model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The next three lines do something a bit sophisticated: they use the values in <code>pts_l</code> to calculate phi three times at increasing grid resolution, then use the differences among those calculations to extrapolate what <code>phi</code> would look like at effectively infinite resolution. They then create new versions of the demographic models that perform this extrapolation automatically (named <code>snm_ex</code> and <code>two_epoch_ex</code>, respectively):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pts_l <span class="op">=</span> [<span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>snm_ex <span class="op">=</span> dadi.Numerics.make_extrap_log_func(snm)</span>
@@ -369,7 +369,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Today’s assignment simply requires you to add, commit, and push the <code>Jupyter</code> notebook you used to complete the turorial to Github, with a short <code>Markdown</code> chunk interpreting the AIC scores and parameter values. Did <code>dadi</code> infer the correct model? Are the parameter estimates close? As usual, you’ll want to edit directory structure and <code>README.md</code> files appropriately.</p>
+<p>Today’s assignment simply requires you to add, commit, and push the <code>Jupyter</code> notebook you used to complete the turtorial to Github, with a short <code>Markdown</code> chunk interpreting the AIC scores and parameter values. Did <code>dadi</code> infer the correct model? Are the parameter estimates close? As usual, you’ll want to edit directory structure and <code>README.md</code> files appropriately.</p>
 </div>
 </div>
 
