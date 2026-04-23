@@ -6,6 +6,6 @@ syllabus/
 .Rhistory
 _site/
 data/week_1/
-
+data/*.vcf
 /.quarto/
 **/*.quarto_ipynb

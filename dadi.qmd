@@ -279,6 +279,6 @@ print("Estimated bottleneck time (generations):", t_est)
 
 :::{.callout-note title="**Homework 11**"}
 
-Today's assignment simply requires you to add, commit, and push the `Jupyter` notebook you used to complete the turtorial to Github, with a short `Markdown` chunk interpreting the AIC scores and parameter values. Did `dadi` infer the correct model? Are the parameter estimates close? As usual, you'll want to edit directory structure and `README.md` files appropriately. 
+Today's assignment simply requires you to add, commit, and push the `Jupyter` notebook you used to complete the tutorial to Github, with a short `Markdown` chunk interpreting the AIC scores and parameter values. Did `dadi` infer the correct model? Are the parameter estimates close? As usual, you'll want to edit directory structure and `README.md` files appropriately. 
 
 :::
