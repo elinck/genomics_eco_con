@@ -429,25 +429,25 @@ NULL
 
 $grp
     002     003     004 16_0002 16_0003 16_0007    LZ19    LZ49    LZA9    LZC9 
-      1       1       1       2       2       2       1       1       1       1 
+      2       2       2       1       1       1       2       2       2       2 
    LZD9    LZS9    LZT9    LZX9    LZZ9    MZ19    MZ29    MZ59    MZ69    MZ89 
-      1       1       1       1       1       1       1       1       1       1 
-   MZ99    MZC9    MZD9    MZE9    MZG9    MZI9    MZM9    MZP9    MZQ9    MZS9 
-      1       1       1       1       1       1       1       1       1       1 
-   MZT9    MZU9    MZV9    MZW9    MZY9    NZ49    NZ59    NZ69    NZ79    NZA9 
-      1       1       1       1       1       1       1       1       1       1 
-   NZB9    NZC9    NZE9    NZF9    NZG9    NZK9    OZ19    PZC9    PZX9    RZT9 
-      1       1       1       1       1       1       1       1       1       2 
-   RZU9    SZ19    SZ69    SZ79    SZ89    SZC9    SZE9    SZF9    SZJ9    SZK9 
       2       2       2       2       2       2       2       2       2       2 
-   SZM9    TZ49    TZ89    TZCJ    TZU9    TZZ9    UZ1J    UZ2J    UZ3J    UZ7J 
-      2       2       2       1       2       2       1       1       1       1 
-   UZ8J    UZAJ    UZDJ    UZFJ    UZGJ    UZIJ    UZJJ    UZZJ    WZ1J    ZZY8 
+   MZ99    MZC9    MZD9    MZE9    MZG9    MZI9    MZM9    MZP9    MZQ9    MZS9 
+      2       2       2       2       2       2       2       2       2       2 
+   MZT9    MZU9    MZV9    MZW9    MZY9    NZ49    NZ59    NZ69    NZ79    NZA9 
+      2       2       2       2       2       2       2       2       2       2 
+   NZB9    NZC9    NZE9    NZF9    NZG9    NZK9    OZ19    PZC9    PZX9    RZT9 
+      2       2       2       2       2       2       2       2       2       1 
+   RZU9    SZ19    SZ69    SZ79    SZ89    SZC9    SZE9    SZF9    SZJ9    SZK9 
       1       1       1       1       1       1       1       1       1       1 
+   SZM9    TZ49    TZ89    TZCJ    TZU9    TZZ9    UZ1J    UZ2J    UZ3J    UZ7J 
+      1       1       1       2       1       1       2       2       2       2 
+   UZ8J    UZAJ    UZDJ    UZFJ    UZGJ    UZIJ    UZJJ    UZZJ    WZ1J    ZZY8 
+      2       2       2       2       2       2       2       2       2       2 
 Levels: 1 2
 
 $size
-[1] 61 19</code></pre>
+[1] 19 61</code></pre>
 </div>
 </div>
 <p>We can visualize these clusters with a simply color aesthetic, which gives you unsurprising individual assignment:</p>
@@ -514,16 +514,16 @@ $eig (eigenvalues): 2986  vector    length content
 <pre><code># A tibble: 160 × 3
    sample  cluster ancestry
    &lt;chr&gt;   &lt;chr&gt;      &lt;dbl&gt;
- 1 002     1       1   e+ 0
- 2 002     2       7.57e-39
- 3 003     1       1   e+ 0
- 4 003     2       1.04e-49
- 5 004     1       1   e+ 0
- 6 004     2       1.54e-46
- 7 16_0002 1       1.05e-47
- 8 16_0002 2       1   e+ 0
- 9 16_0003 1       2.19e-50
-10 16_0003 2       1   e+ 0
+ 1 002     1       7.57e-39
+ 2 002     2       1   e+ 0
+ 3 003     1       1.04e-49
+ 4 003     2       1   e+ 0
+ 5 004     1       1.54e-46
+ 6 004     2       1   e+ 0
+ 7 16_0002 1       1   e+ 0
+ 8 16_0002 2       1.05e-47
+ 9 16_0003 1       1   e+ 0
+10 16_0003 2       2.19e-50
 # ℹ 150 more rows</code></pre>
 </div>
 </div>
@@ -560,9 +560,9 @@ $eig (eigenvalues): 2986  vector    length content
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>grp_auto<span class="sc">$</span>Kstat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     K=1      K=2      K=3      K=4      K=5      K=6      K=7      K=8 
-365.2108 365.0958 366.3905 367.9647 369.9612 371.9081 373.8672 376.0523 
+365.2108 365.0958 366.3905 368.4736 369.9612 371.9741 373.7892 376.0147 
      K=9     K=10 
-377.9752 379.7704 </code></pre>
+378.0095 380.0070 </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot!</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>

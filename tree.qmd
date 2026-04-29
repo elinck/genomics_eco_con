@@ -73,7 +73,7 @@ library(ape)
 library(readr)
 ```
 
-We use the `read.tree()` function to 
+We use the `read.tree()` function to load the consensus phylogeny output by `IQTREE`: 
 
 ```{r, message=FALSE, warning=FALSE}
 # read tree
