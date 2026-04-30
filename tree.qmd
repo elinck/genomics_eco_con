@@ -24,7 +24,7 @@ dependencies:
 mamba env create -f iqtree.yaml
 ```
 
-We will also need a handy utility called `vcf2phylip` for converting `.vcf` files into a format called `PHYLIP`, developed for [a program of the same name] by Joe Felsenstein (my graduate school phylogenetics professor). These plain-text files begin with a line indicating the number of samples (here, 50) and sites (35529) in the sequence alignment. Each row begins with the name of a sample, is followed by a tab space, and then concludes with all sequences in a single row, with missing data represented by the character `N`: 
+We will also need a handy utility called `vcf2phylip` for converting `.vcf` files into a format called `PHYLIP`, developed for [a program of the same name](https://phylipweb.github.io/phylip/) by Joe Felsenstein (my graduate school phylogenetics professor). These plain-text files begin with a line indicating the number of samples (here, 50) and sites (35529) in the sequence alignment. Each row begins with the name of a sample, is followed by a tab space, and then concludes with all sequences in a single row, with missing data represented by the character `N`: 
 
 ```bash
 50 35529
